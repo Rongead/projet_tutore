@@ -33,7 +33,7 @@ public class
                while( sc.hasNext() )
                {
                     ligne = sc.nextLine();
-                    
+
                }
                sc.close();
           }
