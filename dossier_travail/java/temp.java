@@ -15,7 +15,7 @@ public class
 
           System.out.print("Entrez la source du fichier html : ");
           source = Clavier.lireString();
-          System.out.print("Entrez la répertoire de destination : ");
+          System.out.print("Entrez le répertoire de destination : ");
           racine = Clavier.lireString();
 
           try
@@ -23,13 +23,14 @@ public class
                Scanner sc = new Scanner( new FileReader( source ) );
                PrintWriter pw = new PrintWriter ( new FileWriter (racine + "/sortie.html") );
                pw.write("<!DOCTYPE html>");
-               pw.write(<html>);
-               pw.write(     <head>);
-               pw.write(     </head>);
-               pw.write(     <body>);
+               pw.write("<html>");
+               pw.write("     <head>");
+               pw.write("     </head>");
+               pw.write("     <body>");
                while( sc.hasNext() )
                {
-
+                    ligne = sc.nextLine();
+                    if((ligne.charAt))
                }
                sc.close();
           }
