@@ -9,6 +9,8 @@ import java.util.*;
 
 public class temp
 {
+     String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", ""},
+                            {"</header>", "</h1>", "</h2>", "</h3>", "</div>", ""}};
      public static void main(String[] args)
      {
           String source, racine;
@@ -53,15 +55,11 @@ public class temp
           String retour;
           while(i < indicateur.length )
           {
-            int index = ligne.indexOf(indicateur[i]);
-            if( index != -1 )
-            {
-             return index;
-            }
+               int index = ligne.indexOf(indicateur[i]);
+               if( index != -1 )
+               {
+                    return index;
+               }
           }
      }
-
-     String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", ""},
-                            {"</header>", "</h1>", "</h2>", "</h3>", "</div>", ""}};
-
 }
