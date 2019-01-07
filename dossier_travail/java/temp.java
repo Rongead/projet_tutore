@@ -7,7 +7,7 @@ import iut.algo.*;
 import java.io.*;
 import java.util.*;
 
-public class
+public class temp
 {
      public static void main(String[] args)
      {
@@ -26,14 +26,13 @@ public class
                pw.write("<html>");
                pw.write("     <head>");
                pw.write("          <title></title>")
-               pw.write("          <meta charset=UTF-8")
+               pw.write("          <meta charset=UTF-8>")
                pw.write("          <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">")
                pw.write("     </head>");
                pw.write("     <body>");
                while( sc.hasNext() )
                {
                     ligne = sc.nextLine();
-
                }
                sc.close();
           }
