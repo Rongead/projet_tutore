@@ -32,14 +32,54 @@ public class temp
                pw.write("     <body>");
                while( sc.hasNext() )
                {
+                    int i = 0;
+                    String ind;
                     ligne = sc.nextLine();
-                    
+                    pw.write(scan(ligne));
                }
                sc.close();
           }
           catch ( Exception e )
           {
                e.printStackTrace();
+          }
+     }
+
+     public String retourLgn (String ligne)
+     {
+          String[] indicateur = {"TP", "T1", "T2", "t2", "DP", "//"};
+          String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", ""},
+                                 {"</header>", "</h1>", "</h2>", "</h3>", "</div>", ""}};
+
+          int i, cpt;
+          String premchar = ligne.substring(0,2);
+          String retour;
+          while(i < indicateur.length )
+          {
+               if( premchar = indicateur[i] )
+               {
+                    retour = balises[0][i] + ligne.substring(3, ligne.length) + balises[1][i];
+                    return retour;
+               }
+          }
+     }
+
+     public boolean indicateur (String ligne)
+     {
+          String[] indicateur = {"TP", "T1", "T2", "t2", "DP", "//"};
+          String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", ""},
+                                 {"</header>", "</h1>", "</h2>", "</h3>", "</div>", ""}};
+
+          int i, cpt;
+          String premchar = ligne.substring(0,2);
+          String retour;
+          while(i < indicateur.length )
+          {
+               if( premchar = indicateur[i] )
+               {
+                    retour = balises[0][i] + ligne.substring(3, ligne.length) + balises[1][i];
+                    return retour;
+               }
           }
      }
 }
