@@ -9,6 +9,9 @@ import java.util.*;
 
 public class temp
 {
+     String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>"},
+                            {"</header>", "</h1>", "</h2>", "</h3>", "</div>"}};
+
      public static void main(String[] args)
      {
           String source, racine;
@@ -35,7 +38,7 @@ public class temp
                     int i = 0;
                     String ind;
                     ligne = sc.nextLine();
-                    pw.write(scan(ligne));
+                    pw.write(recomposeur(ligne));
                }
                sc.close();
           }
@@ -45,23 +48,66 @@ public class temp
           }
      }
 
-     public int indexeur (String ligne)
+
+     public boolean ligneUtile (String ligne)
      {
-          String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:", "//"};
           int i, cpt;
-          String premchar = ligne.substring(0,2);
-          String retour;
-          while(i < indicateur.length )
+          String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
+          for (int i = 0; i < ligne.length ; i++)
           {
-            int index = ligne.indexOf(indicateur[i]);
-            if( index != -1 )
+            if( ligne.indexOf(indicateur[i]) != -1 )
             {
-             return index;
+              return true;
             }
           }
+          return false;
      }
 
-     String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", ""},
-                            {"</header>", "</h1>", "</h2>", "</h3>", "</div>", ""}};
+     public boolean indexFinder (String ligne)
+     {
+       if( ligneUtile(ligne) )
+       {
+          String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
+          for (int i = 0; i < indicateur.length() ; i++)
+          {
+              if( ligne.indexOf(indicateur[i]) != -1 )
+              {
+                return i;
+              }
+          }
+       }
+     }
 
+     public boolean baliseFinder (String ligne)
+     {
+       if( ligneUtile(ligne) )
+       {
+          String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
+          for (int i = 0; i < indicateur.length() ; i++)
+          {
+            if( ligne.indexOf(indicateur[i]) != -1 )
+            {
+              return i;
+            }
+          }
+       }
+     }
+
+     public String recomposeur ( String ligne )
+     {
+       String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>"},
+                              {"</header>", "</h1>", "</h2>", "</h3>", "</div>"}};
+       String fermetureBalises, ouvertureBalises = "";
+       String retour = "";
+
+       while( ligneUtile( ligne ) )
+       {
+         ouvertureBalises = ouvertureBalises + balises[0][baliseFinder(ligne)];
+         fermetureBalises = balises[1][baliseFinder(ligne)] + fermetureBalises;
+         ligne = ligne.substring(indexFinder(ligne)+2);
+       }
+
+       retour = ouvertureBalises + ligne + fermetureBalises;
+       return retour;
+     }
 }
