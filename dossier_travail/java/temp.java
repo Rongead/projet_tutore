@@ -45,41 +45,23 @@ public class temp
           }
      }
 
-     public String retourLgn (String ligne)
+     public int indexeur (String ligne)
      {
-          String[] indicateur = {"TP", "T1", "T2", "t2", "DP", "//"};
-          String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", ""},
-                                 {"</header>", "</h1>", "</h2>", "</h3>", "</div>", ""}};
-
+          String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:", "//"};
           int i, cpt;
           String premchar = ligne.substring(0,2);
           String retour;
           while(i < indicateur.length )
           {
-               if( premchar = indicateur[i] )
-               {
-                    retour = balises[0][i] + ligne.substring(3, ligne.length) + balises[1][i];
-                    return retour;
-               }
+            int index = ligne.indexOf(indicateur[i]);
+            if( index != -1 )
+            {
+             return index;
+            }
           }
      }
 
-     public boolean indicateur (String ligne)
-     {
-          String[] indicateur = {"TP", "T1", "T2", "t2", "DP", "//"};
-          String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", ""},
-                                 {"</header>", "</h1>", "</h2>", "</h3>", "</div>", ""}};
+     String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", ""},
+                            {"</header>", "</h1>", "</h2>", "</h3>", "</div>", ""}};
 
-          int i, cpt;
-          String premchar = ligne.substring(0,2);
-          String retour;
-          while(i < indicateur.length )
-          {
-               if( premchar = indicateur[i] )
-               {
-                    retour = balises[0][i] + ligne.substring(3, ligne.length) + balises[1][i];
-                    return retour;
-               }
-          }
-     }
 }
