@@ -27,6 +27,8 @@ header{
   padding: 20px;
   text-align: center;
   font-weight: bold;
+  position: fixed;
+    top: 0px;
 }
 
 .encadrer{
@@ -34,8 +36,13 @@ header{
   padding: 20px 10px;
 }
 
+article{
+  margin-top: 100%;
+}
+
 nav{
   border: 2px solid black;
   width: 100px;
-
+  position: fixed;
+    top: 100px;
 }
