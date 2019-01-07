@@ -13,7 +13,7 @@ public class
      {
           String source, racine;
           String[] identifiants = {"TP", "T1", "T2", "t2", "DP", "L1", "L2", "IM", "PS", "PC", "AN"};
-          String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", "<ol>", "<ol>", "<img rel"}, }
+          String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", "<ol>", "<li>", "<img rel"}, }
 
           System.out.print("Entrez la source du fichier html : ");
           source = Clavier.lireString();
