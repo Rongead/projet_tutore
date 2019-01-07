@@ -26,7 +26,7 @@ public class temp
             pw.write("<html>");
             pw.write("     <head>");
             pw.write("          <title></title>")
-            pw.write("          <meta charset=UTF-8")
+            pw.write("          <meta charset=UTF-8>")
             pw.write("          <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">")
             pw.write("     </head>");
             pw.write("     <body>");
