@@ -1,3 +1,17 @@
+body{
+  width: 500px;
+  margin: auto;
+}
+
 header{
-  
+  border-bottom: 2px solid black;
+  font-size: 50px;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.encadrer{
+  border: 2px solid black;
+  padding: 20px 10px;
 }
