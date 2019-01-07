@@ -12,8 +12,6 @@ public class
      public static void main(String[] args)
      {
           String source, racine;
-          String[] identifiants = {"TP", "T1", "T2", "t2", "DP", "L1", "L2", "IM", "PS", "PC", "AN"};
-          String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", "<ol>", "<ol>", "<img rel"}, }
 
           System.out.print("Entrez la source du fichier html : ");
           source = Clavier.lireString();
@@ -27,12 +25,15 @@ public class
                pw.write("<!DOCTYPE html>");
                pw.write("<html>");
                pw.write("     <head>");
+               pw.write("          <title></title>")
+               pw.write("          <meta charset=UTF-8")
+               pw.write("          <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">")
                pw.write("     </head>");
                pw.write("     <body>");
                while( sc.hasNext() )
                {
                     ligne = sc.nextLine();
-
+                    
                }
                sc.close();
           }
