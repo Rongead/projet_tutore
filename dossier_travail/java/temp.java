@@ -12,6 +12,11 @@ public class
      public static void main(String[] args)
      {
           String source, racine;
+<<<<<<< HEAD
+=======
+          String[] identifiants = {"TP", "T1", "T2", "t2", "DP", "L1", "L2", "IM", "PS", "PC", "AN"};
+          String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>", "<ol>", "<li>", "<img rel"}, }
+>>>>>>> 56d990aad93b3fde0be61a3bc0ffa0216845e12d
 
           System.out.print("Entrez la source du fichier html : ");
           source = Clavier.lireString();
