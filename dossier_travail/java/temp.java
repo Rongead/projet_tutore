@@ -7,7 +7,7 @@ import iut.algo.*;
 import java.io.*;
 import java.util.*;
 
-public class
+public class temp
 {
     public static void main(String[] args)
     {
