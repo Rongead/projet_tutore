@@ -33,6 +33,7 @@ public class temp
                while( sc.hasNext() )
                {
                     ligne = sc.nextLine();
+                    
                }
                sc.close();
           }
