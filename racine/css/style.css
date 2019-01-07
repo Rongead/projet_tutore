@@ -1,3 +1,20 @@
+@font-face {
+  font-family: Q1;
+  src: url(Quicksand-Light.ttf);
+}
+@font-face {
+  font-family: Q2;
+  src: url(Quicksand-Regular.ttf);
+}
+@font-face {
+  font-family: Q3;
+  src: url(Quicksand-Medium.ttf);
+}
+@font-face {
+  font-family: Q4;
+  src: url(Quicksand-Bold.ttf);
+}
+
 body{
   width: 700px;
   margin: auto;
@@ -19,5 +36,5 @@ header{
 nav{
   border: 2px solid black;
   width: 100px;
-  
+
 }
