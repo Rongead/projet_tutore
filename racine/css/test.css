@@ -66,10 +66,10 @@ footer p{
 		background-color: #e5e5e5;
 		box-shadow: 4px 4px 0px black;
 }
-footer p:active /* Quand le visiteur clique sur le lien */
-{
+footer p:active{
 box-shadow: 0px 0px 0px black;
 }
+
 footer p:hover{
 	background-color: #bcbcbc;
 }
@@ -79,7 +79,7 @@ footer a{
     color: black;
 }
 
-aside{
+nav{
   border: 2px solid black;
   border-radius: 15px;
   width: 14%;
@@ -92,7 +92,7 @@ aside{
 
 }
 
-aside h3{
+nav h3{
   text-align: center;
 }
 
