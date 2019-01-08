@@ -26,7 +26,7 @@ header{
     position: absolute;
     top: 0px;
     width: 100%;
-    height: 7%;
+    height: 8%;
     margin: 0px;
     border-bottom: 2px solid black;
     font-size: 50px;
@@ -40,8 +40,11 @@ footer{
     position: absolute;
     bottom: 0px;
     text-align: center;
-    width: 100%;
+    width: 80%;
     height: 100px;
+    padding-left: 10%;
+    display: flex;
+    justify-content: space-between;
 }
 
 footer p{
@@ -53,20 +56,10 @@ footer p{
     heigth: 75px;
     padding: 0px;
     margin: 0px;
-    position: absolute;
-    top: 0%;
 }
 
 footer a{
     text-decoration: none;
-}
-
-footer p.precedent{
-    left: 7%;
-}
-
-footer p.suivant{
-    right: 7%;
 }
 
 aside{
@@ -78,6 +71,7 @@ aside{
   top: 13%;
   left: 15px;
   padding-left: 5px;
+  overflow: auto;
 }
 
 aside h3{
