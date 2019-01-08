@@ -1,31 +1,30 @@
 @font-face {
-  font-family: Q1;
-  src: url(Quicksand-Light.ttf);
+    font-family: Q1;
+    src: url(Quicksand-Light.ttf);
 }
 @font-face {
-  font-family: Q2;
-  src: url(Quicksand-Regular.ttf);
+    font-family: Q2;
+    src: url(Quicksand-Regular.ttf);
 }
 @font-face {
-  font-family: Q3;
-  src: url(Quicksand-Medium.ttf);
+    font-family: Q3;
+    src: url(Quicksand-Medium.ttf);
 }
 @font-face {
-  font-family: Q4;
-  src: url(Quicksand-Bold.ttf);
+    font-family: Q4;
+    src: url(Quicksand-Bold.ttf);
 }
 
 body{
-  font-family: Q2, Arial, sans-serif;
-  padding: 0px;
-  margin: 0px;
-  width: 100%;
+    font-family: Q2, Arial, sans-serif;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
 	background-color: #787878;
-
 }
 
 .logo{
-		height: 70px;
+    height: 70px;
 }
 
 header{
@@ -37,10 +36,9 @@ header{
     font-size: 50px;
     text-align: center;
     font-weight: bold;
-		display: flex;
-		justify-content: space-between;
-		background-color: #e5e5e5;
-
+	display: flex;
+	justify-content: space-between;
+	background-color: #e5e5e5;
 }
 
 footer{
@@ -63,11 +61,12 @@ footer p{
     heigth: 75px;
     padding: 0px;
     margin: 0px;
-		background-color: #e5e5e5;
-		box-shadow: 4px 4px 0px black;
+	background-color: #e5e5e5;
+	box-shadow: 4px 4px 0px black;
 }
+
 footer p:active{
-box-shadow: 0px 0px 0px black;
+    box-shadow: 0px 0px 0px black;
 }
 
 footer p:hover{
@@ -80,20 +79,19 @@ footer a{
 }
 
 nav{
-  border: 2px solid black;
-  border-radius: 15px;
-  width: 14%;
-  height: auto;
-  position: absolute;
-  top: 10%;
-  left: 15px;
-  padding-left: 5px;
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 14%;
+    height: auto;
+    position: absolute;
+    top: 10%;
+    left: 15px;
+    padding-left: 5px;
 	background-color: #e5e5e5;
-
 }
 
 nav h3{
-  text-align: center;
+    text-align: center;
 }
 
 .ici {
@@ -101,8 +99,8 @@ nav h3{
 }
 
 .encadrer{
-  border: 2px solid black;
-  padding: 20px 10px;
+    border: 2px solid black;
+    padding: 20px 10px;
 }
 
 article{
@@ -117,7 +115,6 @@ article{
     padding-right: 1%;
     overflow: auto;
 	background-color: #e5e5e5;
-
 }
 
 article img{
