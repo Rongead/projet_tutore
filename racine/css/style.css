@@ -117,6 +117,22 @@ article ul, article ol, article li{
     text-align: left;
 }
 
+article h1{
+    font-size: 250%;
+}
+
+article h2{
+    font-size: 190%;
+}
+
+article h3{
+    font-size: 140%;
+}
+
+article p{
+    font-size: 140%;
+}
+
 article img{
     display: block;
     margin-left: auto;
