@@ -94,3 +94,9 @@ article{
     padding-left: 1%;
     padding-right: 1%;
 }
+
+article img{
+  display: inline-block;
+  width: auto;
+  height: auto;
+}
