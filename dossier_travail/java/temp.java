@@ -33,6 +33,11 @@ public class temp
 				i++;
                }
 			String[] tabLignes = miseEnTab(ligne, i);
+			for (int j = 0 ; j < i ; j++ )
+			{
+				pw.write(recomposeur(tabLignes[j]));
+			}
+
 			pw.write("     </body>\n");
 			pw.write("</html>");
                sc.close();
