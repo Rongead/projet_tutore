@@ -46,10 +46,7 @@ public class patriceVersion
 							cptPS = cptPC = 0;
 							break;
 						case "T1:":
-							if (cptPC != 0 || cptPS != 0)
-							{
-								cptPS=0;cptPC=0;pw.write("</p>\n");
-							}
+							fermetureBalisesP(pw, cptPC, cptPS);
 							pw.write ("\t\t<h1>"+ ligne.substring(3)+"</h1>\n");
 							cptPS = cptPC = 0;
 							break;
