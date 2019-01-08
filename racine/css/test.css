@@ -19,6 +19,7 @@ body{
   font-family: Q2, Arial, sans-serif;
   padding: 0px;
   margin: 0px;
+  width: 100%;
 }
 
 header{
@@ -29,7 +30,8 @@ header{
     margin: 0px;
     border-bottom: 2px solid black;
     font-size: 50px;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
     font-weight: bold;
 }
@@ -53,6 +55,10 @@ footer p{
     margin: 0px;
     position: absolute;
     top: 0%;
+}
+
+footer a{
+    text-decoration: none;
 }
 
 footer p.precedent{
