@@ -31,8 +31,8 @@ public class patriceVersion
 			         "     <head>\n"                                                                    +
 			         "          <title></title>\n"                                                      +
 			         "          <meta charset=\"UTF-8\">\n"                                             +
-			         "          <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"   +
-			         "          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n" +
+			         "          <link rel=\"stylesheet\" type=\"text/css\" href=\"../../racine/css/style.css\">\n"   +
+			         "          <link rel=\"icon\" type=\"image/png\" href=\"../../racine/images/maxi_logo.png\">\n" +
 			         "     </head>\n"                                                                   +
 			         "     <body>\n"                                                                     );
 
