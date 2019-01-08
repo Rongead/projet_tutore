@@ -1,3 +1,4 @@
+/*On importe nos polices d'écriture perso*/
 @font-face {
     font-family: Q1;
     src: url(Quicksand-Light.ttf);
@@ -15,6 +16,8 @@
     src: url(Quicksand-Bold.ttf);
 }
 
+
+/*Caractéristiques du corps de la page*/
 body{
     font-family: Q2, Arial, sans-serif;
     padding: 0px;
@@ -23,10 +26,8 @@ body{
 	background-color: #787878;
 }
 
-.logo{
-    height: 70px;
-}
 
+/*Caractéristiques de l'en-tête de la page*/
 header{
     position: absolute;
     top: 0px;
@@ -41,6 +42,12 @@ header{
 	background-color: #e5e5e5;
 }
 
+.logo{
+    height: 70px;
+}
+
+
+/*Caractéristiques du pied de la page*/
 footer{
     position: absolute;
     bottom: 20px;
@@ -78,6 +85,8 @@ footer a{
     color: black;
 }
 
+
+/*Caractéristiques du menu de navigation de la page*/
 nav{
     border: 2px solid black;
     border-radius: 15px;
@@ -98,6 +107,8 @@ nav h3{
     font-family: Q4;
 }
 
+
+/*Caractéristiques du contenu de la diapositive de la page*/
 article{
     font-size: 100%;
     border: 2px solid black;
