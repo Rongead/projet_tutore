@@ -1,43 +1,43 @@
 @font-face {
-      font-family: Q1;
-      src: url(Quicksand-Light.ttf);
+  font-family: Q1;
+  src: url(Quicksand-Light.ttf);
 }
 @font-face {
-      font-family: Q2;
-      src: url(Quicksand-Regular.ttf);
+  font-family: Q2;
+  src: url(Quicksand-Regular.ttf);
 }
 @font-face {
-      font-family: Q3;
-      src: url(Quicksand-Medium.ttf);
+  font-family: Q3;
+  src: url(Quicksand-Medium.ttf);
 }
 @font-face {
-      font-family: Q4;
-      src: url(Quicksand-Bold.ttf);
+  font-family: Q4;
+  src: url(Quicksand-Bold.ttf);
 }
 
 body{
-      margin: auto;
-      font-family: Q2, Arial, sans-serif;
-      width: 60%;
+  margin: auto;
+  font-family: Q2, Arial, sans-serif;
+  width: 60%;
 }
 
 header{
-      border-bottom: 2px solid black;
-      font-size: 50px;
-      padding: 20px;
-      text-align: center;
-      font-weight: bold;
-      position: fixed;
-      top: 0px;
-      width: 60%;
-      margin: 0px;
+  border-bottom: 2px solid black;
+  font-size: 50px;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  position: fixed;
+    top: 0px;
+  width: 60%;
+  margin: 0px;
 }
 
 nav{
-      border: 2px solid black;
-      width: 100px;
-      position: fixed;
-      top: 102px;
+  border: 2px solid black;
+  width: 100px;
+  position: fixed;
+  top: 102px;
 }
 
 h1{
@@ -45,6 +45,6 @@ h1{
 }
 
 .encadrer{
-      border: 2px solid black;
-      padding: 20px 10px;
+  border: 2px solid black;
+  padding: 20px 10px;
 }
