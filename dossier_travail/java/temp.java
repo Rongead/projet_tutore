@@ -95,7 +95,7 @@ public class temp
 				fermetureBalises = balises[1][balise] + fermetureBalises;
 				if(indexFinder(ligne) >= 0)
 				{
-					retour = retour + balises[0][balise] + ligne.substring(0, indexFinder(ligne));
+					retour = retour + balises[0][balise] + ligne.substring(0, indexFinder(ligne.substring(3)));
 				}
 				ligne = ligne.substring(indexFinder(ligne)+2);
 			}
