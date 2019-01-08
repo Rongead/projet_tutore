@@ -29,8 +29,9 @@ public class temp
                pw.write("     <body>\n");
                while( sc.hasNext() )
                {
-                    ligne += sc.nextLine() + "\n";
-				i++;
+				if(sc.nextLine().length() && sc.hasNext())
+					ligne += sc.nextLine() + "#";
+					i++;
                }
 			String[] tabLignes = miseEnTab(ligne, i);
 			for (int j = 0 ; j < i ; j++ )
@@ -116,22 +117,27 @@ public class temp
           return (retour + fermetureBalises + "\n");
      }
 
-	public static String[] miseEnTab(String ligne, int nbLgn)
+	public static String[] miseEnTab(String lignes, int nbLgn)
 	{
 		String[] tab = new String[nbLgn];
 		for(int i = 0; i < nbLgn; i++)
 		{
-			tab[i] = ligne.substring(0, (ligne.indexOf("\n") - 1)));
-			ligne = ligne.substring((ligne.indexOf("\n")) + 3);
+			int retourLigne = lignes.indexOf("#");
+			System.out.println(lignes);
+			if(retourLigne != -1)
+			{
+				tab[i] = lignes.substring(0, (retourLigne));
+				lignes = lignes.substring(retourLigne + 1);
+			}
 		}
-		for(i = 1; i < nbLgn; i++)
+		for(int i = 1; i < nbLgn; i++)
 		{
 			if(tab[i-1].substring(0,3).equals("PS:") && tab[i].substring(0,3).equals("PS:"))
 			{
 				String[] temp = new String[nbLgn - 1];
 				for(int j = 0; j < nbLgn; j++)
 				{
-					if(j = i)
+					if(j == i)
 					{
 						temp[j] = tab[i] + "<br />" + tab[i+1].substring(3);
 						j++;
@@ -144,6 +150,6 @@ public class temp
 				tab = temp;
 			}
 		}
-		return tab
+		return tab;
 	}
 }
