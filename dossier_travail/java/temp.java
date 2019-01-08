@@ -15,6 +15,8 @@ public class temp
 		String source = args[0], racine = args[1];
           try
           {
+			int i = 0;
+			String ligne = "";
                Scanner sc = new Scanner( new FileReader( source ) );
                PrintWriter pw = new PrintWriter ( new FileWriter (racine + "/sortie.html") );
                pw.write("<!DOCTYPE html>\n");
@@ -27,11 +29,10 @@ public class temp
                pw.write("     <body>\n");
                while( sc.hasNext() )
                {
-                    int i = 0;
-                    String ind;
-                    String ligne = sc.nextLine();
-                    pw.write(recomposeur(ligne));
+                    ligne += sc.nextLine() + "\n";
+				i++;
                }
+			String[] tabLignes = miseEnTab(ligne, i);
 			pw.write("     </body>\n");
 			pw.write("</html>");
                sc.close();
@@ -109,4 +110,14 @@ public class temp
           }while( ligneUtile( ligne ) );
           return (retour + fermetureBalises + "\n");
      }
+
+	public static String[] miseEnTab(String ligne, int nbLgn)
+	{
+		String[] tab = new String[nbLgn];
+		for(int i = 0; i < nbLgn; i++)
+		{
+			tab[i] = ligne.substring(0, (ligne.indexOf("\n") - 1)))
+			ligne = ligne.substring((ligne.indexOf("\n")) + 3)
+		}
+	}
 }
