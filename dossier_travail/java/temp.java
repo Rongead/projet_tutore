@@ -13,6 +13,24 @@ public class temp
 	public static void main(String[] args)
 	{
 		String source = args[0], racine = args[1];
+		int nbLgn = 0;
+		try
+		{
+			Scanner sc = new Scanner( new FileReader( source ) ); //Lecture du niveau
+			while( sc.hasNext() )
+			{
+				nbLgn++;
+				sc.nextLine();
+			}
+			sc.close();
+		}
+		catch ( Exception e )
+		{
+			e.printStackTrace();
+		}
+
+		String[] tabLignes = new String[nbLgn];
+
           try
           {
 			int i = 0;
@@ -31,14 +49,13 @@ public class temp
                while( sc.hasNext() )
                {
 				String line = sc.nextLine();
-				if(ligneUtile(line))
+				if(line != null)
 				{
-					ligne += line + "#";
+					tabLignes[i] = line;
 					i++;
 				}
                }
-			ligne = ligne.substring(0, (ligne.length() - 1));
-			String[] tabLignes = miseEnTab(ligne, i);
+			tabLignes = miseEnTab(tabLignes);
 			for (int j = 0 ; j < tabLignes.length ; j++ )
 			{
 				pw.write(recomposeur(tabLignes[j]));
@@ -122,52 +139,65 @@ public class temp
           return (retour + fermetureBalises + "\n");
      }
 
-	public static String[] miseEnTab(String lignes, int nbLgn)
+	public static String[] miseEnTab(String[] tab)
 	{
-		String[] tab = new String[nbLgn];
-		int cptPs = 0;
-		boolean sauce = false;
-		for(int i = 0; i < nbLgn; i++)
+		int cptPs;
+		String memo = "";
+		int cptMemo = 0;
+		String tuezmoi;
+		for(int i = 0; i < tab.length; i++)
 		{
-			int retourLigne = lignes.indexOf("#");
-			if(retourLigne != -1)
+			if(tab[i].length() > 4 && tab[i].substring(0,3).equals("PS:"))
 			{
-				tab[i] = lignes.substring(0, (retourLigne));
-				lignes = lignes.substring(retourLigne + 1);
-			}
-			else
-			{
-				tab[i] = lignes;
-			}
-		}
-
-		for (int i = 0; i < nbLgn ; i++ )
-		{
-			if(tab[i].substring(0,3).equals("PS:"))
-			{
-				for (int j = i; j < nbLgn ; j++)
+				cptPs = 0;
+				for(int j = i; j < tab.length; j++)
 				{
-					//if( tab[j].substring(0,3).equals("PS:")^!(ligneUtile(tab[i])) )
-					if(!(tab[j].substring(0,3).equals("PS:")))
+					if(tab[j].length() > 4 && tab[j].substring(0,3).equals("PS:"))
 					{
-						break;
+						cptPs++;
 					}
 					else
 					{
-						tab[i] = tab[i] +  "<br />" + tab[j].substring(3);
-						for(int x = j; x < tab.length - 1; x++)
-						{
-							tab[x] = tab[x+1];
-						}
+						break;
 					}
 				}
+				for(int j = 1; j < cptPs; j++)
+				{
+					tab[i] += tab[i+j];
+					memo += String.valueOf(i+j) + " ";
+					cptMemo++;
+				}
+				i += cptPs;
 			}
 		}
+		int[] memo = new int[cptMemo];
+		int j = 0;
+		for(int i = 0; i < cptMemo; i++)
+		{
+			tuezmoi = "";
+			while(j < memo.length)
+			{
+				if(memo.charAt(j) == ' ' || j == memo.length - 1)
+				{
+					memo[i] = tuezmoi;
+					tuezmoi = "";
+				}
+				else
 
-		String[] temp = new String[nbLgn - cptPs];
+			}
+		}
+		System.out.print(memo);
+		int cpt = 0;
+		String[] temp = new String[tab.length - memo.length()];
 		for(int i = 0; i < temp.length; i++)
 		{
-			temp[i] = tab[i];
+			while(cpt == (int)(memo.charAt(cptMemo)) && cptMemo < memo.length() - 1)
+			{
+				cpt++;
+				cptMemo++;
+			}
+			temp[i] = tab[cpt];
+			cpt++;
 		}
 
 		for(int i = 0; i < temp.length; i++)
