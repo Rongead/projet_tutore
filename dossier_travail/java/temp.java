@@ -33,6 +33,7 @@ public class temp
 				i++;
                }
 			String[] tabLignes = miseEnTab(ligne, i);
+
 			pw.write("     </body>\n");
 			pw.write("</html>");
                sc.close();
@@ -114,10 +115,13 @@ public class temp
 	public static String[] miseEnTab(String ligne, int nbLgn)
 	{
 		String[] tab = new String[nbLgn];
+		String index = "";
 		for(int i = 0; i < nbLgn; i++)
 		{
+			if((ligne.charAt(0) + ligne.charAt(1)))
 			tab[i] = ligne.substring(0, (ligne.indexOf("\n") - 1)))
 			ligne = ligne.substring((ligne.indexOf("\n")) + 3)
 		}
+
 	}
 }
