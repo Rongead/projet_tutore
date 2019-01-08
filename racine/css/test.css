@@ -20,6 +20,8 @@ body{
   padding: 0px;
   margin: 0px;
   width: 100%;
+	background-color: #787878;
+
 }
 
 .logo{
@@ -37,6 +39,8 @@ header{
     font-weight: bold;
 		display: flex;
 		justify-content: space-between;
+		background-color: #e5e5e5;
+
 }
 
 footer{
@@ -59,6 +63,15 @@ footer p{
     heigth: 75px;
     padding: 0px;
     margin: 0px;
+		background-color: #e5e5e5;
+		box-shadow: 4px 4px 0px black;
+}
+footer p:active /* Quand le visiteur clique sur le lien */
+{
+box-shadow: 0px 0px 0px black;
+}
+footer p:hover{
+	background-color: #bcbcbc;
 }
 
 footer a{
@@ -75,6 +88,8 @@ aside{
   top: 10%;
   left: 15px;
   padding-left: 5px;
+	background-color: #e5e5e5;
+
 }
 
 aside h3{
@@ -101,4 +116,6 @@ article{
     padding-left: 1%;
     padding-right: 1%;
     overflow: auto;
+		background-color: #e5e5e5;
+
 }
