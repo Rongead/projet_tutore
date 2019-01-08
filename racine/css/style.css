@@ -110,6 +110,11 @@ article{
     padding-right: 1%;
     overflow: auto;
 	background-color: #e5e5e5;
+    text-align: center;
+}
+
+article ul, article ol, article li{
+    text-align: left;
 }
 
 article img{
