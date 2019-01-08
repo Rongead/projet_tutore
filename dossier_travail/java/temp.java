@@ -29,7 +29,7 @@ public class temp
                pw.write("     <body>\n");
                while( sc.hasNext() )
                {
-				if(sc.nextLine().length() && sc.hasNext())
+				if(ligneUtile(sc.nextLine()))
 					ligne += sc.nextLine() + "#";
 					i++;
                }
