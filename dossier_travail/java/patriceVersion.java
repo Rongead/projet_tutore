@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 
 
 
-public class patriceVersion
+public class Exemple2
 {
 	public static void main(String[] a)
 	{
@@ -18,6 +18,8 @@ public class patriceVersion
 		int cptDP = 0;
 		int cptPS = 0;
 		int cptPC = 0;
+		int cptT1 = 0;
+		int cptT2 = 1;
 
 		try
 		{
@@ -50,12 +52,14 @@ public class patriceVersion
 							{
 								cptPS=0;cptPC=0;pw.write("</p>\n");
 							}
-							pw.write ("\t\t<h1>"+ ligne.substring(3)+"</h1>\n");
+							cptT1++;
+							pw.write ("\t\t<h1>"+ cptT1 + " " + ligne.substring(3)+"</h1>\n");
 							cptPS = cptPC = 0;
 							break;
 						case "T2:":
 							fermetureBalisesP(pw, cptPC, cptPS);
-							pw.write ("\t\t<h2>"+ ligne.substring(3)+"</h2>\n");
+							pw.write ("\t\t<h2>"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
+							cptT2++;
 							cptPS = cptPC = 0;
 							break;
 						case "t2:":
@@ -109,7 +113,6 @@ public class patriceVersion
 							cptPC++;
 							break;
 					}
-
 					System.out.println (ligne.substring(3));
 				}
 			}
