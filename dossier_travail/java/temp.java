@@ -143,13 +143,22 @@ public class temp
 
 		for (int i = 0; i < nbLgn ; i++ )
 		{
-			if(tab[i].substring(0,3).equals("PS:")^!(ligneUtile(tab[i])))
+			if(tab[i].substring(0,3).equals("PS:"))
 			{
 				for (int j = i; j < nbLgn ; j++)
 				{
-					if( tab[j].substring(0,3).equals("PS:") )
+					//if( tab[j].substring(0,3).equals("PS:")^!(ligneUtile(tab[i])) )
+					if(!(tab[j].substring(0,3).equals("PS:")))
 					{
-						String temp = "<br />" + tab[j].substring(3);
+						break;
+					}
+					else
+					{
+						tab[i] = tab[i] +  "<br />" + tab[j].substring(3);
+						for(int x = j; x < tab.length - 1; x++)
+						{
+							tab[x] = tab[x+1];
+						}
 					}
 				}
 			}
