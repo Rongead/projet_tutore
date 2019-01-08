@@ -1,0 +1,96 @@
+@font-face {
+  font-family: Q1;
+  src: url(Quicksand-Light.ttf);
+}
+@font-face {
+  font-family: Q2;
+  src: url(Quicksand-Regular.ttf);
+}
+@font-face {
+  font-family: Q3;
+  src: url(Quicksand-Medium.ttf);
+}
+@font-face {
+  font-family: Q4;
+  src: url(Quicksand-Bold.ttf);
+}
+
+body{
+  font-family: Q2, Arial, sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+header{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 7%;
+    margin: 0px;
+    border-bottom: 2px solid black;
+    font-size: 50px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+footer{
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+}
+
+footer p{
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 45pt;
+    width: 75px;
+    heigth: 75px;
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    top: 0%;
+}
+
+footer p.precedent{
+    left: 7%;
+}
+
+footer p.suivant{
+    right: 7%;
+}
+
+aside{
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 14%;
+  height: auto;
+  position: absolute;
+  top: 13%;
+  left: 15px;
+  padding-left: 5px;
+}
+
+aside h3{
+  text-align: center;
+}
+
+.encadrer{
+  border: 2px solid black;
+  padding: 20px 10px;
+}
+
+article{
+    font-size: 100%;
+    border: 2px solid black;
+    position: absolute;
+    top: 13%;
+    left: 16%;
+    width: 66%;
+    height: 74%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
