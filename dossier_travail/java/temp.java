@@ -143,7 +143,7 @@ public class temp
 
 		for (int i = 0; i < nbLgn ; i++ )
 		{
-			if(tab[i].substring(0,3).equals("PS:"))
+			if(tab[i].substring(0,3).equals("PS:")^!(ligneUtile(tab[i])))
 			{
 				for (int j = i; j < nbLgn ; j++)
 				{
