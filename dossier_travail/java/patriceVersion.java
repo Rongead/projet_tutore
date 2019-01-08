@@ -118,7 +118,12 @@ public class patriceVersion
 				cptPS=0;cptPC=0;
 				pw.write("</p>\n");
 			}
-			pw.write("		</article>\n"+
+			pw.write("\t\t</article>\n"                 +
+					 "\t<footer>\n"                       +
+					 "<p><a href=\"#\"><-</a>\n" +
+					 "<h1>page 1/6</h1>\n"              +
+					 "<p><a href=\"#\">-></a>\n" +
+					 "</footer>\n"                        +
 			         "	</body>\n"        +
 			         "</html>\n"              );
 			pw.close();
