@@ -78,6 +78,10 @@ aside h3{
   text-align: center;
 }
 
+aside p.ici {
+    font-weight: bold;
+}
+
 .encadrer{
   border: 2px solid black;
   padding: 20px 10px;
@@ -90,13 +94,7 @@ article{
     top: 13%;
     left: 16%;
     width: 66%;
-    height: auto;
+    height: 74%;
     padding-left: 1%;
     padding-right: 1%;
-}
-
-article img{
-  display: inline-block;
-  width: auto;
-  height: auto;
 }
