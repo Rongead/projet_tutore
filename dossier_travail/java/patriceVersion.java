@@ -119,13 +119,13 @@ public class patriceVersion
 				pw.write("</p>\n");
 			}
 			pw.write("\t\t</article>\n"                 +
-					 "\t<footer>\n"                       +
-					 "<p><a href=\"#\"><-</a>\n" +
-					 "<h1>page 1/6</h1>\n"              +
-					 "<p><a href=\"#\">-></a>\n" +
-					 "</footer>\n"                        +
-			         "	</body>\n"        +
-			         "</html>\n"              );
+					     "\t<footer>\n"                     +
+					     "\t\t<p><a href=\"#\">x</a><p>\n" +
+					     "\t\t<h1>page 1/6</h1>\n"          +
+					     "\t\t<p><a href=\"#\">⇢</a><p>\n" +
+					     "</footer>\n"                      +
+			         "	</body>\n"                      +
+			         "</html>\n"                         );
 			pw.close();
 		}
 		catch(Exception e)
