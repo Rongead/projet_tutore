@@ -87,7 +87,7 @@ public class temp
           String retour = "";
 		int balise;
 
-          while( ligneUtile( ligne ) )
+          do
           {
 			balise = baliseFinder(ligne);
 			if(balise >= 0)
@@ -99,7 +99,7 @@ public class temp
 				}
 				ligne = ligne.substring(indexFinder(ligne)+2);
 			}
-          }
+          }while( ligneUtile( ligne ) );
           return (retour + fermetureBalises);
      }
 }
