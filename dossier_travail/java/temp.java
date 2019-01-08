@@ -9,6 +9,7 @@ import java.util.*;
 
 public class temp
 {
+	static String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:", "PS:", "PC:"};
 	public static void main(String[] args)
 	{
 		String source = args[0], racine = args[1];
@@ -16,14 +17,14 @@ public class temp
           {
                Scanner sc = new Scanner( new FileReader( source ) );
                PrintWriter pw = new PrintWriter ( new FileWriter (racine + "/sortie.html") );
-               pw.write("<!DOCTYPE html>");
-               pw.write("<html>");
-               pw.write("     <head>");
-               pw.write("          <title></title>");
-               pw.write("          <meta charset=UTF-8>");
-               pw.write("          <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">");
-               pw.write("     </head>");
-               pw.write("     <body>");
+               pw.write("<!DOCTYPE html>\n");
+               pw.write("<html>\n");
+               pw.write("     <head>\n");
+               pw.write("          <title></title>\n");
+               pw.write("          <meta charset=UTF-8>\n");
+               pw.write("          <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n");
+               pw.write("     </head>\n");
+               pw.write("     <body>\n");
                while( sc.hasNext() )
                {
                     int i = 0;
@@ -31,6 +32,8 @@ public class temp
                     String ligne = sc.nextLine();
                     pw.write(recomposeur(ligne));
                }
+			pw.write("     </body>\n");
+			pw.write("</html>");
                sc.close();
 			pw.close();
           }
@@ -42,7 +45,6 @@ public class temp
 
      public static boolean ligneUtile (String ligne)
      {
-          String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
           for (int i = 0; i < indicateur.length ; i++)
           {
                if( ligne.indexOf(indicateur[i]) != -1 )
@@ -55,7 +57,6 @@ public class temp
 
      public static int indexFinder (String ligne)
      {
-          String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
           for (int i = 0; i < indicateur.length ; i++)
           {
                if( ligne.indexOf(indicateur[i]) != -1 )
@@ -68,7 +69,6 @@ public class temp
 
      public static int baliseFinder (String ligne)
      {
-          String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
           for (int i = 0; i < indicateur.length ; i++)
           {
                if( ligne.indexOf(indicateur[i]) != -1 )
@@ -81,8 +81,8 @@ public class temp
 
      public static String recomposeur ( String ligne )
      {
-          String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>"},
-          {"</header>", "</h1>", "</h2>", "</h3>", "</div>"}};
+          String[][] balises = { { "<header>", "<h1>", "<h2>", "<h2>", "<article>", "<p>", "<p class=\"encadrer\">" },
+                                 { "</header>", "</h1>", "</h2>", "</h2>", "</article>", "</p>", "</p>" } };
           String fermetureBalises = "", ouvertureBalises = "";
           String retour = "";
 		int balise;
@@ -92,14 +92,21 @@ public class temp
 			balise = baliseFinder(ligne);
 			if(balise >= 0)
                {
-				fermetureBalises = balises[1][balise] + fermetureBalises;
+				fermetureBalises = balises[1][balise]+ "\n" + fermetureBalises;
 				if(indexFinder(ligne) >= 0)
 				{
-					retour = retour + balises[0][balise] + ligne.substring(0, indexFinder(ligne.substring(3)));
+					if(indexFinder(ligne.substring(3)) >= 0)
+					{
+						retour = retour + balises[0][balise] + "\n" + ligne.substring(0, indexFinder(ligne.substring(3))) + "\n";
+					}
+					else
+					{
+						retour = retour + balises[0][balise] + "\n" + ligne.substring(3) + "\n";
+					}
 				}
 				ligne = ligne.substring(indexFinder(ligne)+2);
 			}
           }while( ligneUtile( ligne ) );
-          return (retour + fermetureBalises);
+          return (retour + fermetureBalises + "\n");
      }
 }
