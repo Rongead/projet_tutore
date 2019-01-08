@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 
 
 
-public class Exemple2
+public class patriceVersion
 {
 	public static void main(String[] a)
 	{
