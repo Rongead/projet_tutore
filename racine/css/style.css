@@ -103,6 +103,22 @@ nav h3{
     text-align: center;
 }
 
+nav li, nav p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+nav a{
+    color: black;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+nav a:hover{
+    letter-spacing: 2px;
+    transition-duration: 0.5s;
+}
+
 .ici {
     font-family: Q4;
 }
