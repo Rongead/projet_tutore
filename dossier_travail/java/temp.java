@@ -9,23 +9,9 @@ import java.util.*;
 
 public class temp
 {
-     String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>"},
-     {"</header>", "</h1>", "</h2>", "</h3>", "</div>"}};
-
 	public static void main(String[] args)
 	{
-		String source, racine;
-
-          System.out.print("Entrez la source du fichier html : ");
-          source = Clavier.lireString();
-          System.out.print("Entrez le répertoire de destination : ");
-          racine = Clavier.lireString();
-
-		compilateur(source, racine);
-	}
-
-     public void compilateur(String source, String racine)
-     {
+		String source = args[0], racine = args[1];
           try
           {
                Scanner sc = new Scanner( new FileReader( source ) );
@@ -46,6 +32,7 @@ public class temp
                     pw.write(recomposeur(ligne));
                }
                sc.close();
+			pw.close();
           }
           catch ( Exception e )
           {
@@ -53,10 +40,10 @@ public class temp
           }
      }
 
-     public boolean ligneUtile (String ligne)
+     public static boolean ligneUtile (String ligne)
      {
           String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
-          for (int i = 0; i < ligne.length() ; i++)
+          for (int i = 0; i < indicateur.length ; i++)
           {
                if( ligne.indexOf(indicateur[i]) != -1 )
                {
@@ -66,7 +53,7 @@ public class temp
           return false;
      }
 
-     public int indexFinder (String ligne)
+     public static int indexFinder (String ligne)
      {
           String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
           for (int i = 0; i < indicateur.length ; i++)
@@ -79,7 +66,7 @@ public class temp
 		return -1;
      }
 
-     public int baliseFinder (String ligne)
+     public static int baliseFinder (String ligne)
      {
           String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
           for (int i = 0; i < indicateur.length ; i++)
@@ -92,7 +79,7 @@ public class temp
 		return -1;
      }
 
-     public String recomposeur ( String ligne )
+     public static String recomposeur ( String ligne )
      {
           String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>"},
           {"</header>", "</h1>", "</h2>", "</h3>", "</div>"}};
@@ -106,11 +93,11 @@ public class temp
 			if(balise >= 0)
                {
 				fermetureBalises = balises[1][balise] + fermetureBalises;
-				if(indexFinder(ligne)-1 >= 0)
+				if(indexFinder(ligne) >= 0)
 				{
-					retour = retour + balises[0][balise] + ligne.substring(0, indexFinder(ligne)-1);
+					retour = retour + balises[0][balise] + ligne.substring(0, indexFinder(ligne));
 				}
-	               ligne = ligne.substring(indexFinder(ligne)+2);
+				ligne = ligne.substring(indexFinder(ligne)+2);
 			}
           }
           return (retour + fermetureBalises);
