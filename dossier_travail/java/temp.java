@@ -25,16 +25,21 @@ public class temp
                pw.write("          <title></title>\n");
                pw.write("          <meta charset=UTF-8>\n");
                pw.write("          <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n");
+			pw.write("          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n");
                pw.write("     </head>\n");
                pw.write("     <body>\n");
                while( sc.hasNext() )
                {
-				if(ligneUtile(sc.nextLine()))
-					ligne += sc.nextLine() + "#";
+				String line = sc.nextLine();
+				if(ligneUtile(line))
+				{
+					ligne += line + "#";
 					i++;
+				}
                }
+			ligne = ligne.substring(0, (ligne.length() - 1));
 			String[] tabLignes = miseEnTab(ligne, i);
-			for (int j = 0 ; j < i ; j++ )
+			for (int j = 0 ; j < tabLignes.length ; j++ )
 			{
 				pw.write(recomposeur(tabLignes[j]));
 			}
@@ -120,36 +125,47 @@ public class temp
 	public static String[] miseEnTab(String lignes, int nbLgn)
 	{
 		String[] tab = new String[nbLgn];
+		int cptPs = 0;
+		boolean bOk;
 		for(int i = 0; i < nbLgn; i++)
 		{
 			int retourLigne = lignes.indexOf("#");
-			System.out.println(lignes);
 			if(retourLigne != -1)
 			{
 				tab[i] = lignes.substring(0, (retourLigne));
 				lignes = lignes.substring(retourLigne + 1);
 			}
+			else
+			{
+				tab[i] = lignes;
+			}
 		}
+
 		for(int i = 1; i < nbLgn; i++)
 		{
 			if(tab[i-1].substring(0,3).equals("PS:") && tab[i].substring(0,3).equals("PS:"))
 			{
-				String[] temp = new String[nbLgn - 1];
-				for(int j = 0; j < nbLgn; j++)
+
+				tab[i-1] = tab[i-1] + tab[i];
+				for(int j = i; j < nbLgn - 1; j++)
 				{
-					if(j == i)
-					{
-						temp[j] = tab[i] + "<br />" + tab[i+1].substring(3);
-						j++;
-					}
-					else
-					{
-						temp[j] = tab[i];
-					}
+					tab[j] = tab[j+1];
 				}
-				tab = temp;
+				cptPs++;
 			}
 		}
-		return tab;
+
+		String[] temp = new String[nbLgn - cptPs];
+		for(int i = 0; i < temp.length; i++)
+		{
+			temp[i] = tab[i];
+		}
+
+		for(int i = 0; i < temp.length; i++)
+		{
+			System.out.println(temp[i]);
+			System.out.println(i);
+		}
+		return temp;
 	}
 }
