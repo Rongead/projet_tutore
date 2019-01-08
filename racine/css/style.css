@@ -16,9 +16,9 @@
 }
 
 body{
-      width: 700px;
       margin: auto;
       font-family: Q2, Arial, sans-serif;
+      width: 60%;
 }
 
 header{
@@ -29,19 +29,18 @@ header{
       font-weight: bold;
       position: fixed;
       top: 0px;
-      width: 100%;
+      width: 60%;
       margin: 0px;
 }
-
-.encadrer{
-      border: 2px solid black;
-      padding: 20px 10px;
-}
-
 
 nav{
       border: 2px solid black;
       width: 100px;
       position: fixed;
       top: 100px;
+}
+
+.encadrer{
+      border: 2px solid black;
+      padding: 20px 10px;
 }
