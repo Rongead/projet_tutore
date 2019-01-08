@@ -90,7 +90,7 @@ footer a{
 nav{
     border: 2px solid black;
     border-radius: 15px;
-    width: 14%;
+    width: 16%;
     height: auto;
     position: absolute;
     top: 10%;
@@ -130,8 +130,8 @@ article{
     border: 2px solid black;
     position: absolute;
     top: 10%;
-    left: 16%;
-    width: 66%;
+    left: 18%;
+    width: 62%;
     height: 76%;
     padding-left: 1%;
     padding-right: 1%;
