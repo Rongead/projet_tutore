@@ -170,26 +170,31 @@ public class temp
 				i += cptPs;
 			}
 		}
-		int[] memo = new int[cptMemo];
-		int j = 0;
-		for(int i = 0; i < cptMemo; i++)
+		int[] reeeeeee = new int[cptMemo];
+		int j = 0, i = 0;
+		tuezmoi = "";
+		while(j < memo.length())
 		{
-			tuezmoi = "";
-			while(j < memo.length)
+			System.out.print(memo.charAt(j));
+			if(memo.charAt(j) == ' ' || j == memo.length() - 1)
 			{
-				if(memo.charAt(j) == ' ' || j == memo.length - 1)
-				{
-					memo[i] = tuezmoi;
-					tuezmoi = "";
-				}
-				else
-
+				System.out.print("reeeeeeeees");
+				reeeeeee[i] = Integer.parseInt(tuezmoi);
+				i++;
+				j++;
+				tuezmoi = "";
 			}
+			else
+			{
+				tuezmoi += memo.charAt(j);
+			}
+			j++;
 		}
+
 		System.out.print(memo);
 		int cpt = 0;
 		String[] temp = new String[tab.length - memo.length()];
-		for(int i = 0; i < temp.length; i++)
+		for(i = 0; i < temp.length; i++)
 		{
 			while(cpt == (int)(memo.charAt(cptMemo)) && cptMemo < memo.length() - 1)
 			{
@@ -200,7 +205,7 @@ public class temp
 			cpt++;
 		}
 
-		for(int i = 0; i < temp.length; i++)
+		for(i = 0; i < temp.length; i++)
 		{
 			System.out.println(temp[i]);
 		}
