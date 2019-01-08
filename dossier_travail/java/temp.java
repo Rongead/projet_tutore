@@ -126,7 +126,7 @@ public class temp
 	{
 		String[] tab = new String[nbLgn];
 		int cptPs = 0;
-		boolean bOk;
+		boolean sauce = false;
 		for(int i = 0; i < nbLgn; i++)
 		{
 			int retourLigne = lignes.indexOf("#");
@@ -141,17 +141,17 @@ public class temp
 			}
 		}
 
-		for(int i = 1; i < nbLgn; i++)
+		for (int i = 0; i < nbLgn ; i++ )
 		{
-			if(tab[i-1].substring(0,3).equals("PS:") && tab[i].substring(0,3).equals("PS:"))
+			if(tab[i].substring(0,3).equals("PS:"))
 			{
-
-				tab[i-1] = tab[i-1] + tab[i];
-				for(int j = i; j < nbLgn - 1; j++)
+				for (int j = i; j < nbLgn ; j++)
 				{
-					tab[j] = tab[j+1];
+					if( tab[j].substring(0,3).equals("PS:") )
+					{
+						String temp = "<br />" + tab[j].substring(3);
+					}
 				}
-				cptPs++;
 			}
 		}
 
@@ -164,7 +164,6 @@ public class temp
 		for(int i = 0; i < temp.length; i++)
 		{
 			System.out.println(temp[i]);
-			System.out.println(i);
 		}
 		return temp;
 	}
