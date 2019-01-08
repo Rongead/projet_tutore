@@ -25,7 +25,7 @@ header{
     position: absolute;
     top: 0px;
     width: 100%;
-    height: 7%;
+    height: 8%;
     margin: 0px;
     border-bottom: 2px solid black;
     font-size: 50px;
@@ -39,7 +39,8 @@ footer{
     position: absolute;
     bottom: 0px;
     text-align: center;
-    width: 100%;
+    padding-left: 10%;
+    width: 80%;
     height: 79px;
     display: flex;
     justify-content: space-between;
