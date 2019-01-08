@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 public class patriceVersion
 {
-	public static void main(String[] a)
+	public static void main(String[] args)
 	{
 		String ligne;
 
