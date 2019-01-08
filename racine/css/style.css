@@ -28,9 +28,15 @@ header{
   text-align: center;
   font-weight: bold;
   position: fixed;
-    top: 0px;
+  top: 0px;
   width: 60%;
   margin: 0px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo{
+		height: 70px;
 }
 
 nav{
