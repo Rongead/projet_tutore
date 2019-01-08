@@ -119,13 +119,31 @@ public class temp
 	public static String[] miseEnTab(String ligne, int nbLgn)
 	{
 		String[] tab = new String[nbLgn];
-		String index = "";
 		for(int i = 0; i < nbLgn; i++)
 		{
-			if((ligne.charAt(0) + ligne.charAt(1)))
-			tab[i] = ligne.substring(0, (ligne.indexOf("\n") - 1)))
-			ligne = ligne.substring((ligne.indexOf("\n")) + 3)
+			tab[i] = ligne.substring(0, (ligne.indexOf("\n") - 1)));
+			ligne = ligne.substring((ligne.indexOf("\n")) + 3);
 		}
-
+		for(i = 1; i < nbLgn; i++)
+		{
+			if(tab[i-1].substring(0,3).equals("PS:") && tab[i].substring(0,3).equals("PS:"))
+			{
+				String[] temp = new String[nbLgn - 1];
+				for(int j = 0; j < nbLgn; j++)
+				{
+					if(j = i)
+					{
+						temp[j] = tab[i] + "<br />" + tab[i+1].substring(3);
+						j++;
+					}
+					else
+					{
+						temp[j] = tab[i];
+					}
+				}
+				tab = temp;
+			}
+		}
+		return tab
 	}
 }
