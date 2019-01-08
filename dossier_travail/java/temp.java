@@ -12,15 +12,20 @@ public class temp
      String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>"},
      {"</header>", "</h1>", "</h2>", "</h3>", "</div>"}};
 
-     public static void main(String[] args)
-     {
-          String source, racine;
+	public static void main(String[] args)
+	{
+		String source, racine;
 
           System.out.print("Entrez la source du fichier html : ");
           source = Clavier.lireString();
           System.out.print("Entrez le répertoire de destination : ");
           racine = Clavier.lireString();
 
+		compilateur(source, racine);
+	}
+
+     public void compilateur(String source, String racine)
+     {
           try
           {
                Scanner sc = new Scanner( new FileReader( source ) );
@@ -28,16 +33,16 @@ public class temp
                pw.write("<!DOCTYPE html>");
                pw.write("<html>");
                pw.write("     <head>");
-               pw.write("          <title></title>")
-               pw.write("          <meta charset=UTF-8>")
-               pw.write("          <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">")
+               pw.write("          <title></title>");
+               pw.write("          <meta charset=UTF-8>");
+               pw.write("          <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">");
                pw.write("     </head>");
                pw.write("     <body>");
                while( sc.hasNext() )
                {
                     int i = 0;
                     String ind;
-                    ligne = sc.nextLine();
+                    String ligne = sc.nextLine();
                     pw.write(recomposeur(ligne));
                }
                sc.close();
@@ -50,9 +55,8 @@ public class temp
 
      public boolean ligneUtile (String ligne)
      {
-          int i, cpt;
           String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
-          for (int i = 0; i < ligne.length ; i++)
+          for (int i = 0; i < ligne.length() ; i++)
           {
                if( ligne.indexOf(indicateur[i]) != -1 )
                {
@@ -62,44 +66,53 @@ public class temp
           return false;
      }
 
-     public boolean indexFinder (String ligne)
+     public int indexFinder (String ligne)
      {
           String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
-          for (int i = 0; i < indicateur.length() ; i++)
+          for (int i = 0; i < indicateur.length ; i++)
           {
                if( ligne.indexOf(indicateur[i]) != -1 )
                {
                     return ligne.indexOf(indicateur[i]);
                }
           }
+		return -1;
      }
 
      public int baliseFinder (String ligne)
      {
           String[] indicateur = {"TP:", "T1:", "T2:", "t2:", "DP:"};
-          for (int i = 0; i < indicateur.length() ; i++)
+          for (int i = 0; i < indicateur.length ; i++)
           {
                if( ligne.indexOf(indicateur[i]) != -1 )
                {
                     return i;
                }
           }
+		return -1;
      }
 
      public String recomposeur ( String ligne )
      {
           String[][] balises = { {"<header>", "<h1>", "<h2>", "<h3>", "<div>"},
           {"</header>", "</h1>", "</h2>", "</h3>", "</div>"}};
-          String fermetureBalises, ouvertureBalises = "";
+          String fermetureBalises = "", ouvertureBalises = "";
           String retour = "";
+		int balise;
 
           while( ligneUtile( ligne ) )
           {
-
-               fermetureBalises = balises[1][baliseFinder(ligne)] + fermetureBalises;
-               ligne = ligne.substring(indexFinder(ligne)+2);
-               retour = retour + balises[0][baliseFinder(ligne)] + ligne.substring(0, indexFinder(ligne)-1);
+			balise = baliseFinder(ligne);
+			if(balise >= 0)
+               {
+				fermetureBalises = balises[1][balise] + fermetureBalises;
+				if(indexFinder(ligne)-1 >= 0)
+				{
+					retour = retour + balises[0][balise] + ligne.substring(0, indexFinder(ligne)-1);
+				}
+	               ligne = ligne.substring(indexFinder(ligne)+2);
+			}
           }
-          return retour + fermetureBalises;
+          return (retour + fermetureBalises);
      }
 }
