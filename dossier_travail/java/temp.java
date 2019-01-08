@@ -163,40 +163,36 @@ public class temp
 				}
 				for(int j = 1; j < cptPs; j++)
 				{
-					tab[i] += tab[i+j];
-					memo += String.valueOf(i+j) + " ";
+					tab[i] += "<br />" + tab[i+j].substring(3);
+					memo += String.valueOf(i+j) + ";";
 					cptMemo++;
 				}
 				i += cptPs;
 			}
 		}
-		int[] reeeeeee = new int[cptMemo];
+		int[] history = new int[cptMemo];
 		int j = 0, i = 0;
 		tuezmoi = "";
-		while(j < memo.length())
+		while(i != -1)
 		{
-			System.out.print(memo.charAt(j));
-			if(memo.charAt(j) == ' ' || j == memo.length() - 1)
+			i = memo.indexOf(";");
+			if(i != -1)
 			{
-				System.out.print("reeeeeeeees");
-				reeeeeee[i] = Integer.parseInt(tuezmoi);
-				i++;
+				System.out.println(memo);
+				tuezmoi = memo.substring(0, i);
+				memo = memo.substring(i + 1);
+				history[j] = Integer.parseInt(tuezmoi);
 				j++;
-				tuezmoi = "";
 			}
-			else
-			{
-				tuezmoi += memo.charAt(j);
-			}
-			j++;
 		}
 
 		System.out.print(memo);
 		int cpt = 0;
-		String[] temp = new String[tab.length - memo.length()];
+		cptMemo = 0;
+		String[] temp = new String[tab.length - history.length];
 		for(i = 0; i < temp.length; i++)
 		{
-			while(cpt == (int)(memo.charAt(cptMemo)) && cptMemo < memo.length() - 1)
+			while(cptMemo < history.length && cpt == history[cptMemo])
 			{
 				cpt++;
 				cptMemo++;
