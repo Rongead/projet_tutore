@@ -29,7 +29,7 @@ public class patriceVersion
 		int diapoMax = 0;
 		int cptDiapo = 0;
 		int cptPS = 0, cptPC = 0, cptT1 = 0, cptL1 = 0, cptL2 = 0;
-		int cptT2 = 1;
+		int cptT2 = 0;
 		String fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 		String nav = "";
 		String header = "";
@@ -92,7 +92,7 @@ public class patriceVersion
 							fermetureBalisesP(pw, cptPC, cptPS );
 							cptT2++;
 							nav += ligne + "#";
-							pw.write ("\t\t\t<h2>"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
+							pw.write ("\t\t\t<h2 id=titre" + cptT2 + ">"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
 							cptL1 = cptL2 = 0;
 							cptPS = cptPC = 0;
 							break;
@@ -116,12 +116,11 @@ public class patriceVersion
 								cptPC = 0;
 								cptL1 = 0;
 								cptL2 = 0;
+								cptT2 = 1;
 								fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 								pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 								initalisationHTML(pw, header);
 							}
-							cptL1 = cptL2 = 0;
-							cptPS = cptPC = 0;
 							cptDiapo++;
 							break;
 
@@ -292,20 +291,14 @@ public class patriceVersion
 	public static void navMaker(PrintWriter pw, String nav)
 	{
 		String[][] tabNav = tabNavMaker(nav);
+		String sortie;
 		int cptT1 = 0, cptT2 = 0;
 		pw.write("\t\t<nav>\n\t\t\t<ul>\n");
 		if(tabNav[0][0] != null)
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
 			{
-				if(i < 10)
-				{
-					sortie = "sortie0" + i + ".html"
-				}
-				else
-				{
-					sortie = "sortie" + i + ".html"
-				}
+				sortie = "sortie" + String.valueOf(cptT1) + ".html";
 
 				if(tabNav[0][i].equals("T1:"))
 				{
@@ -317,9 +310,9 @@ public class patriceVersion
 					}
 					if(cptT1 > 0)
 					{
-						pw.write("\t\t\t\t</li id=\"sortie + \">");
+						pw.write("\t\t\t\t</li>");
 					}
-					pw.write("\t\t\t\t<li>\n\t\t\t\t\t" + tabNav[1][i] + "\n");
+					pw.write("\t\t\t\t<li>\n\t\t\t\t\t<a href=" + sortie + ">" + tabNav[1][i] + "</a>" + "\n");
 					cptT1++;
 				}
 				else
@@ -328,7 +321,7 @@ public class patriceVersion
 					{
 						pw.write("\t\t\t\t\t<ul>\n");
 					}
-					pw.write("\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t" + tabNav[1][i] + "\n\t\t\t\t\t\t</li>\n");
+					pw.write("\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href=#titre"+ String.valueOf(cptT2 + 1) + ">" + tabNav[1][i] + "</a>" +"\n\t\t\t\t\t\t</li>\n");
 					cptT2++;
 				}
 			}
