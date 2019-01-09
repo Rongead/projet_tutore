@@ -125,7 +125,8 @@ public class patriceVersion
 					System.out.println (ligne.substring(3));
 				}
 			}
-			fermetureHTML(pw, cptPC, cptPS, cptDiapo);
+			String[][] navTab = tabNavMaker(nav);
+			fermetureHTML(pw, cptPC, cptPS, cptDiapo, navTab);
 			pw.close();
 		}
 		catch(Exception e)
