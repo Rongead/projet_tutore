@@ -292,6 +292,7 @@ public class patriceVersion
 	public static void navMaker(PrintWriter pw, String nav)
 	{
 		String[][] tabNav = tabNavMaker(nav);
+		String sortie;
 		int cptT1 = 0, cptT2 = 0;
 		pw.write("\t\t<nav>\n\t\t\t<ul>\n");
 		if(tabNav[0][0] != null)
@@ -300,8 +301,13 @@ public class patriceVersion
 			{
 				if(i < 10)
 				{
-					sortie = "sortie0" + 
+					sortie = "sortie0" + i + ".html";
 				}
+				else
+				{
+					sortie = "sortie" + i + ".html";
+				}
+
 				if(tabNav[0][i].equals("T1:"))
 				{
 
@@ -312,7 +318,7 @@ public class patriceVersion
 					}
 					if(cptT1 > 0)
 					{
-						pw.write("\t\t\t\t</li id=\"sortie + \">");
+						pw.write("\t\t\t\t</li id=\""+ sortie +"\">");
 					}
 					pw.write("\t\t\t\t<li>\n\t\t\t\t\t" + tabNav[1][i] + "\n");
 					cptT1++;
@@ -323,7 +329,7 @@ public class patriceVersion
 					{
 						pw.write("\t\t\t\t\t<ul>\n");
 					}
-					pw.write("\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t" + tabNav[1][i] + "\n\t\t\t\t\t\t</li>\n");
+					pw.write("\t\t\t\t\t\t<li id=\""+ sortie +"\">\n\t\t\t\t\t\t\t" + tabNav[1][i] + "\n\t\t\t\t\t\t</li>\n");
 					cptT2++;
 				}
 			}
