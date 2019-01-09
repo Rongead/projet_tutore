@@ -90,15 +90,9 @@ public class patriceVersion
 						case "DP:":
 							if(cptDiapo > 0)
 							{
-<<<<<<< HEAD
 								fermetureBalisesL( pw, cptL1, cptL2 );
 								fermetureBalisesP(pw, cptPC, cptPS);
 								fermetureHTML(pw, cptPC, cptPS, cptDiapo, nav);
-=======
-								fermetureBalisesL( pw, cptL1, cptL2, cptPC, cptPS );
-								fermetureBalisesP(pw, cptPC, cptPS, cptL1, cptL2 );
-								fermetureHTML(pw, cptPC, cptPS, cptDiapo);
->>>>>>> 2ead8a8792034b00b24d8100ce5e523b0ae0c24a
 								pw.close();
 								cptPS = 0;
 								cptPC = 0;
