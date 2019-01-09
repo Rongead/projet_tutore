@@ -96,8 +96,6 @@ public class patriceVersion
 								pw.close();
 								cptPS = 0;
 								cptPC = 0;
-								cptT1 = 0;
-								cptT2 = 1;
 								cptL1 = 0;
 								cptL2 = 0;
 								fichierDestination = racine + "/sortie" + cptDiapo + ".html";
@@ -208,12 +206,12 @@ public class patriceVersion
 			    "<html>\n"                                                                         +
 			    "     <head>\n"                                                                    +
 			    "          <title></title>\n"                                                      +
-			    "          <meta charset=\"UTF-8\">\n"                                              +
+			    "          <meta charset=\"UTF-8\">\n"                                             +
 			    "          <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"   +
 			    "          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n" +
 			    "     </head>\n"                                                                   +
 			    "     <body>\n"
-			    + header                                                                    );
+			    + header                                                                            );
 	}
 
 	public static String[][] tabNavMaker( String nav )
