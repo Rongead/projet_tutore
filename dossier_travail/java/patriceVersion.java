@@ -122,7 +122,7 @@ public class patriceVersion
 					System.out.println (ligne.substring(3));
 				}
 			}
-			fermetureBalisesP(pw, cptPC, cptPS);
+			fermetureHTML(pw, cptPC, cptPS, cptDiapo);
 			pw.close();
 		}
 		catch(Exception e)
