@@ -164,16 +164,16 @@ public class patriceVersion
 							if (cptPC != 0)
 							{
 								cptPC=0;
-								pw.write("\t\t\t</p>\n");
+								pw.write("\n\t\t\t</p>\n");
 							}
 
 							if(cptPS==0)
 							{
-								pw.write ("\t\t\t<p>"+  ligne.substring(3));
+								pw.write ("\n\t\t\t<p>\n\t\t\t\t"+  ligne.substring(3));
 							}
 							else
 							{
-								pw.write ("\n\t\t\t<br />" + ligne.substring(3));
+								pw.write ("\n\t\t\t\t<br />" + ligne.substring(3));
 							}
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS++;
@@ -185,16 +185,16 @@ public class patriceVersion
 							if (cptPS != 0)
 							{
 								cptPS=0;
-								pw.write("\t\t\t</p>\n");
+								pw.write("\n\t\t\t</p>\n");
 							}
 
 							if(cptPC==0)
 							{
-								pw.write ("\t\t\t<p class=\"encadrer\">"+  ligne.substring(3));
+								pw.write ("\n\t\t\t<p class=\"encadrer\">\n\t\t\t\t"+  ligne.substring(3));
 							}
 							else
 							{
-								pw.write ("\n\t\t\t<br />" + ligne.substring(3));
+								pw.write ("\n\t\t\t\t<br />" + ligne.substring(3));
 							}
 
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
@@ -228,7 +228,7 @@ public class patriceVersion
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
-			pw.write("\t\t\t</p>\n");
+			pw.write("\n\t\t\t</p>\n\n");
 		}
 	}
 
@@ -237,7 +237,7 @@ public class patriceVersion
 		if ( cptL1 != 0 )
 		{
 			if ( cptL2 != 0 ) pw.write("\t\t\t\t\t</ul>\n");
-			pw.write("\t\t\t</ul>\n");
+			pw.write("\t\t\t</ul>\n\n");
 		}
 	}
 
