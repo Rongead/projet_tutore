@@ -28,10 +28,21 @@ public class patriceVersion
 		PrintWriter pw;
 		int cptDiapo = 0, diapoMax = 0;
 		int cptPS, cptPC, cptT1 , cptL1, cptL2, cptT2;
-		String fichierDestination = racine + "/sortie" + cptDiapo + ".html";
+		String fichierDestination;
 		String header = "", nav = "";
 
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
+
+		fichierDestination = racine + "/sortie";
+
+		if(cptDiapo < 10)
+		{
+			fichierDestination += "0" + cptDiapo + ".html";
+		}
+		else
+		{
+			fichierDestination += cptDiapo + ".html";
+		}
 
 		try
 		{
@@ -44,11 +55,6 @@ public class patriceVersion
 					if (ligne.substring(0,3).equals("DP:") && diapoMax < 99)
 					{
 						diapoMax++;
-					}
-
-					if(ligne.substring(0,3).equals("T1:") || ligne.substring(0,3).equals("T2:"))
-					{
-						nav += ligne + "#";
 					}
 				}
 			}
@@ -75,7 +81,7 @@ public class patriceVersion
 						case "TP:":
 							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS );
-							header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t" + ligne.substring(3) + "\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
+							header = "\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t" + ligne.substring(3) + "\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\t\t<article>\n";
 							pw.write (header);
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS = cptPC = 0; //reinitialisation des compteurs de paragraphe
@@ -85,6 +91,7 @@ public class patriceVersion
 							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS );
 							cptT1++;
+							nav += ligne + "#";
 							pw.write ("\t\t\t<h1>" + cptT1 + " " + ligne.substring(3)+"</h1>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS = cptPC = 0; //reinitialisation des compteurs de paragraphe
@@ -94,6 +101,7 @@ public class patriceVersion
 							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS );
 							cptT2++;
+							nav += ligne + "#";
 							pw.write ("\t\t\t<h2 id=titre" + cptT2 + ">"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS = cptPC = 0; //reinitialisation des compteurs de paragraphe
@@ -118,7 +126,16 @@ public class patriceVersion
 								cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 								cptPS = cptPC = 0; //reinitialisation des compteurs de paragraphe
 								cptT2 = 1;
-								fichierDestination = racine + "/sortie" + cptDiapo + ".html";
+								fichierDestination = racine + "/sortie";
+
+								if(cptDiapo < 10)
+								{
+									fichierDestination += "0" + cptDiapo + ".html";
+								}
+								else
+								{
+									fichierDestination += cptDiapo + ".html";
+								}
 								pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 								initalisationHTML(pw, header);
 							}
@@ -147,7 +164,7 @@ public class patriceVersion
 
 							if (cptL1 != 0 && cptL2 == 0)
 							{
-								pw.write("\t\t\t\t<ul>\n"+"\t\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+								pw.write("\t\t\t\t\t<ul>\n"+"\t\t\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
 							}
 							else
 							{
@@ -167,16 +184,16 @@ public class patriceVersion
 							if (cptPC != 0)
 							{
 								cptPC=0;
-								pw.write("\t\t\t</p>\n");
+								pw.write("\n\t\t\t</p>\n");
 							}
 
 							if(cptPS==0)
 							{
-								pw.write ("\t\t\t<p>"+  ligne.substring(3));
+								pw.write ("\n\t\t\t<p>\n\t\t\t\t"+  ligne.substring(3));
 							}
 							else
 							{
-								pw.write ("\n\t\t\t<br />" + ligne.substring(3));
+								pw.write ("\n\t\t\t\t<br />" + ligne.substring(3));
 							}
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS++;
@@ -188,16 +205,16 @@ public class patriceVersion
 							if (cptPS != 0)
 							{
 								cptPS=0;
-								pw.write("\t\t\t</p>\n");
+								pw.write("\n\t\t\t</p>\n");
 							}
 
 							if(cptPC==0)
 							{
-								pw.write ("\t\t\t<p class=\"encadrer\">"+  ligne.substring(3));
+								pw.write ("\n\t\t\t<p class=\"encadrer\">\n\t\t\t\t"+  ligne.substring(3));
 							}
 							else
 							{
-								pw.write ("\n\t\t\t<br />" + ligne.substring(3));
+								pw.write ("\n\t\t\t\t<br />" + ligne.substring(3));
 							}
 
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
@@ -206,9 +223,11 @@ public class patriceVersion
 
 						case "IM:":
 							fermetureBalisesP(pw, cptPC, cptPS );
-							AfficherImage(pw, ligne);break;
+							afficherImage(pw, ligne);break;
 
 					}
+
+					System.out.println (ligne.substring(3));
 
 				}
 			}
@@ -229,7 +248,7 @@ public class patriceVersion
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
-			pw.write("\t\t\t</p>\n");
+			pw.write("\n\t\t\t</p>\n\n");
 		}
 	}
 
@@ -237,8 +256,8 @@ public class patriceVersion
 	{
 		if ( cptL1 != 0 )
 		{
-			if ( cptL2 != 0 ) pw.write("\t\t\t\t</ul>\n");
-			pw.write("\t\t\t</ul>\n");
+			if ( cptL2 != 0 ) pw.write("\t\t\t\t\t</ul>\n");
+			pw.write("\t\t\t</ul>\n\n");
 		}
 	}
 
@@ -288,6 +307,12 @@ public class patriceVersion
 				if(nav.length() > 4) nav = nav.substring( indexFin + 1);
 			}
 		}
+
+		for(int i = 0; i < tabNav[0].length; i++)
+		{
+			System.out.println(tabNav[0][i] + " + " + tabNav[1][i]);
+		}
+
 		return tabNav;
 	}
 
@@ -296,25 +321,34 @@ public class patriceVersion
 		String[][] tabNav = tabNavMaker(nav);
 		String sortie, sortieTitre;
 		int cptT1 = 0, cptT2 = 0;
-		pw.write("\n\t\t<nav>\n\t\t\t<ul>\n");
+		pw.write("\t\t<nav>\n\t\t\t<ul>\n");
 		if(tabNav[0][0] != null)
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
 			{
 				sortie = "sortie" + String.valueOf(cptT1) + ".html";
-				sortieTitre = "sortie" + String.valueOf(cptT1 - 1) + ".html";
+				if(cptT1 < 10)
+				{
+					sortie = "sortie0" + String.valueOf(cptT1) + ".html";
+					sortieTitre = "sortie0" + String.valueOf(cptT1 - 1) + ".html";
+				}
+				else
+				{
+					sortie = "sortie" + String.valueOf(cptT1) + ".html";
+					sortieTitre = "sortie" + String.valueOf(cptT1 - 1) + ".html";
+				}
 
 				if(tabNav[0][i].equals("T1:"))
 				{
 
 					if(cptT2 > 0)
 					{
-						pw.write("\t\t\t\t\t</ul>\n");
+						pw.write("\t\t\t\t\t</ul>");
 						cptT2 = 0;
 					}
 					if(cptT1 > 0)
 					{
-						pw.write("\t\t\t\t</li>\n");
+						pw.write("\t\t\t\t</li>");
 					}
 					pw.write("\t\t\t\t<li>\n\t\t\t\t\t<a href=" + sortie + ">" + tabNav[1][i] + "</a>" + "\n");
 					cptT1++;
@@ -343,14 +377,14 @@ public class patriceVersion
 		nav = nav.substring(0, (nav.length() - 1));
 		pw.write("\t\t</article>\n");
 		navMaker(pw, nav);
-		s = "\n\t\t<footer>\n";
+		s = "\t<footer>\n";
 
-		s = s + "\t\t\t<p><a href= sortie0.html>D</a></p>\n";
+		s = s + "\t\t\t<p><a href= sortie00.html>D</a></p>\n";
 
 		if (cptDiapo == 1)		s = s + "\t\t\t<p>⨯</p>\n";
 		else
 		{
-			s = s + "\t\t\t<p><a href=\"sortie" + (cptDiapo-2) + ".html\">⇠</a></p>\n";
+			s = s + lien(cptDiapo - 2) + "⇠</a></p>\n";
 		}
 
 		s = s + "\t\t\t<h1>page " + cptDiapo + "/" + diapoMax + "</h1>\n";
@@ -361,21 +395,36 @@ public class patriceVersion
 		}
 		else
 		{
-			s = s + "\t\t\t<p><a href=\"sortie" + (cptDiapo)+".html\">⇢</a></p>\n";
+			s = s + lien(cptDiapo) +"⇢</a></p>\n";
 		}
 
-		s = s + "\t\t\t<p><a href= sortie" + (diapoMax - 1) + ".html>F</a></p>\n";
+		s = s + lien(diapoMax - 1) + "F</a></p>\n";
 
 		s = s + "\t\t</footer>\n" + "\t</body>\n" + "</html>\n";
 
 		pw.write(s);
 	}
 
-	public static void AfficherImage(PrintWriter pw, String ligne)
+	public static void afficherImage(PrintWriter pw, String ligne)
 	{
 		int posPoint;
 		posPoint = ligne.indexOf ( ':', 3 );
 		pw.write("<img src=images/"+ligne.substring(3,posPoint)+" alt="+ligne.substring(posPoint+1)+">");
+	}
+
+	public static String lien(int cpt)
+	{
+		String retour;
+		if(cpt < 10)
+		{
+			retour = "\t\t\t<p><a href=\"sortie0" + (cpt)+".html\">";
+		}
+		else
+		{
+			retour = "\t\t\t<p><a href=\"sortie" + (cpt)+".html\">";
+		}
+
+		return retour;
 	}
 
 }
