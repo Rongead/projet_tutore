@@ -30,6 +30,7 @@ public class patriceVersion
 		int cptPS, cptPC, cptT1 , cptL1, cptL2, cptT2;
 		String fichierDestination;
 		String header = "", nav = "";
+		String logPage = "";
 
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
 
@@ -55,6 +56,11 @@ public class patriceVersion
 					if (ligne.substring(0,3).equals("DP:") && diapoMax < 99)
 					{
 						diapoMax++;
+					}
+					if(ligne.substring(0,3).equals("T1:") || ligne.substring(0,3).equals("T2:"))
+					{
+						nav += ligne + "#";
+						logPage += String.valueOf(diapoMax - 1);
 					}
 				}
 			}
@@ -91,7 +97,7 @@ public class patriceVersion
 							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS );
 							cptT1++;
-							nav += ligne + "#";
+
 							pw.write ("\t\t\t<h1>" + cptT1 + " " + ligne.substring(3)+"</h1>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS = cptPC = 0; //reinitialisation des compteurs de paragraphe
@@ -101,7 +107,6 @@ public class patriceVersion
 							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS );
 							cptT2++;
-							nav += ligne + "#";
 							pw.write ("\t\t\t<h2 id=titre" + cptT2 + ">"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS = cptPC = 0; //reinitialisation des compteurs de paragraphe
@@ -121,7 +126,7 @@ public class patriceVersion
 							{
 								fermetureBalisesL( pw, cptL1, cptL2 );
 								fermetureBalisesP(pw, cptPC, cptPS );
-								fermetureHTML(pw, cptDiapo, nav, diapoMax);
+								fermetureHTML(pw, cptDiapo, nav, diapoMax, logPage);
 								pw.close();
 								cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 								cptPS = cptPC = 0; //reinitialisation des compteurs de paragraphe
@@ -231,7 +236,7 @@ public class patriceVersion
 			}
 
 			fermetureBalisesP(pw, cptPC, cptPS);
-			fermetureHTML(pw, cptDiapo, nav, diapoMax);
+			fermetureHTML(pw, cptDiapo, nav, diapoMax, logPage);
 			pw.close();
 
 		}
@@ -273,7 +278,7 @@ public class patriceVersion
 		+ header                                                                            );
 	}
 
-	public static String[][] tabNavMaker( String nav )
+	public static String[][] tabNavMaker( String nav, String logPage )
 	{
 		int cptNav = 1;
 
@@ -282,7 +287,7 @@ public class patriceVersion
 			if(nav.charAt(i) == '#') cptNav++;
 		}
 
-		String[][] tabNav = new String[2][cptNav];
+		String[][] tabNav = new String[3][cptNav];
 
 		for ( int j = 0; j < cptNav; j++)
 		{
@@ -301,6 +306,7 @@ public class patriceVersion
 			{
 				tabNav[0][j] = tempString.substring(0,3);
 				tabNav[1][j] = tempString.substring(3);
+				tabNav[2][j] = String.valueOf(logPage.charAt(j));
 
 				if(nav.length() > 4) nav = nav.substring( indexFin + 1);
 			}
@@ -309,9 +315,9 @@ public class patriceVersion
 		return tabNav;
 	}
 
-	public static void navMaker(PrintWriter pw, String nav)
+	public static void navMaker(PrintWriter pw, String nav, String logPage)
 	{
-		String[][] tabNav = tabNavMaker(nav);
+		String[][] tabNav = tabNavMaker(nav, logPage);
 		String sortie, sortieTitre;
 		int cptT1 = 0, cptT2 = 0;
 		pw.write("\n\t\t<nav>\n\t\t\t<ul>\n");
@@ -319,16 +325,13 @@ public class patriceVersion
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
 			{
-				sortie = "sortie" + String.valueOf(cptT1) + ".html";
 				if(cptT1 < 10)
 				{
-					sortie = "sortie0" + String.valueOf(cptT1) + ".html";
-					sortieTitre = "sortie0" + String.valueOf(cptT1 - 1) + ".html";
+					sortie = "sortie0" + tabNav[2][i] + ".html";
 				}
 				else
 				{
-					sortie = "sortie" + String.valueOf(cptT1) + ".html";
-					sortieTitre = "sortie" + String.valueOf(cptT1 - 1) + ".html";
+					sortie = "sortie" + tabNav[2][i] + ".html";
 				}
 
 				if(tabNav[0][i].equals("T1:"))
@@ -352,7 +355,7 @@ public class patriceVersion
 					{
 						pw.write("\t\t\t\t\t<ul>\n");
 					}
-					pw.write("\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href="+ sortieTitre +"#titre"+ String.valueOf(cptT2 + 1) + ">" + tabNav[1][i] + "</a>" +"\n\t\t\t\t\t\t</li>\n");
+					pw.write("\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href="+ sortie +"#titre"+ String.valueOf(cptT2 + 1) + ">" + tabNav[1][i] + "</a>" +"\n\t\t\t\t\t\t</li>\n");
 					cptT2++;
 				}
 			}
@@ -364,12 +367,12 @@ public class patriceVersion
 		pw.write("\t\t\t</ul>\n\t\t</nav>\n");
 	}
 
-	public static void fermetureHTML(PrintWriter pw, int cptDiapo, String nav, int diapoMax)
+	public static void fermetureHTML(PrintWriter pw, int cptDiapo, String nav, int diapoMax, String logPage)
 	{
 		String s = "";
 		nav = nav.substring(0, (nav.length() - 1));
 		pw.write("\t\t</article>\n");
-		navMaker(pw, nav);
+		navMaker(pw, nav, logPage);
 		s = "\n\t\t<footer>\n";
 
 		s = s + "\t\t\t<p><a href= sortie00.html>D</a></p>\n";
