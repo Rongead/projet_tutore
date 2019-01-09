@@ -300,8 +300,13 @@ public class patriceVersion
 			{
 				if(i < 10)
 				{
-					sortie = "sortie0" +
+					sortie = "sortie0" + i + ".html"
 				}
+				else
+				{
+					sortie = "sortie" + i + ".html"
+				}
+
 				if(tabNav[0][i].equals("T1:"))
 				{
 
