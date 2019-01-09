@@ -169,7 +169,7 @@ public class patriceVersion
 							}
 							else
 							{
-								pw.write ("\t\t\t" + ligne.substring(3));
+								pw.write ("\n\t\t\t<br />" + ligne.substring(3));
 							}
 							cptL1 = cptL2 = 0;
 							cptPS++;
@@ -188,7 +188,7 @@ public class patriceVersion
 							}
 							else
 							{
-								pw.write (ligne.substring(3));
+								pw.write ("\n\t\t\t<br />" + ligne.substring(3));
 							}
 							cptL1 = cptL2 = 0;
 							cptPC++;
