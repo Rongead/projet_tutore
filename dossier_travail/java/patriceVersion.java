@@ -90,6 +90,12 @@ public class patriceVersion
 								fermetureBalisesP(pw, cptPC, cptPS);
 								fermetureHTML(pw, cptPC, cptPS, cptDiapo, nav);
 								pw.close();
+								cptPS = 0;
+								cptPC = 0;
+								cptT1 = 0;
+								cptT2 = 1;
+								cptL1 = 0;
+								cptL2 = 0;
 								fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 								pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 								initalisationHTML(pw, header);
@@ -241,7 +247,7 @@ public class patriceVersion
 	{
 		String[][] tabNav = tabNavMaker(nav);
 		int cptT1 = 0, cptT2 = 0;
-		pw.write("\t<nav>\n\t\t<ul>\n");
+		pw.write("\t<nav class=\"ici\">\n\t\t<ul>\n");
 		if(tabNav[0][0] != null)
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
