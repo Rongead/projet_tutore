@@ -36,6 +36,8 @@ public class patriceVersion
 		int cptPC = 0;
 		int cptT1 = 0;
 		int cptT2 = 1;
+		int cptL1 = 0;
+		int cptL2 = 0;
 		String fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 		String nav = "";
 		String header = "";
@@ -53,33 +55,38 @@ public class patriceVersion
 				if (!(ligne.substring(0).equals(""))) {
 					switch (ligne.substring(0,3)){
 						case "TP:":
+							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS);
 							header = "\t<header><img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n" + ligne.substring(3) + "\n<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n</header>\n<article>\n";
 							pw.write (header);
-							cptPS = cptPC = 0;
+
 							break;
 						case "T1:":
+							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS);
 							cptT1++;
 							nav += ligne + "#";
 							pw.write ("\t\t<h1>" + cptT1 + " " + ligne.substring(3)+"</h1>\n");
-							cptPS = cptPC = 0;
+
 							break;
 						case "T2:":
+							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS);
 							cptT2++;
 							nav += ligne + "#";
 							pw.write ("\t\t<h2>"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
-							cptPS = cptPC = 0;
+
 							break;
 						case "t2:":
+							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS);
 							pw.write ("\t\t<h3>"+ ligne.substring(3)+"</h3>\n");
-							cptPS = cptPC = 0;
+
 							break;
 						case "DP:":
 							if(cptDiapo > 0)
 							{
+								fermetureBalisesL( pw, cptL1, cptL2 );
 								fermetureBalisesP(pw, cptPC, cptPS);
 								fermetureHTML(pw, cptPC, cptPS, cptDiapo, nav);
 								pw.close();
@@ -89,7 +96,33 @@ public class patriceVersion
 							}
 							cptDiapo++;
 							break;
+						case "L1:":
+							if (cptL1 == 0)
+							{
+								pw.write("\t\t\t<ul>\n"+"\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+							}
+							else
+							{
+								pw.write("\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+							}
+							cptL1++;
+							break;
+						case "L2:":
+							if (cptL1 != 0 && cptL2 == 0)
+							{
+								pw.write("\t\t\t<ul>\n"+"\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+							}
+							else
+							{
+								if ( cptL1 != 0 )
+								{
+									pw.write("\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+								}
+							}
+							cptL2++;
+							break;
 						case "PS:":
+							fermetureBalisesL( pw, cptL1, cptL2 );
 							if (cptPC != 0)
 							{
 								cptPC=0;
@@ -106,6 +139,7 @@ public class patriceVersion
 							cptPS++;
 							break;
 						case "PC:":
+							fermetureBalisesL( pw, cptL1, cptL2 );
 							if (cptPS != 0)
 							{
 								cptPS=0;
@@ -121,6 +155,7 @@ public class patriceVersion
 							}
 							cptPC++;
 							break;
+							case "IM:":fermetureBalisesP(pw, cptPC, cptPS);  AfficherImage(pw, ligne);break;
 					}
 					System.out.println (ligne.substring(3));
 				}
@@ -138,9 +173,19 @@ public class patriceVersion
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
-			cptPS=0;cptPC=0;
+			cptPS = cptPC = 0;
 			pw.write("</p>\n");
 		}
+	}
+
+	public static void fermetureBalisesL(PrintWriter pw, int cptL1, int cptL2)
+	{
+		if ( cptL1 != 0 )
+		{
+			if ( cptL2 != 0 ) pw.write("</ul>\n");
+			pw.write("</ul>\n");
+		}
+		cptL1 = cptL2 = 0;
 	}
 
 	public static void initalisationHTML(PrintWriter pw, String header)
@@ -244,11 +289,18 @@ public class patriceVersion
 		navMaker(pw, nav);
 		pw.write("\t\t</article>\n"                 +
 					"\t<footer>\n"                     +
-					"\t\t<p><a href=\"sortie"+(cptDiapo-2)+".html\">x</a></p>\n" +
+					"\t\t<p><a href=\"sortie"+(cptDiapo-2)+".html\">⨯</a></p>\n" +
 					"\t\t<h1>page "+cptDiapo+"/6</h1>\n"          +
 					"\t\t<p><a href=\"sortie"+(cptDiapo)+".html\">⇢</a></p>\n" +
 					"</footer>\n"                      +
 			    "	</body>\n"                      +
 			    "</html>\n"                         );
+	}
+
+	public static void AfficherImage(PrintWriter pw, String ligne)
+	{
+		int posPoint;
+		posPoint = ligne.indexOf ( ':', 3 );
+		pw.write("<img src=images/"+ligne.substring(3,posPoint)+" alt="+ligne.substring(posPoint+1)+">");
 	}
 }
