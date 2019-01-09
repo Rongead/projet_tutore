@@ -26,6 +26,20 @@ body{
 	background-color: #787878;
 }
 
+.bleu{
+    color: #4285f4;
+}
+.rouge{
+    color: #ea4335;
+}
+.jaune{
+    color: #f8bc05;
+}
+.vert{
+    color: #34a853;
+}
+
+
 
 /*Caractéristiques de l'en-tête de la page*/
 header{
@@ -40,6 +54,10 @@ header{
 	display: flex;
 	justify-content: space-between;
 	background-color: #e5e5e5;
+}
+
+header p{
+    margin: 0px;
 }
 
 .logo{
