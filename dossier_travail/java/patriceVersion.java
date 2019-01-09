@@ -38,14 +38,12 @@ public class patriceVersion
 		int cptT2 = 1;
 		String fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 		String nav = "";
-		String header = "";
 
 		try
 		{
 			scIn = new Scanner ( new FileInputStream ( "exemple.data"), "utf-8"  );
 			pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 
-			initalisationHTML(pw, "");
 			while ( scIn.hasNextLine() )
 			{
 				ligne = scIn.nextLine();
@@ -54,8 +52,7 @@ public class patriceVersion
 					switch (ligne.substring(0,3)){
 						case "TP:":
 							fermetureBalisesP(pw, cptPC, cptPS);
-							header = "\t<header><img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n" + ligne.substring(3) + "\n<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n</header>\n<article>\n";
-							pw.write (header);
+							pw.write ("\t<header><img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n" + ligne.substring(3) + "\n<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n</header>\n"   );
 							cptPS = cptPC = 0;
 							break;
 						case "T1:":
@@ -84,7 +81,7 @@ public class patriceVersion
 							pw.close();
 							fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 							pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
-							initalisationHTML(pw, header);
+							initalisationHTML(pw);
 							break;
 						case "PS:":
 							if (cptPC != 0)
@@ -121,6 +118,8 @@ public class patriceVersion
 					}
 					System.out.println (ligne.substring(3));
 				}
+
+
 			}
 			fermetureHTML(pw, cptPC, cptPS, cptDiapo);
 			pw.close();
@@ -140,9 +139,12 @@ public class patriceVersion
 		}
 	}
 
-	public static void initalisationHTML(PrintWriter pw, String header)
+	public static void initalisationHTML(PrintWriter pw)
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f0f991950b64993cc3ffce9648b77f26ca9dde2a
 		pw.write("<!DOCTYPE html>\n"                                                          +
 		         "<html>\n"                                                                   +
 		         "\t<head>\n"                                                                 +
@@ -152,6 +154,7 @@ public class patriceVersion
 		         "\t\t<link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n" +
 		         "\t</head>\n"                                                                +
 		         "\t<body>\n"                                                                 );
+<<<<<<< HEAD
 =======
 		pw.write("<!DOCTYPE html>\n"                                                                +
 			    "<html>\n"                                                                         +
@@ -164,6 +167,8 @@ public class patriceVersion
 			    "     <body>\n"
 			    + header                                                                    );
 >>>>>>> 6dc15e496bce5f7a2c0df70c5a8b93328614dc44
+=======
+>>>>>>> f0f991950b64993cc3ffce9648b77f26ca9dde2a
 	}
 
 	public static String[][] tabNavMaker( String nav )
@@ -171,7 +176,7 @@ public class patriceVersion
 		int cptNav = 1;
 		for (int i = 0; i < nav.length() ; i++ )
 		{
-			if(nav.charAt(i) == '#') cptNav++;
+			if(nav.charAt(i) = '#') cptNav++;
 		}
 
 		String[][] tabNav = new String[2][cptNav];
@@ -195,6 +200,9 @@ public class patriceVersion
 			pw.write("</p>\n");
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f0f991950b64993cc3ffce9648b77f26ca9dde2a
 		pw.write("\t\t</article>\n"                   +
 		         "\t<footer>\n"                       +
 		         "\t\t<p><a href=\"#\">x</a><p>\n"    +
@@ -203,6 +211,7 @@ public class patriceVersion
 		         "\t</footer>\n"                      +
 		         "\t</body>\n"                        +
 		         "</html>\n"                          );
+<<<<<<< HEAD
 =======
 		pw.write("\t\t</article>\n"                 +
 					"\t<footer>\n"                     +
@@ -213,5 +222,7 @@ public class patriceVersion
 			    "	</body>\n"                      +
 			    "</html>\n"                         );
 >>>>>>> 6dc15e496bce5f7a2c0df70c5a8b93328614dc44
+=======
+>>>>>>> f0f991950b64993cc3ffce9648b77f26ca9dde2a
 	}
 }
