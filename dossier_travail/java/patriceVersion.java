@@ -81,7 +81,7 @@ public class patriceVersion
 						case "TP:":
 							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS );
-							header = "\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t" + ligne.substring(3) + "\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\t\t<article>\n";
+							header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t" + ligne.substring(3) + "\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
 							pw.write (header);
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS = cptPC = 0; //reinitialisation des compteurs de paragraphe
@@ -227,8 +227,6 @@ public class patriceVersion
 
 					}
 
-					System.out.println (ligne.substring(3));
-
 				}
 			}
 
@@ -270,7 +268,7 @@ public class patriceVersion
 		"          <meta charset=\"UTF-8\">\n"                                              +
 		"          <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"    +
 		"          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n"  +
-		"     </head>\n"                                                                    +
+		"     </head>\n\n"                                                                    +
 		"     <body>\n"
 		+ header                                                                            );
 	}
@@ -308,11 +306,6 @@ public class patriceVersion
 			}
 		}
 
-		for(int i = 0; i < tabNav[0].length; i++)
-		{
-			System.out.println(tabNav[0][i] + " + " + tabNav[1][i]);
-		}
-
 		return tabNav;
 	}
 
@@ -321,7 +314,7 @@ public class patriceVersion
 		String[][] tabNav = tabNavMaker(nav);
 		String sortie, sortieTitre;
 		int cptT1 = 0, cptT2 = 0;
-		pw.write("\t\t<nav>\n\t\t\t<ul>\n");
+		pw.write("\n\t\t<nav>\n\t\t\t<ul>\n");
 		if(tabNav[0][0] != null)
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
@@ -377,7 +370,7 @@ public class patriceVersion
 		nav = nav.substring(0, (nav.length() - 1));
 		pw.write("\t\t</article>\n");
 		navMaker(pw, nav);
-		s = "\t<footer>\n";
+		s = "\n\t\t<footer>\n";
 
 		s = s + "\t\t\t<p><a href= sortie00.html>D</a></p>\n";
 
