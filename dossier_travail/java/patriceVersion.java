@@ -298,7 +298,10 @@ public class patriceVersion
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
 			{
-
+				if(i < 10)
+				{
+					sortie = "sortie0" + 
+				}
 				if(tabNav[0][i].equals("T1:"))
 				{
 
@@ -309,7 +312,7 @@ public class patriceVersion
 					}
 					if(cptT1 > 0)
 					{
-						pw.write("\t\t\t\t</li>");
+						pw.write("\t\t\t\t</li id=\"sortie + \">");
 					}
 					pw.write("\t\t\t\t<li>\n\t\t\t\t\t" + tabNav[1][i] + "\n");
 					cptT1++;
