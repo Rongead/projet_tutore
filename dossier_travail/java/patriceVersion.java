@@ -169,13 +169,13 @@ public class patriceVersion
 
 							if (cptL1 != 0 && cptL2 == 0)
 							{
-								pw.write("\t\t\t\t\t<ul>\n"+"\t\t\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+								pw.write("\t\t\t\t<li>\n\t\t\t\t\t<ul>\n"+"\t\t\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
 							}
 							else
 							{
 								if ( cptL1 != 0 )
 								{
-									pw.write("\t\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+									pw.write("\t\t\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
 								}
 							}
 
@@ -259,8 +259,8 @@ public class patriceVersion
 	{
 		if ( cptL1 != 0 )
 		{
-			if ( cptL2 != 0 ) pw.write("\t\t\t\t\t</ul>\n");
-			pw.write("\t\t\t</ul>\n\n");
+			if ( cptL2 != 0 ) pw.write("\t\t\t\t\t</ul>\n\t\t\t\t</li>\n");
+			pw.write("\t\t\t</ul>\n");
 		}
 	}
 
