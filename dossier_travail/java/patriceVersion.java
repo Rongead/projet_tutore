@@ -11,13 +11,11 @@ public class patriceVersion
 {
 	static String source;
 	static String racine;
-	private int cptDiapo;
 
 	public static void main(String[] args)
 	{
 		source = args[0];
 		racine = args[1];
-		cptDiapo = 0;
 		initialiserDiapo();
 	}
 
@@ -26,6 +24,7 @@ public class patriceVersion
 		String ligne;
 		Scanner     scIn;
 		PrintWriter pw;
+		int cptDiapo = 0;
 		int cptPS = 0;
 		int cptPC = 0;
 		int cptT1 = 0;
@@ -66,7 +65,8 @@ public class patriceVersion
 							cptPS = cptPC = 0;
 							break;
 						case "DP:":
-							pw = nextDiapo(pw, cptPC, cptPS);
+							cptDiapo++;
+							pw = nextDiapo(pw, cptPC, cptPS, cptDiapo);
 							break;
 						case "PS:":
 							if (cptPC != 0)
@@ -121,14 +121,13 @@ public class patriceVersion
 		}
 	}
 
-	public static PrintWriter nextDiapo(PrintWriter pw, int cptPC, int cptPS)
+	public static PrintWriter nextDiapo(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
 	{
 		String fichierDestination;
 
 		fermetureBalisesP(pw, cptPC, cptPS);
-		fermetureHTML(pw, cptDiapo);
+		fermetureHTML(pw, cptPC, cptPS, cptDiapo);
 		pw.close();
-		cptDiapo++;
 		fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 		pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 		initalisationHTML(pw);
@@ -148,7 +147,7 @@ public class patriceVersion
 			    "     <body>\n"                                                                     );
 	}
 
-	public static void fermetureHTML(PrintWriter pw, int cptDiapo)
+	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
