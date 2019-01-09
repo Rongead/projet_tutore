@@ -125,8 +125,8 @@ public class patriceVersion
 					System.out.println (ligne.substring(3));
 				}
 			}
-			String[][] navTab = tabNavMaker(nav);
-			fermetureHTML(pw, cptPC, cptPS, cptDiapo, navTab);
+		//	String[][] navTab = tabNavMaker(nav);
+			fermetureHTML(pw, cptPC, cptPS, cptDiapo);
 			pw.close();
 		}
 		catch(Exception e)
@@ -158,7 +158,7 @@ public class patriceVersion
 			    + header                                                                    );
 	}
 
-	public static String[][] tabNavMaker( String nav )
+	/*public static String[][] tabNavMaker( String nav )
 	{
 		int cptNav = 1;
 		for (int i = 0; i < nav.length() ; i++ )
@@ -177,9 +177,9 @@ public class patriceVersion
 		}
 
 		return tabNav;
-	}
+	}*/
 
-	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo, String[][] tabNav)
+	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
@@ -188,9 +188,9 @@ public class patriceVersion
 		}
 		pw.write("\t\t</article>\n"                 +
 					"\t<footer>\n"                     +
-					"\t\t<p><a href=\"#\">x</a></p>\n" +
+					"\t\t<p><a href=\"sortie"+(cptDiapo-2)+".html\">x</a></p>\n" +
 					"\t\t<h1>page "+cptDiapo+"/6</h1>\n"          +
-					"\t\t<p><a href=\"#\">⇢</a></p>\n" +
+					"\t\t<p><a href=\"sortie"+(cptDiapo)+".html\">⇢</a></p>\n" +
 					"</footer>\n"                      +
 			    "	</body>\n"                      +
 			    "</html>\n"                         );
