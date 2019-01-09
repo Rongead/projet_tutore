@@ -377,7 +377,7 @@ public class patriceVersion
 
 		s = s + "\t\t\t<a href= sortie00.html><div><p>D</p></div></a>\n";
 
-		if (cptDiapo == 1)		s = s + "\t\t\t<p>⨯</p>\n";
+		if (cptDiapo == 1)		s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";
 		else
 		{
 			s = s + lien(cptDiapo - 2) + "⇠</p></div></a>\n";
@@ -387,7 +387,7 @@ public class patriceVersion
 
 		if (cptDiapo == diapoMax)
 		{
-			s = s + "\t\t\t<p>⨯</p>\n";
+			s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";
 		}
 		else
 		{
