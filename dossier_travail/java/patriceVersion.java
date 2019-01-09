@@ -192,7 +192,7 @@ public class patriceVersion
 		}
 		pw.write("\t\t</article>\n"                 +
 					"\t<footer>\n"                     +
-					"\t\t<p><a href=\"sortie"+(cptDiapo-2)+".html\">x</a></p>\n" +
+					"\t\t<p><a href=\"sortie"+(cptDiapo-2)+".html\">⨯</a></p>\n" +
 					"\t\t<h1>page "+cptDiapo+"/6</h1>\n"          +
 					"\t\t<p><a href=\"sortie"+(cptDiapo)+".html\">⇢</a></p>\n" +
 					"</footer>\n"                      +
