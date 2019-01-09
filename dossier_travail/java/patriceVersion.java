@@ -9,10 +9,21 @@ import java.io.PrintWriter;
 
 public class patriceVersion
 {
+	String source;
+	String racine;
+	int cptDiapo;
+
 	public static void main(String[] args)
 	{
-		String ligne;
+		source = args[0];
+		racine = args[1];
+		cptDiapo = 0;
+		initialiserDiapo();
+	}
 
+	public static void initialiserDiapo()
+	{
+		String ligne;
 		Scanner     scIn;
 		PrintWriter pw;
 		int cptDP = 0;
@@ -20,21 +31,12 @@ public class patriceVersion
 		int cptPC = 0;
 		int cptT1 = 0;
 		int cptT2 = 1;
+		String fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 
 		try
 		{
 			scIn = new Scanner ( new FileInputStream ( "exemple.data"), "utf-8"  );
-			pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream("sortie2.html"), "utf-8" ) );
-
-			pw.write("<!DOCTYPE html>\n"                                                                +
-			         "<html>\n"                                                                         +
-			         "     <head>\n"                                                                    +
-			         "          <title></title>\n"                                                      +
-			         "          <meta charset=\"UTF-8\">\n"                                             +
-			         "          <link rel=\"stylesheet\" type=\"text/css\" href=\"../../racine/css/style.css\">\n"   +
-			         "          <link rel=\"icon\" type=\"image/png\" href=\"../../racine/images/maxi_logo.png\">\n" +
-			         "     </head>\n"                                                                   +
-			         "     <body>\n"                                                                     );
+			pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 
 			while ( scIn.hasNextLine() )
 			{
@@ -141,5 +143,18 @@ public class patriceVersion
 			cptPS=0;cptPC=0;
 			pw.write("</p>\n");
 		}
+	}
+
+	public static void initalisationHTML()
+	{
+		pw.write("<!DOCTYPE html>\n"                                                                +
+			    "<html>\n"                                                                         +
+			    "     <head>\n"                                                                    +
+			    "          <title></title>\n"                                                      +
+			    "          <meta charset=\"UTF-8\">\n"                                             +
+			    "          <link rel=\"stylesheet\" type=\"text/css\" href=\"../../racine/css/style.css\">\n"   +
+			    "          <link rel=\"icon\" type=\"image/png\" href=\"../../racine/images/maxi_logo.png\">\n" +
+			    "     </head>\n"                                                                   +
+			    "     <body>\n"                                                                     );
 	}
 }
