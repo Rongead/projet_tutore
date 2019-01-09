@@ -121,7 +121,7 @@ public class patriceVersion
 
 
 			}
-			fermetureBalisesP(pw, cptPC, cptPS);
+			fermetureHTML(pw, cptPC, cptPS, cptDiapo);
 			pw.close();
 		}
 		catch(Exception e)
