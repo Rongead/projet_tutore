@@ -1,3 +1,10 @@
+/** Projet tutoré
+ *  Générateur de diaporama HTML
+ *  Groupe 29
+ *  @author CONTE Lucas, MAISONNEUVE Patrice, NEVEU Aubin, PONTY Arthur, PRUNIER Sébastien
+ *  @date   09/01/2018 8:55
+ */
+
 import java.util.Scanner;
 import java.io.FileInputStream;
 
