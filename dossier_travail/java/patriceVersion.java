@@ -73,7 +73,12 @@ public class patriceVersion
 							break;
 						case "DP:":
 							cptDiapo++;
-							pw = nextDiapo(pw, cptPC, cptPS, cptDiapo);
+							fermetureBalisesP(pw, cptPC, cptPS);
+							fermetureHTML(pw, cptPC, cptPS, cptDiapo);
+							pw.close();
+							fichierDestination = racine + "/sortie" + cptDiapo + ".html";
+							pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
+							initalisationHTML(pw);
 							break;
 						case "PS:":
 							if (cptPC != 0)
@@ -111,6 +116,7 @@ public class patriceVersion
 					System.out.println (ligne.substring(3));
 				}
 			}
+			fermetureBalisesP(pw, cptPC, cptPS);
 			pw.close();
 		}
 		catch(Exception e)
@@ -126,19 +132,6 @@ public class patriceVersion
 			cptPS=0;cptPC=0;
 			pw.write("</p>\n");
 		}
-	}
-
-	public static PrintWriter nextDiapo(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
-	{
-		String fichierDestination;
-
-		fermetureBalisesP(pw, cptPC, cptPS);
-		fermetureHTML(pw, cptPC, cptPS, cptDiapo);
-		pw.close();
-		fichierDestination = racine + "/sortie" + cptDiapo + ".html";
-		pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
-		initalisationHTML(pw);
-		return pw;
 	}
 
 	public static void initalisationHTML(PrintWriter pw)
