@@ -323,32 +323,13 @@ public class patriceVersion
 		pw.write("\t\t</ul>\n\t</nav>\n");
 	}
 
-	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo, String nav)
-	{
-		pw.write("\t\t</article>\n");
-		nav = nav.substring(0, (nav.length() - 1));
-		navMaker(pw, nav);
-		pw.write("	 \t<footer>\n"                     +
-					"\t\t<p><a href=\"sortie"+(cptDiapo-2)+".html\">x</a></p>\n" +
-					"\t\t<h1>page "+cptDiapo+"/6</h1>\n"          +
-					"\t\t<p><a href=\"sortie"+(cptDiapo)+".html\">⇢</a></p>\n" +
-					"</footer>\n"                      +
-			    "	</body>\n"                      +
-			    "</html>\n"                         );
-	}
-
-	public static void AfficherImage(PrintWriter pw, String ligne)
-	{
-		int posPoint;
-		posPoint = ligne.indexOf ( ':', 3 );
-		pw.write("<img src=images/"+ligne.substring(3,posPoint)+" alt="+ligne.substring(posPoint+1)+">");
-	}
-}
-
-/*	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo, int diapoMax)
+	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo, String nav, int diapoMax)
 	{
 		String s = "";
 
+		pw.write("\t\t</article>\n");
+		nav = nav.substring(0, (nav.length() - 1));
+		navMaker(pw, nav);
 		if (cptPC != 0 || cptPS != 0)
 		{
 			cptPS=0;cptPC=0;
@@ -356,10 +337,7 @@ public class patriceVersion
 		}
 		s = "\t\t</article>\n" + "\t<footer>\n";
 
-		if (cptDiapo == 1)
-		{
-			s = s + "\t\t<p>⨯</p>\n";
-		}
+		if (cptDiapo == 1)		s = s + "\t\t<p>⨯</p>\n";
 		else
 		{
 			s = s + "\t\t<p><a href=\"sortie" + (cptDiapo-2) + ".html\">⇠</a></p>\n";
@@ -379,4 +357,12 @@ public class patriceVersion
 		s = s + "</footer>\n" + "</body>\n" + "</html>\n";
 
 		pw.write(s);
-	}*/
+	}
+
+	public static void AfficherImage(PrintWriter pw, String ligne)
+	{
+		int posPoint;
+		posPoint = ligne.indexOf ( ':', 3 );
+		pw.write("<img src=images/"+ligne.substring(3,posPoint)+" alt="+ligne.substring(posPoint+1)+">");
+	}
+}
