@@ -5,13 +5,8 @@
 *  @date   09/01/2018 8:55
 */
 
-import java.util.Scanner;
-import java.io.FileInputStream;
-
-import java.io.OutputStreamWriter;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
-
+import java.util.*:
+import java.io.*;
 
 
 public class patriceVersion
