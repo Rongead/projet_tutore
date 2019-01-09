@@ -28,10 +28,21 @@ public class patriceVersion
 		PrintWriter pw;
 		int cptDiapo = 0, diapoMax = 0;
 		int cptPS, cptPC, cptT1 , cptL1, cptL2, cptT2;
-		String fichierDestination = racine + "/sortie" + cptDiapo + ".html";
+		String fichierDestination;
 		String header = "", nav = "";
 
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
+
+		fichierDestination = racine + "/sortie";
+
+		if(cptDiapo < 10)
+		{
+			fichierDestination += "0" + cptDiapo + ".html";
+		}
+		else
+		{
+			fichierDestination += cptDiapo + ".html";
+		}
 
 		try
 		{
@@ -118,7 +129,16 @@ public class patriceVersion
 								cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 								cptPS = cptPC = 0; //reinitialisation des compteurs de paragraphe
 								cptT2 = 1;
-								fichierDestination = racine + "/sortie" + cptDiapo + ".html";
+								fichierDestination = racine + "/sortie";
+
+								if(cptDiapo < 10)
+								{
+									fichierDestination += "0" + cptDiapo + ".html";
+								}
+								else
+								{
+									fichierDestination += cptDiapo + ".html";
+								}
 								pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 								initalisationHTML(pw, header);
 							}
@@ -206,7 +226,7 @@ public class patriceVersion
 
 						case "IM:":
 							fermetureBalisesP(pw, cptPC, cptPS );
-							AfficherImage(pw, ligne);break;
+							afficherImage(pw, ligne);break;
 
 					}
 
@@ -302,7 +322,16 @@ public class patriceVersion
 			for(int i = 0; i < tabNav[0].length; i++)
 			{
 				sortie = "sortie" + String.valueOf(cptT1) + ".html";
-				sortieTitre = "sortie" + String.valueOf(cptT1 - 1) + ".html";
+				if(cptT1 < 10)
+				{
+					sortie = "sortie0" + String.valueOf(cptT1) + ".html";
+					sortieTitre = "sortie0" + String.valueOf(cptT1 - 1) + ".html";
+				}
+				else
+				{
+					sortie = "sortie" + String.valueOf(cptT1) + ".html";
+					sortieTitre = "sortie" + String.valueOf(cptT1 - 1) + ".html";
+				}
 
 				if(tabNav[0][i].equals("T1:"))
 				{
@@ -345,17 +374,12 @@ public class patriceVersion
 		navMaker(pw, nav);
 		s = "\n\t\t<footer>\n";
 
-		if (cptDiapo == 1)
-		{
-			s = s + "\t\t<p>⨯</p>\n";
-		}
-
-		s = s + "\t\t\t<p><a href= sortie0.html>D</a></p>\n";
+		s = s + "\t\t\t<p><a href= sortie00.html>D</a></p>\n";
 
 		if (cptDiapo == 1)		s = s + "\t\t\t<p>⨯</p>\n";
 		else
 		{
-			s = s + "\t\t\t<p><a href=\"sortie" + (cptDiapo-2) + ".html\">⇠</a></p>\n";
+			s = s + lien(cptDiapo - 2) + "⇠</a></p>\n";
 		}
 
 		s = s + "\t\t\t<h1>page " + cptDiapo + "/" + diapoMax + "</h1>\n";
@@ -366,21 +390,36 @@ public class patriceVersion
 		}
 		else
 		{
-			s = s + "\t\t\t<p><a href=\"sortie" + (cptDiapo)+".html\">⇢</a></p>\n";
+			s = s + lien(cptDiapo) +"⇢</a></p>\n";
 		}
 
-		s = s + "\t\t\t<p><a href= sortie" + (diapoMax - 1) + ".html>F</a></p>\n";
+		s = s + lien(diapoMax - 1) + "F</a></p>\n";
 
 		s = s + "\t\t</footer>\n" + "\t</body>\n" + "</html>\n";
 
 		pw.write(s);
 	}
 
-	public static void AfficherImage(PrintWriter pw, String ligne)
+	public static void afficherImage(PrintWriter pw, String ligne)
 	{
 		int posPoint;
 		posPoint = ligne.indexOf ( ':', 3 );
 		pw.write("<img src=images/"+ligne.substring(3,posPoint)+" alt="+ligne.substring(posPoint+1)+">");
+	}
+
+	public static String lien(int cpt)
+	{
+		String retour;
+		if(cpt < 10)
+		{
+			retour = "\t\t\t<p><a href=\"sortie0" + (cpt)+".html\">";
+		}
+		else
+		{
+			retour = "\t\t\t<p><a href=\"sortie" + (cpt)+".html\">";
+		}
+
+		return retour;
 	}
 
 }
