@@ -38,12 +38,14 @@ public class patriceVersion
 		int cptT2 = 1;
 		String fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 		String nav = "";
+		String header = "";
 
 		try
 		{
 			scIn = new Scanner ( new FileInputStream ( "exemple.data"), "utf-8"  );
 			pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 
+			initalisationHTML(pw, "");
 			while ( scIn.hasNextLine() )
 			{
 				ligne = scIn.nextLine();
@@ -52,7 +54,8 @@ public class patriceVersion
 					switch (ligne.substring(0,3)){
 						case "TP:":
 							fermetureBalisesP(pw, cptPC, cptPS);
-							pw.write ("\t<header><img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n" + ligne.substring(3) + "\n<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n</header>\n"   );
+							header = "\t<header><img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n" + ligne.substring(3) + "\n<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n</header>\n<article>\n";
+							pw.write (header);
 							cptPS = cptPC = 0;
 							break;
 						case "T1:":
@@ -81,7 +84,7 @@ public class patriceVersion
 							pw.close();
 							fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 							pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
-							initalisationHTML(pw);
+							initalisationHTML(pw, header);
 							break;
 						case "PS:":
 							if (cptPC != 0)
@@ -118,8 +121,6 @@ public class patriceVersion
 					}
 					System.out.println (ligne.substring(3));
 				}
-
-
 			}
 			fermetureBalisesP(pw, cptPC, cptPS);
 			pw.close();
@@ -139,7 +140,7 @@ public class patriceVersion
 		}
 	}
 
-	public static void initalisationHTML(PrintWriter pw)
+	public static void initalisationHTML(PrintWriter pw, String header)
 	{
 		pw.write("<!DOCTYPE html>\n"                                                                +
 			    "<html>\n"                                                                         +
@@ -149,7 +150,8 @@ public class patriceVersion
 			    "          <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"   +
 			    "          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n" +
 			    "     </head>\n"                                                                   +
-			    "     <body>\n"                                                                     );
+			    "     <body>\n"
+			    + header                                                                    );
 	}
 
 	public static String[][] tabNavMaker( String nav )
@@ -157,7 +159,7 @@ public class patriceVersion
 		int cptNav = 1;
 		for (int i = 0; i < nav.length() ; i++ )
 		{
-			if(nav.charAt(i) = '#') cptNav++;
+			if(nav.charAt(i) == '#') cptNav++;
 		}
 
 		String[][] tabNav = new String[2][cptNav];
@@ -182,9 +184,9 @@ public class patriceVersion
 		}
 		pw.write("\t\t</article>\n"                 +
 					"\t<footer>\n"                     +
-					"\t\t<p><a href=\"#\">x</a><p>\n" +
+					"\t\t<p><a href=\"#\">x</a></p>\n" +
 					"\t\t<h1>page "+cptDiapo+"/6</h1>\n"          +
-					"\t\t<p><a href=\"#\">⇢</a><p>\n" +
+					"\t\t<p><a href=\"#\">⇢</a></p>\n" +
 					"</footer>\n"                      +
 			    "	</body>\n"                      +
 			    "</html>\n"                         );
