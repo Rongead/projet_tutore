@@ -78,13 +78,16 @@ public class patriceVersion
 							cptPS = cptPC = 0;
 							break;
 						case "DP:":
+							if(cptDiapo > 0)
+							{
+								fermetureBalisesP(pw, cptPC, cptPS);
+								fermetureHTML(pw, cptPC, cptPS, cptDiapo);
+								pw.close();
+								fichierDestination = racine + "/sortie" + cptDiapo + ".html";
+								pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
+								initalisationHTML(pw, header);
+							}
 							cptDiapo++;
-							fermetureBalisesP(pw, cptPC, cptPS);
-							fermetureHTML(pw, cptPC, cptPS, cptDiapo);
-							pw.close();
-							fichierDestination = racine + "/sortie" + cptDiapo + ".html";
-							pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
-							initalisationHTML(pw, header);
 							break;
 						case "PS:":
 							if (cptPC != 0)
