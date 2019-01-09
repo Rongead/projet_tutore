@@ -26,10 +26,12 @@ public class patriceVersion
 		String ligne;
 		Scanner     scIn;
 		PrintWriter pw;
-		int cptDiapo, diapoMax = 0;
-		int cptPS , cptPC, cptT1 , cptL1, cptL2, cptT2 = 0;
+		int cptDiapo = 0, diapoMax = 0;
+		int cptPS, cptPC, cptT1 , cptL1, cptL2, cptT2;
 		String fichierDestination = racine + "/sortie" + cptDiapo + ".html";
-		String header, nav = "";
+		String header = "", nav = "";
+
+		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
 
 		try
 		{
@@ -354,6 +356,8 @@ public class patriceVersion
 		}
 		s = "\t\t<footer>\n";
 
+		s = s + "\t\t\t<p><a href= sortie0.html>D</a></p>\n";
+
 		if (cptDiapo == 1)		s = s + "\t\t\t<p>⨯</p>\n";
 		else
 		{
@@ -370,6 +374,8 @@ public class patriceVersion
 		{
 			s = s + "\t\t\t<p><a href=\"sortie" + (cptDiapo)+".html\">⇢</a></p>\n";
 		}
+
+		s = s + "\t\t\t<p><a href= sortie" + (diapoMax - 1) + ".html>F</a></p>\n";
 
 		s = s + "\t\t</footer>\n" + "\t</body>\n" + "</html>\n";
 
