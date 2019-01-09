@@ -339,14 +339,14 @@ public class patriceVersion
 
 					if(cptT2 > 0)
 					{
-						pw.write("\t\t\t\t\t</ul>");
+						pw.write("\t\t\t\t\t</ul>\n");
 						cptT2 = 0;
 					}
 					if(cptT1 > 0)
 					{
-						pw.write("\t\t\t\t</li>");
+						pw.write("\t\t\t\t</li>\n");
 					}
-					pw.write("\t\t\t\t<li>\n\t\t\t\t\t<a href=" + sortie + ">" + tabNav[1][i] + "</a>" + "\n");
+					pw.write("\t\t\t\t<li>\n\t\t\t\t\t<a href=" + sortie + ">" + tabNav[1][i] + "</a>\n");
 					cptT1++;
 				}
 				else
@@ -355,7 +355,7 @@ public class patriceVersion
 					{
 						pw.write("\t\t\t\t\t<ul>\n");
 					}
-					pw.write("\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href="+ sortie +"#titre"+ String.valueOf(cptT2 + 1) + ">" + tabNav[1][i] + "</a>" +"\n\t\t\t\t\t\t</li>\n");
+					pw.write("\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<a href="+ sortie +"#titre"+ String.valueOf(cptT2 + 1) + ">" + tabNav[1][i] + "</a>\n\t\t\t\t\t\t</li>\n");
 					cptT2++;
 				}
 			}
