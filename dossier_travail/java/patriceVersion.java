@@ -159,7 +159,6 @@ public class patriceVersion
 			    "     <body>\n"                                                                     );
 	}
 
-<<<<<<< HEAD
 	public static String[][] tabNavMaker( String nav )
 	{
 		int cptNav = 1;
@@ -180,7 +179,7 @@ public class patriceVersion
 
 		return tabNav;
 	}
-=======
+
 	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
 	{
 		if (cptPC != 0 || cptPS != 0)
@@ -197,6 +196,4 @@ public class patriceVersion
 			    "	</body>\n"                      +
 			    "</html>\n"                         );
 	}
-
->>>>>>> d4aa1d7431a5a516a8bd97aa87b03a04bc315800
 }
