@@ -125,7 +125,7 @@ public class patriceVersion
 					System.out.println (ligne.substring(3));
 				}
 			}
-		//	String[][] navTab = tabNavMaker(nav);
+			String[][] navTab = tabNavMaker(nav);
 			fermetureHTML(pw, cptPC, cptPS, cptDiapo);
 			pw.close();
 		}
@@ -158,7 +158,7 @@ public class patriceVersion
 			    + header                                                                    );
 	}
 
-	/*public static String[][] tabNavMaker( String nav )
+	public static String[][] tabNavMaker( String nav )
 	{
 		int cptNav = 1;
 		for (int i = 0; i < nav.length() ; i++ )
@@ -169,15 +169,19 @@ public class patriceVersion
 		String[][] tabNav = new String[2][cptNav];
 		for ( int j = 0; j < cptNav; j++)
 		{
+			String tempString = "";
 			int indexFin = nav.indexOf("#");
-			String tempString = nav.substring( 0, ( indexFin - 1 ) );
-			nav = nav.substring( indexFin + 1 );
-			tabNav[0][j] = tempString.substring(0,3);
-			tabNav[1][j] = tempString.substring(4);
+			if ( indexFin - 1 > 0 ) tempString = nav.substring( 0, ( indexFin - 1 ) );
+			if ( nav.length() > 3 )
+			{
+				nav = nav.substring( indexFin + 1 );
+				tabNav[0][j] = tempString.substring(0,3);
+				tabNav[1][j] = tempString.substring(4);
+			}
 		}
 
 		return tabNav;
-	}*/
+	}
 
 	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
 	{
