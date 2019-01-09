@@ -107,6 +107,7 @@ public class patriceVersion
 							cptDiapo++;
 							break;
 						case "L1:":
+							fermetureBalisesP(pw, cptPC, cptPS );
 							if (cptL1 == 0)
 							{
 								pw.write("\t\t\t<ul>\n"+"\t\t\t<li>"+ligne.substring(3)+"</li>\n");
@@ -119,6 +120,7 @@ public class patriceVersion
 							cptL1++;
 							break;
 						case "L2:":
+							fermetureBalisesP(pw, cptPC, cptPS );
 							if (cptL1 != 0 && cptL2 == 0)
 							{
 								pw.write("\t\t\t<ul>\n"+"\t\t\t<li>"+ligne.substring(3)+"</li>\n");
@@ -169,10 +171,16 @@ public class patriceVersion
 							cptL1 = cptL2 = 0;
 							cptPC++;
 							break;
-							case "IM:":fermetureBalisesP(pw, cptPC, cptPS );  AfficherImage(pw, ligne);break;
+							case "IM:":fermetureBalisesP(pw, cptPC, cptPS );
+							           AfficherImage(pw, ligne);break;
 					}
 					System.out.println (ligne.substring(3));
 				}
+			}
+			if (cptPC != 0 || cptPS != 0)
+			{
+				cptPS=0;cptPC=0;
+				pw.write("</p>\n");
 			}
 			fermetureHTML(pw, cptPC, cptPS, cptDiapo, nav);
 			pw.close();
@@ -295,11 +303,6 @@ public class patriceVersion
 
 	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo, String nav)
 	{
-		/*if (cptPC != 0 || cptPS != 0)
-		{
-			cptPS=0;cptPC=0;
-			pw.write("</p>\n");
-		}*/
 		pw.write("\t\t</article>\n");
 		nav = nav.substring(0, (nav.length() - 1));
 		navMaker(pw, nav);
