@@ -31,6 +31,7 @@ public class patriceVersion
 		String ligne;
 		Scanner     scIn;
 		PrintWriter pw;
+		int diapoMax = 0;
 		int cptDiapo = 0;
 		int cptPS = 0;
 		int cptPC = 0;
@@ -41,6 +42,27 @@ public class patriceVersion
 		String fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 		String nav = "";
 		String header = "";
+
+			try
+	{
+		scIn = new Scanner ( new FileInputStream ( "exemple.data"), "utf-8"  );
+		while ( scIn.hasNextLine() )
+		{
+			ligne = scIn.nextLine();
+			if (!(ligne.substring(0).equals("")))
+			{
+				if (ligne.substring(0,3).equals("DP:") && diapoMax < 99)
+				{
+					diapoMax++;
+				}
+			}
+		}
+		scIn.close();
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
 
 		try
 		{
@@ -92,7 +114,7 @@ public class patriceVersion
 							{
 								fermetureBalisesL( pw, cptL1, cptL2 );
 								fermetureBalisesP(pw, cptPC, cptPS );
-								fermetureHTML(pw, cptPC, cptPS, cptDiapo, nav);
+								fermetureHTML(pw, cptPC, cptPS, cptDiapo, nav, diapoMax);
 								pw.close();
 								cptPS = 0;
 								cptPC = 0;
@@ -182,7 +204,7 @@ public class patriceVersion
 				cptPS=0;cptPC=0;
 				pw.write("</p>\n");
 			}
-			fermetureHTML(pw, cptPC, cptPS, cptDiapo, nav);
+			fermetureHTML(pw, cptPC, cptPS, cptDiapo, nav, diapoMax);
 			pw.close();
 		}
 		catch(Exception e)
@@ -322,3 +344,39 @@ public class patriceVersion
 		pw.write("<img src=images/"+ligne.substring(3,posPoint)+" alt="+ligne.substring(posPoint+1)+">");
 	}
 }
+
+/*	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo, int diapoMax)
+	{
+		String s = "";
+
+		if (cptPC != 0 || cptPS != 0)
+		{
+			cptPS=0;cptPC=0;
+			pw.write("</p>\n");
+		}
+		s = "\t\t</article>\n" + "\t<footer>\n";
+
+		if (cptDiapo == 1)
+		{
+			s = s + "\t\t<p>⨯</p>\n";
+		}
+		else
+		{
+			s = s + "\t\t<p><a href=\"sortie" + (cptDiapo-2) + ".html\">⇠</a></p>\n";
+		}
+
+		s = s + "\t\t<h1>page " + cptDiapo + "/" + diapoMax + "</h1>\n";
+
+		if (cptDiapo == diapoMax)
+		{
+			s = s + "\t\t<p>⨯</p>\n";
+		}
+		else
+		{
+			s = s + "\t\t<p><a href=\"sortie" + (cptDiapo)+".html\">⇢</a></p>\n";
+		}
+
+		s = s + "</footer>\n" + "</body>\n" + "</html>\n";
+
+		pw.write(s);
+	}*/
