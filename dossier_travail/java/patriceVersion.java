@@ -55,16 +55,16 @@ public class patriceVersion
 				if (!(ligne.substring(0).equals(""))) {
 					switch (ligne.substring(0,3)){
 						case "TP:":
-							fermetureBalisesL( pw, cptL1, cptL2, cptPC, cptPS );
-							fermetureBalisesP(pw, cptPC, cptPS, cptL1, cptL2 );
+							fermetureBalisesL( pw, cptL1, cptL2 );
+							fermetureBalisesP(pw, cptPC, cptPS );
 							header = "\t<header><img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n" + ligne.substring(3) + "\n<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n</header>\n<article>\n";
 							pw.write (header);
 							cptL1 = cptL2 = 0;
 							cptPS = cptPC = 0;
 							break;
 						case "T1:":
-							fermetureBalisesL( pw, cptL1, cptL2, cptPC, cptPS );
-							fermetureBalisesP(pw, cptPC, cptPS, cptL1, cptL2 );
+							fermetureBalisesL( pw, cptL1, cptL2 );
+							fermetureBalisesP(pw, cptPC, cptPS );
 							cptT1++;
 							nav = ligne + "#";
 							pw.write ("\t\t<h1>" + cptT1 + " " + ligne.substring(3)+"</h1>\n");
@@ -72,8 +72,8 @@ public class patriceVersion
 							cptPS = cptPC = 0;
 							break;
 						case "T2:":
-							fermetureBalisesL( pw, cptL1, cptL2, cptPC, cptPS );
-							fermetureBalisesP(pw, cptPC, cptPS, cptL1, cptL2 );
+							fermetureBalisesL( pw, cptL1, cptL2 );
+							fermetureBalisesP(pw, cptPC, cptPS );
 							cptT2++;
 							nav = ligne + "#";
 							pw.write ("\t\t<h2>"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
@@ -81,8 +81,8 @@ public class patriceVersion
 							cptPS = cptPC = 0;
 							break;
 						case "t2:":
-							fermetureBalisesL( pw, cptL1, cptL2, cptPC, cptPS );
-							fermetureBalisesP(pw, cptPC, cptPS, cptL1, cptL2 );
+							fermetureBalisesL( pw, cptL1, cptL2 );
+							fermetureBalisesP(pw, cptPC, cptPS );
 							pw.write ("\t\t<h3>"+ ligne.substring(3)+"</h3>\n");
 							cptL1 = cptL2 = 0;
 							cptPS = cptPC = 0;
@@ -90,8 +90,8 @@ public class patriceVersion
 						case "DP:":
 							if(cptDiapo > 0)
 							{
-								fermetureBalisesL( pw, cptL1, cptL2, cptPC, cptPS );
-								fermetureBalisesP(pw, cptPC, cptPS, cptL1, cptL2 );
+								fermetureBalisesL( pw, cptL1, cptL2 );
+								fermetureBalisesP(pw, cptPC, cptPS );
 								fermetureHTML(pw, cptPC, cptPS, cptDiapo);
 								pw.close();
 								fichierDestination = racine + "/sortie" + cptDiapo + ".html";
@@ -130,7 +130,7 @@ public class patriceVersion
 							cptL2++;
 							break;
 						case "PS:":
-							fermetureBalisesL( pw, cptL1, cptL2, cptPC, cptPS );
+							fermetureBalisesL( pw, cptL1, cptL2 );
 							if (cptPC != 0)
 							{
 								cptPC=0;
@@ -148,7 +148,7 @@ public class patriceVersion
 							cptPS++;
 							break;
 						case "PC:":
-							fermetureBalisesL( pw, cptL1, cptL2, cptPC, cptPS );
+							fermetureBalisesL( pw, cptL1, cptL2 );
 							if (cptPS != 0)
 							{
 								cptPS=0;
@@ -165,7 +165,7 @@ public class patriceVersion
 							cptL1 = cptL2 = 0;
 							cptPC++;
 							break;
-							case "IM:":fermetureBalisesP(pw, cptPC, cptPS, cptL1, cptL2 );  AfficherImage(pw, ligne);break;
+							case "IM:":fermetureBalisesP(pw, cptPC, cptPS );  AfficherImage(pw, ligne);break;
 					}
 					System.out.println (ligne.substring(3));
 				}
@@ -180,7 +180,7 @@ public class patriceVersion
 		}
 	}
 
-	public static void fermetureBalisesP(PrintWriter pw, int cptPC, int cptPS, int cptL1, int cptL2 )
+	public static void fermetureBalisesP(PrintWriter pw, int cptPC, int cptPS)
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
@@ -188,7 +188,7 @@ public class patriceVersion
 		}
 	}
 
-	public static void fermetureBalisesL(PrintWriter pw, int cptL1, int cptL2, int cptPC, int cptPS )
+	public static void fermetureBalisesL(PrintWriter pw, int cptL1, int cptL2 )
 	{
 		if ( cptL1 != 0 )
 		{
