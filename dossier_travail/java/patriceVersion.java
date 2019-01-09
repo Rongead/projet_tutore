@@ -285,10 +285,10 @@ public class patriceVersion
 			cptPS=0;cptPC=0;
 			pw.write("</p>\n");
 		}
+		pw.write("\t\t</article>\n");
 		nav = nav.substring(0, (nav.length() - 1));
 		navMaker(pw, nav);
-		pw.write("\t\t</article>\n"                 +
-					"\t<footer>\n"                     +
+		pw.write(      "\t<footer>\n"                     +
 					"\t\t<p><a href=\"sortie"+(cptDiapo-2)+".html\">⨯</a></p>\n" +
 					"\t\t<h1>page "+cptDiapo+"/6</h1>\n"          +
 					"\t\t<p><a href=\"sortie"+(cptDiapo)+".html\">⇢</a></p>\n" +
