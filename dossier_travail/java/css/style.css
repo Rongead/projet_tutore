@@ -70,6 +70,7 @@ footer p{
     margin: 0px;
 	background-color: #e5e5e5;
 	box-shadow: 4px 4px 0px black;
+    -webkit-user-select: none;
 }
 
 footer p:active{
