@@ -1,3 +1,10 @@
+/** Projet tutoré
+ *  Générateur de diaporama HTML
+ *  Groupe 29
+ *  @author CONTE Lucas, MAISONNEUVE Patrice, NEVEU Aubin, PONTY Arthur, PRUNIER Sébastien
+ *  @date   09/01/2018 8:55
+ */
+
 import java.util.Scanner;
 import java.io.FileInputStream;
 
@@ -9,15 +16,13 @@ import java.io.PrintWriter;
 
 public class patriceVersion
 {
-	String source;
-	String racine;
-	int cptDiapo;
+	static String source;
+	static String racine;
 
 	public static void main(String[] args)
 	{
 		source = args[0];
 		racine = args[1];
-		cptDiapo = 0;
 		initialiserDiapo();
 	}
 
@@ -26,7 +31,7 @@ public class patriceVersion
 		String ligne;
 		Scanner     scIn;
 		PrintWriter pw;
-		int cptDP = 0;
+		int cptDiapo = 0;
 		int cptPS = 0;
 		int cptPC = 0;
 		int cptT1 = 0;
@@ -70,17 +75,8 @@ public class patriceVersion
 							cptPS = cptPC = 0;
 							break;
 						case "DP:":
-							fermetureBalisesP(pw, cptPC, cptPS);
-							if(cptDP==0)
-							{
-								pw.write ("\t<article>\n");
-							}
-							else
-							{
-								pw.write ("\t</article>\n\t<article>\n");
-							}
-							cptDP++;
-							cptPS = cptPC = 0;
+							cptDiapo++;
+							pw = nextDiapo(pw, cptPC, cptPS, cptDiapo);
 							break;
 						case "PS:":
 							if (cptPC != 0)
@@ -120,19 +116,6 @@ public class patriceVersion
 
 
 			}
-			if (cptPC != 0 || cptPS != 0)
-			{
-				cptPS=0;cptPC=0;
-				pw.write("</p>\n");
-			}
-			pw.write("\t\t</article>\n"                 +
-					     "\t<footer>\n"                     +
-					     "\t\t<p><a href=\"#\">x</a></p>\n" +
-					     "\t\t<h1>page 1/6</h1>\n"          +
-					     "\t\t<p><a href=\"#\">⇢</a></p>\n" +
-					     "</footer>\n"                      +
-			         "	</body>\n"                      +
-			         "</html>\n"                         );
 			pw.close();
 		}
 		catch(Exception e)
@@ -150,19 +133,33 @@ public class patriceVersion
 		}
 	}
 
-	public static void initalisationHTML()
+	public static PrintWriter nextDiapo(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
+	{
+		String fichierDestination;
+
+		fermetureBalisesP(pw, cptPC, cptPS);
+		fermetureHTML(pw, cptPC, cptPS, cptDiapo);
+		pw.close();
+		fichierDestination = racine + "/sortie" + cptDiapo + ".html";
+		pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
+		initalisationHTML(pw);
+		return pw;
+	}
+
+	public static void initalisationHTML(PrintWriter pw)
 	{
 		pw.write("<!DOCTYPE html>\n"                                                                +
 			    "<html>\n"                                                                         +
 			    "     <head>\n"                                                                    +
 			    "          <title></title>\n"                                                      +
-			    "          <meta charset=\"UTF-8\">\n"                                             +
+			    "          <meta charset=\"UTF-8\">\n"                                              +
 			    "          <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"   +
 			    "          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n" +
 			    "     </head>\n"                                                                   +
 			    "     <body>\n"                                                                     );
 	}
 
+<<<<<<< HEAD
 	public static String[][] tabNavMaker( String nav )
 	{
 		int cptNav = 1;
@@ -183,4 +180,23 @@ public class patriceVersion
 
 		return tabNav;
 	}
+=======
+	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
+	{
+		if (cptPC != 0 || cptPS != 0)
+		{
+			cptPS=0;cptPC=0;
+			pw.write("</p>\n");
+		}
+		pw.write("\t\t</article>\n"                 +
+					"\t<footer>\n"                     +
+					"\t\t<p><a href=\"#\">x</a><p>\n" +
+					"\t\t<h1>page "+cptDiapo+"/6</h1>\n"          +
+					"\t\t<p><a href=\"#\">⇢</a><p>\n" +
+					"</footer>\n"                      +
+			    "	</body>\n"                      +
+			    "</html>\n"                         );
+	}
+
+>>>>>>> d4aa1d7431a5a516a8bd97aa87b03a04bc315800
 }
