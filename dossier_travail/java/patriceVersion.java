@@ -28,7 +28,7 @@ public class patriceVersion
 		PrintWriter pw;
 		int diapoMax = 0;
 		int cptDiapo = 0;
-		int cptPS, cptPC, cptT1, cptL1, cptL2 = 0;
+		int cptPS = 0, cptPC = 0, cptT1 = 0, cptL1 = 0, cptL2 = 0;
 		int cptT2 = 1;
 		String fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 		String nav = "";
@@ -345,8 +345,8 @@ public class patriceVersion
 	{
 		String s = "";
 		nav = nav.substring(0, (nav.length() - 1));
-		navMaker(pw, nav);
 		pw.write("\t\t</article>\n");
+		navMaker(pw, nav);
 		s = "\t<footer>\n";
 
 		if (cptDiapo == 1)
