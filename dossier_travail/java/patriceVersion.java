@@ -82,7 +82,7 @@ public class patriceVersion
 							fermetureBalisesP(pw, cptPC, cptPS );
 							cptT1++;
 							nav += ligne + "#";
-							pw.write ("\t\t<h1>" + cptT1 + " " + ligne.substring(3)+"</h1>\n");
+							pw.write ("\t\t\t<h1>" + cptT1 + " " + ligne.substring(3)+"</h1>\n");
 							cptL1 = cptL2 = 0;
 							cptPS = cptPC = 0;
 							break;
@@ -92,7 +92,7 @@ public class patriceVersion
 							fermetureBalisesP(pw, cptPC, cptPS );
 							cptT2++;
 							nav += ligne + "#";
-							pw.write ("\t\t<h2>"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
+							pw.write ("\t\t\t<h2>"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
 							cptL1 = cptL2 = 0;
 							cptPS = cptPC = 0;
 							break;
@@ -100,7 +100,7 @@ public class patriceVersion
 						case "t2:":
 							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS );
-							pw.write ("\t\t<h3>"+ ligne.substring(3)+"</h3>\n");
+							pw.write ("\t\t\t<h3>"+ ligne.substring(3)+"</h3>\n");
 							cptL1 = cptL2 = 0;
 							cptPS = cptPC = 0;
 							break;
@@ -129,11 +129,11 @@ public class patriceVersion
 							fermetureBalisesP(pw, cptPC, cptPS );
 							if (cptL1 == 0)
 							{
-								pw.write("\t\t\t<ul>\n"+"\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+								pw.write("\t\t\t<ul>\n"+"\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
 							}
 							else
 							{
-								pw.write("\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+								pw.write("\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
 							}
 							cptPS = cptPC = 0;
 							cptL1++;
@@ -143,13 +143,13 @@ public class patriceVersion
 							fermetureBalisesP(pw, cptPC, cptPS );
 							if (cptL1 != 0 && cptL2 == 0)
 							{
-								pw.write("\t\t\t<ul>\n"+"\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+								pw.write("\t\t\t\t\t<ul>\n"+"\t\t\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
 							}
 							else
 							{
 								if ( cptL1 != 0 )
 								{
-									pw.write("\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+									pw.write("\t\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
 								}
 							}
 							cptPS = cptPC = 0;
@@ -180,11 +180,11 @@ public class patriceVersion
 							if (cptPS != 0)
 							{
 								cptPS=0;
-								pw.write("</p>\n");
+								pw.write("\t\t\t</p>\n");
 							}
 							if(cptPC==0)
 							{
-								pw.write ("\t<p class=\"encadrer\">"+  ligne.substring(3));
+								pw.write ("\t\t\t<p class=\"encadrer\">"+  ligne.substring(3));
 							}
 							else
 							{
@@ -205,18 +205,7 @@ public class patriceVersion
 				}
 			}
 
-			if (cptPC != 0 || cptPS != 0)
-			{
-				cptPS=0;cptPC=0;
-				pw.write("</p>\n");
-			}
-
-			if (cptPC != 0 || cptPS != 0)
-            	{
-               	cptPS=0;cptPC=0;
-               	pw.write("</p>\n");
-            	}
-
+			fermetureBalisesP(pw, cptPC, cptPS);
 			fermetureHTML(pw, cptDiapo, nav, diapoMax);
 			pw.close();
 
@@ -232,7 +221,7 @@ public class patriceVersion
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
-			pw.write("</p>\n");
+			pw.write("\t\t\t</p>\n");
 		}
 	}
 
@@ -240,8 +229,8 @@ public class patriceVersion
 	{
 		if ( cptL1 != 0 )
 		{
-			if ( cptL2 != 0 ) pw.write("</ul>\n");
-			pw.write("</ul>\n");
+			if ( cptL2 != 0 ) pw.write("\t\t\t\t\t</ul>\n");
+			pw.write("\t\t\t</ul>\n");
 		}
 	}
 
@@ -355,7 +344,7 @@ public class patriceVersion
 		{
 			s = s + "\t\t<p>⨯</p>\n";
 		}
-		s = "\t\t</article>\n" + "\t\t<footer>\n";
+		s = "\t\t<footer>\n";
 
 		if (cptDiapo == 1)		s = s + "\t\t\t<p>⨯</p>\n";
 		else
