@@ -43,26 +43,26 @@ public class patriceVersion
 		String nav = "";
 		String header = "";
 
-			try
-	{
-		scIn = new Scanner ( new FileInputStream ( "exemple.data"), "utf-8"  );
-		while ( scIn.hasNextLine() )
+		try
 		{
-			ligne = scIn.nextLine();
-			if (!(ligne.substring(0).equals("")))
+			scIn = new Scanner ( new FileInputStream ( "exemple.data"), "utf-8"  );
+			while ( scIn.hasNextLine() )
 			{
-				if (ligne.substring(0,3).equals("DP:") && diapoMax < 99)
+				ligne = scIn.nextLine();
+				if (!(ligne.substring(0).equals("")))
 				{
-					diapoMax++;
+					if (ligne.substring(0,3).equals("DP:") && diapoMax < 99)
+					{
+						diapoMax++;
+					}
 				}
 			}
+			scIn.close();
 		}
-		scIn.close();
-	}
-	catch(Exception e)
-	{
-		e.printStackTrace();
-	}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 
 		try
 		{
@@ -79,7 +79,7 @@ public class patriceVersion
 						case "TP:":
 							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS );
-							header = "\t<header><img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n" + ligne.substring(3) + "\n<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n</header>\n<article>\n";
+							header = "\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t" + ligne.substring(3) + "\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\t\t<article>\n";
 							pw.write (header);
 							cptL1 = cptL2 = 0;
 							cptPS = cptPC = 0;
@@ -286,7 +286,7 @@ public class patriceVersion
 	{
 		String[][] tabNav = tabNavMaker(nav);
 		int cptT1 = 0, cptT2 = 0;
-		pw.write("\t<nav>\n\t\t<ul>\n");
+		pw.write("\t\t<nav>\n\t\t\t<ul>\n");
 		if(tabNav[0][0] != null)
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
@@ -295,32 +295,32 @@ public class patriceVersion
 				{
 					if(cptT2 > 0)
 					{
-						pw.write("\t\t\t\t</ul>");
+						pw.write("\t\t\t\t\t</ul>");
 						cptT2 = 0;
 					}
 					if(cptT1 > 0)
 					{
-						pw.write("\t\t\t</li>");
+						pw.write("\t\t\t\t</li>");
 					}
-					pw.write("\t\t\t<li>\n\t\t\t\t" + tabNav[1][i] + "\n");
+					pw.write("\t\t\t\t<li>\n\t\t\t\t\t" + tabNav[1][i] + "\n");
 					cptT1++;
 				}
 				else
 				{
 					if(cptT2 == 0)
 					{
-						pw.write("\t\t\t\t<ul>\n");
+						pw.write("\t\t\t\t\t<ul>\n");
 					}
-					pw.write("\t\t\t\t\t<li>\n\t\t\t\t\t\t" + tabNav[1][i] + "\n\t\t\t\t\t</li>\n");
+					pw.write("\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t" + tabNav[1][i] + "\n\t\t\t\t\t\t</li>\n");
 					cptT2++;
 				}
 			}
 		}
 		if(cptT2 > 0)
 		{
-			pw.write("\t\t\t\t</ul>\n\t\t\t</li>\n");
+			pw.write("\t\t\t\t\t</ul>\n\t\t\t\t</li>\n");
 		}
-		pw.write("\t\t</ul>\n\t</nav>\n");
+		pw.write("\t\t\t</ul>\n\t\t</nav>\n");
 	}
 
 	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo, String nav, int diapoMax)
@@ -335,26 +335,26 @@ public class patriceVersion
 			cptPS=0;cptPC=0;
 			pw.write("</p>\n");
 		}
-		s = "\t\t</article>\n" + "\t<footer>\n";
+		s = "\t\t</article>\n" + "\t\t<footer>\n";
 
-		if (cptDiapo == 1)		s = s + "\t\t<p>⨯</p>\n";
+		if (cptDiapo == 1)		s = s + "\t\t\t<p>⨯</p>\n";
 		else
 		{
-			s = s + "\t\t<p><a href=\"sortie" + (cptDiapo-2) + ".html\">⇠</a></p>\n";
+			s = s + "\t\t\t<p><a href=\"sortie" + (cptDiapo-2) + ".html\">⇠</a></p>\n";
 		}
 
-		s = s + "\t\t<h1>page " + cptDiapo + "/" + diapoMax + "</h1>\n";
+		s = s + "\t\t\t<h1>page " + cptDiapo + "/" + diapoMax + "</h1>\n";
 
 		if (cptDiapo == diapoMax)
 		{
-			s = s + "\t\t<p>⨯</p>\n";
+			s = s + "\t\t\t<p>⨯</p>\n";
 		}
 		else
 		{
-			s = s + "\t\t<p><a href=\"sortie" + (cptDiapo)+".html\">⇢</a></p>\n";
+			s = s + "\t\t\t<p><a href=\"sortie" + (cptDiapo)+".html\">⇢</a></p>\n";
 		}
 
-		s = s + "</footer>\n" + "</body>\n" + "</html>\n";
+		s = s + "\t\t</footer>\n" + "\t</body>\n" + "</html>\n";
 
 		pw.write(s);
 	}
