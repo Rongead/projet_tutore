@@ -61,14 +61,14 @@ public class patriceVersion
 						case "T1:":
 							fermetureBalisesP(pw, cptPC, cptPS);
 							cptT1++;
-							nav = ligne + "#";
+							nav += ligne + "#";
 							pw.write ("\t\t<h1>" + cptT1 + " " + ligne.substring(3)+"</h1>\n");
 							cptPS = cptPC = 0;
 							break;
 						case "T2:":
 							fermetureBalisesP(pw, cptPC, cptPS);
 							cptT2++;
-							nav = ligne + "#";
+							nav += ligne + "#";
 							pw.write ("\t\t<h2>"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
 							cptPS = cptPC = 0;
 							break;
@@ -81,7 +81,7 @@ public class patriceVersion
 							if(cptDiapo > 0)
 							{
 								fermetureBalisesP(pw, cptPC, cptPS);
-								fermetureHTML(pw, cptPC, cptPS, cptDiapo);
+								fermetureHTML(pw, cptPC, cptPS, cptDiapo, nav);
 								pw.close();
 								fichierDestination = racine + "/sortie" + cptDiapo + ".html";
 								pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
@@ -125,8 +125,7 @@ public class patriceVersion
 					System.out.println (ligne.substring(3));
 				}
 			}
-			String[][] navTab = tabNavMaker(nav);
-			fermetureHTML(pw, cptPC, cptPS, cptDiapo);
+			fermetureHTML(pw, cptPC, cptPS, cptDiapo, nav);
 			pw.close();
 		}
 		catch(Exception e)
@@ -160,6 +159,7 @@ public class patriceVersion
 
 	public static String[][] tabNavMaker( String nav )
 	{
+		System.out.println(nav);
 		int cptNav = 1;
 		for (int i = 0; i < nav.length() ; i++ )
 		{
@@ -171,25 +171,77 @@ public class patriceVersion
 		{
 			String tempString = "";
 			int indexFin = nav.indexOf("#");
-			if ( indexFin - 1 > 0 ) tempString = nav.substring( 0, ( indexFin - 1 ) );
-			if ( nav.length() > 3 )
+			if ( indexFin - 1 > 0 )
 			{
-				nav = nav.substring( indexFin + 1 );
+				tempString = nav.substring( 0, ( indexFin  ) );
+			}
+			else
+			{
+				tempString = nav;
+			}
+			if ( tempString.length() > 2)
+			{
 				tabNav[0][j] = tempString.substring(0,3);
-				tabNav[1][j] = tempString.substring(4);
+				tabNav[1][j] = tempString.substring(3);
+				if(nav.length() > 4)
+				{
+					nav = nav.substring( indexFin + 1);
+				}
 			}
 		}
-
 		return tabNav;
 	}
 
-	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
+	public static void navMaker(PrintWriter pw, String nav)
+	{
+		String[][] tabNav = tabNavMaker(nav);
+		int cptT1 = 0, cptT2 = 0;
+		pw.write("\t<nav>\n\t\t<ul>\n");
+		if(tabNav[0][0] != null)
+		{
+			for(int i = 0; i < tabNav[0].length; i++)
+			{
+				if(tabNav[0][i].equals("T1:"))
+				{
+					if(cptT2 > 0)
+					{
+						pw.write("\t\t\t\t</ul>");
+						cptT2 = 0;
+					}
+					if(cptT1 > 0)
+					{
+						pw.write("\t\t\t</li>");
+					}
+					pw.write("\t\t\t<li>\n\t\t\t\t" + tabNav[1][i] + "\n");
+					cptT1++;
+				}
+				else
+				{
+					if(cptT2 == 0)
+					{
+						pw.write("\t\t\t\t<ul>\n");
+					}
+					pw.write("\t\t\t\t\t<li>\n\t\t\t\t\t\t" + tabNav[1][i] + "\n\t\t\t\t\t</li>\n");
+					cptT2++;
+				}
+			}
+		}
+		if(cptT2 > 0)
+		{
+			pw.write("\t\t\t\t</ul>\n\t\t\t</li>\n");
+		}
+		pw.write("\t\t</ul>\n\t</nav>\n");
+	}
+
+	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo, String nav)
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
 			cptPS=0;cptPC=0;
 			pw.write("</p>\n");
 		}
+		nav = nav.substring(0, (nav.length() - 1));
+		navMaker(pw, nav);
 		pw.write("\t\t</article>\n"                 +
 					"\t<footer>\n"                     +
 					"\t\t<p><a href=\"sortie"+(cptDiapo-2)+".html\">x</a></p>\n" +
