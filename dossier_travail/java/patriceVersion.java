@@ -236,14 +236,14 @@ public class patriceVersion
 
 	public static void initalisationHTML(PrintWriter pw, String header)
 	{
-		pw.write("<!DOCTYPE html>\n"                                                                +
-		"<html>\n"                                                                         +
-		"     <head>\n"                                                                    +
-		"          <title></title>\n"                                                      +
-		"          <meta charset=\"UTF-8\">\n"                                             +
-		"          <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"   +
-		"          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n" +
-		"     </head>\n"                                                                   +
+		pw.write("<!DOCTYPE html>\n"                                                        +
+		"<html>\n"                                                                          +
+		"     <head>\n"                                                                     +
+		"          <title></title>\n"                                                       +
+		"          <meta charset=\"UTF-8\">\n"                                              +
+		"          <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"    +
+		"          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n"  +
+		"     </head>\n"                                                                    +
 		"     <body>\n"
 		+ header                                                                            );
 	}
@@ -300,7 +300,7 @@ public class patriceVersion
 			{
 				if(i < 10)
 				{
-					sortie = "sortie0" + 
+					sortie = "sortie0" +
 				}
 				if(tabNav[0][i].equals("T1:"))
 				{
