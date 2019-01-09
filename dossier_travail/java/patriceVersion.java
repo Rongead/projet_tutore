@@ -375,12 +375,12 @@ public class patriceVersion
 		navMaker(pw, nav, logPage);
 		s = "\n\t\t<footer>\n";
 
-		s = s + "\t\t\t<p><a href= sortie00.html>D</a></p>\n";
+		s = s + "\t\t\t<a href= sortie00.html><div><p>D</p></div></a>\n";
 
 		if (cptDiapo == 1)		s = s + "\t\t\t<p>⨯</p>\n";
 		else
 		{
-			s = s + lien(cptDiapo - 2) + "⇠</a></p>\n";
+			s = s + lien(cptDiapo - 2) + "⇠</p></div></a>\n";
 		}
 
 		s = s + "\t\t\t<h1>page " + cptDiapo + "/" + diapoMax + "</h1>\n";
@@ -391,10 +391,10 @@ public class patriceVersion
 		}
 		else
 		{
-			s = s + lien(cptDiapo) +"⇢</a></p>\n";
+			s = s + lien(cptDiapo) +"⇢</p></div></a>\n";
 		}
 
-		s = s + lien(diapoMax - 1) + "F</a></p>\n";
+		s = s + lien(diapoMax - 1) + "F</p></div></a>\n";
 
 		s = s + "\t\t</footer>\n" + "\t</body>\n" + "</html>\n";
 
@@ -413,11 +413,11 @@ public class patriceVersion
 		String retour;
 		if(cpt < 10)
 		{
-			retour = "\t\t\t<p><a href=\"sortie0" + (cpt)+".html\">";
+			retour = "\t\t\t<a href=\"sortie0" + (cpt)+".html\"><div><p>";
 		}
 		else
 		{
-			retour = "\t\t\t<p><a href=\"sortie" + (cpt)+".html\">";
+			retour = "\t\t\t<a href=\"sortie" + (cpt)+".html\"><div><p>";
 		}
 
 		return retour;
