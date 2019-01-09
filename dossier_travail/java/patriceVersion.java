@@ -143,15 +143,15 @@ public class patriceVersion
 
 	public static void initalisationHTML(PrintWriter pw)
 	{
-		pw.write("<!DOCTYPE html>\n"                                                                +
-			    "<html>\n"                                                                         +
-			    "     <head>\n"                                                                    +
-			    "          <title></title>\n"                                                      +
-			    "          <meta charset=\"UTF-8\">\n"                                              +
-			    "          <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"   +
-			    "          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n" +
-			    "     </head>\n"                                                                   +
-			    "     <body>\n"                                                                     );
+		pw.write("<!DOCTYPE html>\n"                                                          +
+		         "<html>\n"                                                                   +
+		         "\t<head>\n"                                                                 +
+		         "\t\t<title></title>\n"                                                      +
+		         "\t\t<meta charset=\"UTF-8\">\n"                                             +
+		         "\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"   +
+		         "\t\t<link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n" +
+		         "\t</head>\n"                                                                +
+		         "\t<body>\n"                                                                 );
 	}
 
 	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
@@ -161,14 +161,14 @@ public class patriceVersion
 			cptPS=0;cptPC=0;
 			pw.write("</p>\n");
 		}
-		pw.write("\t\t</article>\n"                 +
-					"\t<footer>\n"                     +
-					"\t\t<p><a href=\"#\">x</a><p>\n" +
-					"\t\t<h1>page "+cptDiapo+"/6</h1>\n"          +
-					"\t\t<p><a href=\"#\">⇢</a><p>\n" +
-					"</footer>\n"                      +
-			    "	</body>\n"                      +
-			    "</html>\n"                         );
+		pw.write("\t\t</article>\n"                   +
+		         "\t<footer>\n"                       +
+		         "\t\t<p><a href=\"#\">x</a><p>\n"    +
+		         "\t\t<h1>page "+cptDiapo+"/6</h1>\n" +
+		         "\t\t<p><a href=\"#\">⇢</a><p>\n"    +
+		         "\t</footer>\n"                      +
+		         "\t</body>\n"                        +
+		         "</html>\n"                          );
 	}
 
 }
