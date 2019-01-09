@@ -345,11 +345,6 @@ public class patriceVersion
 		navMaker(pw, nav);
 		s = "\n\t\t<footer>\n";
 
-		if (cptDiapo == 1)
-		{
-			s = s + "\t\t<p>⨯</p>\n";
-		}
-
 		s = s + "\t\t\t<p><a href= sortie0.html>D</a></p>\n";
 
 		if (cptDiapo == 1)		s = s + "\t\t\t<p>⨯</p>\n";
