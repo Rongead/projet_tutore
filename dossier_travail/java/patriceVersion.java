@@ -59,8 +59,7 @@ public class patriceVersion
 							fermetureBalisesP(pw, cptPC, cptPS);
 							header = "\t<header><img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n" + ligne.substring(3) + "\n<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n</header>\n<article>\n";
 							pw.write (header);
-							cptL1 = cptL2 = 0;
-							cptPS = cptPC = 0;
+
 							break;
 						case "T1:":
 							fermetureBalisesL( pw, cptL1, cptL2 );
@@ -68,8 +67,7 @@ public class patriceVersion
 							cptT1++;
 							nav = ligne + "#";
 							pw.write ("\t\t<h1>" + cptT1 + " " + ligne.substring(3)+"</h1>\n");
-							cptL1 = cptL2 = 0;
-							cptPS = cptPC = 0;
+
 							break;
 						case "T2:":
 							fermetureBalisesL( pw, cptL1, cptL2 );
@@ -77,21 +75,19 @@ public class patriceVersion
 							cptT2++;
 							nav = ligne + "#";
 							pw.write ("\t\t<h2>"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
-							cptL1 = cptL2 = 0;
-							cptPS = cptPC = 0;
+
 							break;
 						case "t2:":
 							fermetureBalisesL( pw, cptL1, cptL2 );
 							fermetureBalisesP(pw, cptPC, cptPS);
 							pw.write ("\t\t<h3>"+ ligne.substring(3)+"</h3>\n");
-							cptL1 = cptL2 = 0;
-							cptPS = cptPC = 0;
+
 							break;
 						case "DP:":
 							if(cptDiapo > 0)
 							{
-								fermetureBalisesP(pw, cptPC, cptPS);
 								fermetureBalisesL( pw, cptL1, cptL2 );
+								fermetureBalisesP(pw, cptPC, cptPS);
 								fermetureHTML(pw, cptPC, cptPS, cptDiapo);
 								pw.close();
 								fichierDestination = racine + "/sortie" + cptDiapo + ".html";
@@ -159,6 +155,7 @@ public class patriceVersion
 							}
 							cptPC++;
 							break;
+							case "IM:":fermetureBalisesP(pw, cptPC, cptPS);  AfficherImage(pw, ligne);break;
 					}
 					System.out.println (ligne.substring(3));
 				}
@@ -177,6 +174,7 @@ public class patriceVersion
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
+			cptPS = cptPC = 0;
 			pw.write("</p>\n");
 		}
 	}
@@ -188,6 +186,7 @@ public class patriceVersion
 			if ( cptL2 != 0 ) pw.write("</ul>\n");
 			pw.write("</ul>\n");
 		}
+		cptL1 = cptL2 = 0;
 	}
 
 	public static void initalisationHTML(PrintWriter pw, String header)
@@ -244,5 +243,12 @@ public class patriceVersion
 					"</footer>\n"                      +
 			    "	</body>\n"                      +
 			    "</html>\n"                         );
+	}
+
+	public static void AfficherImage(PrintWriter pw, String ligne)
+	{
+		int posPoint;
+		posPoint = ligne.indexOf ( ':', 3 );
+		pw.write("<img src=images/"+ligne.substring(3,posPoint)+" alt="+ligne.substring(posPoint+1)+">");
 	}
 }
