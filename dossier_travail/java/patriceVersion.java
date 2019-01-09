@@ -125,7 +125,8 @@ public class patriceVersion
 					System.out.println (ligne.substring(3));
 				}
 			}
-			fermetureHTML(pw, cptPC, cptPS, cptDiapo);
+			String[][] navTab = tabNavMaker(nav);
+			fermetureHTML(pw, cptPC, cptPS, cptDiapo, navTab);
 			pw.close();
 		}
 		catch(Exception e)
@@ -178,7 +179,7 @@ public class patriceVersion
 		return tabNav;
 	}
 
-	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo)
+	public static void fermetureHTML(PrintWriter pw, int cptPC, int cptPS, int cptDiapo, String[][] tabNav)
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
