@@ -207,8 +207,6 @@ public class patriceVersion
 
 					}
 
-					System.out.println (ligne.substring(3));
-
 				}
 			}
 
@@ -287,12 +285,6 @@ public class patriceVersion
 				if(nav.length() > 4) nav = nav.substring( indexFin + 1);
 			}
 		}
-
-		for(int i = 0; i < tabNav[0].length; i++)
-		{
-			System.out.println(tabNav[0][i] + " + " + tabNav[1][i]);
-		}
-
 		return tabNav;
 	}
 
