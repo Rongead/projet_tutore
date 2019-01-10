@@ -77,7 +77,7 @@ public class patriceVersion
 					switch (ligne.substring(0,3)){
 						case "TP:":
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
-							if (ligne.substring(0,9).equals("TP:Google"))
+							if (ligne.contains("Google"))
 							{
 								ligne = ligne.replaceAll("Google","<span class=\"bleu\">G</span><span class=\"rouge\">o</span><span class=\"jaune\">o</span><span class=\"bleu\">g</span><span class=\"vert\">l</span><span class=\"rouge\">e</span>");
 							}
