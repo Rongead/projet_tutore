@@ -13,11 +13,13 @@ public class patriceVersion
 {
 	static String source;
 	static String racine;
+	static String nomFichier;
 
 	public static void main(String[] args)
 	{
 		source = args[0];
 		racine = args[1];
+		nomFichier = source.substring(0, source.indexOf("."));
 		initialiserDiapo();
 	}
 
@@ -31,8 +33,10 @@ public class patriceVersion
 		String fichierDestination;
 		String header = "", nav = "";
 		String logPage = "";
+		String subLigne;
 
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
+		System.out.print("posdjgposfdjp");
 
 
 
@@ -40,6 +44,9 @@ public class patriceVersion
 		System.out.println(fichierDestination);
 
 
+		System.out.println(fichierDestination);
+
+		System.out.println("gneeee" + fichierDestination);
 		try
 		{
 			scIn = new Scanner ( new FileInputStream (source), "utf-8"  );
@@ -76,16 +83,19 @@ public class patriceVersion
 			{
 				ligne = scIn.nextLine();
 
-				if (!(ligne.substring(0).equals(""))) {
+				if (!(ligne.substring(0).equals("")))
+				{
+
+					subLigne = ligne.substring(3);
 
 					switch (ligne.substring(0,3)){
 						case "TP:":
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
-							if (ligne.contains("Google"))
+							if (subLigne.contains("Google"))
 							{
-								ligne = ligne.replaceAll("Google","<span class=\"bleu\">G</span><span class=\"rouge\">o</span><span class=\"jaune\">o</span><span class=\"bleu\">g</span><span class=\"vert\">l</span><span class=\"rouge\">e</span>");
+								subLigne = subLigne.replaceAll("Google","<span class=\"bleu\">G</span><span class=\"rouge\">o</span><span class=\"jaune\">o</span><span class=\"bleu\">g</span><span class=\"vert\">l</span><span class=\"rouge\">e</span>");
 							}
-							header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + ligne.substring(3) + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
+							header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + subLigne  + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
 							pw.write (header);
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
@@ -94,20 +104,20 @@ public class patriceVersion
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							cptT1++;
 
-							pw.write ("\t\t\t<h1>" + cptT1 + " " + ligne.substring(3)+"</h1>\n");
+							pw.write ("\t\t\t<h1>" + cptT1 + " " + subLigne +"</h1>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
 						case "T2:":
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							cptT2++;
-							pw.write ("\t\t\t<h2 id=titre" + cptT2 + ">"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
+							pw.write ("\t\t\t<h2 id=titre" + cptT2 + ">"+ cptT1 + "." + cptT2 + " " + subLigne +"</h2>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
 						case "t2:":
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
-							pw.write ("\t\t\t<h3>"+ ligne.substring(3)+"</h3>\n");
+							pw.write ("\t\t\t<h3>"+ subLigne +"</h3>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
@@ -120,16 +130,7 @@ public class patriceVersion
 								pw.close();
 								cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 								cptT2 = 1;
-								fichierDestination = racine + "/sortie";
-
-								if(cptDiapo < 10)
-								{
-									fichierDestination += "0" + cptDiapo + ".html";
-								}
-								else
-								{
-									fichierDestination += cptDiapo + ".html";
-								}
+								fichierDestination = racine + "/" + lien(cptDiapo);
 								pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 								initalisationHTML(pw, header);
 							}
@@ -142,11 +143,11 @@ public class patriceVersion
 
 							if (cptL1 == 0)
 							{
-								pw.write("\t\t\t<ul>\n"+"\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+								pw.write("\t\t\t<ul>\n"+"\t\t\t\t<li>"+subLigne +"</li>\n");
 							}
 							else
 							{
-								pw.write("\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+								pw.write("\t\t\t\t<li>"+subLigne +"</li>\n");
 							}
 
 							cptL1++;
@@ -157,13 +158,13 @@ public class patriceVersion
 
 							if (cptL1 != 0 && cptL2 == 0)
 							{
-								pw.write("\t\t\t\t<ul>\n"+"\t\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+								pw.write("\t\t\t\t<ul>\n"+"\t\t\t\t\t<li>"+subLigne +"</li>\n");
 							}
 							else
 							{
 								if ( cptL1 != 0 )
 								{
-									pw.write("\t\t\t\t\t<li>"+ligne.substring(3)+"</li>\n");
+									pw.write("\t\t\t\t\t<li>"+subLigne +"</li>\n");
 								}
 							}
 
@@ -180,11 +181,11 @@ public class patriceVersion
 
 							if(cptPS==0)
 							{
-								pw.write ("\n\t\t\t<p>\n\t\t\t\t"+  ligne.substring(3));
+								pw.write ("\n\t\t\t<p>\n\t\t\t\t"+  subLigne );
 							}
 							else
 							{
-								pw.write ("\n\t\t\t\t<br />" + ligne.substring(3));
+								pw.write ("\n\t\t\t\t<br />" + subLigne );
 							}
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS++;
@@ -201,11 +202,11 @@ public class patriceVersion
 
 							if(cptPC==0)
 							{
-								pw.write ("\n\t\t\t<p class=\"encadrer\">\n\t\t\t\t"+  ligne.substring(3));
+								pw.write ("\n\t\t\t<p class=\"encadrer\">\n\t\t\t\t"+  subLigne );
 							}
 							else
 							{
-								pw.write ("\n\t\t\t\t<br />" + ligne.substring(3));
+								pw.write ("\n\t\t\t\t<br />" + subLigne );
 							}
 
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
@@ -268,7 +269,7 @@ public class patriceVersion
 		"          <meta charset=\"UTF-8\">\n"                                              +
 		"          <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"    +
 		"          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n"  +
-		"     </head>\n\n"                                                                    +
+		"     </head>\n\n"                                                                  +
 		"     <body>\n"
 		+ header                                                                            );
 	}
@@ -320,14 +321,7 @@ public class patriceVersion
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
 			{
-				if(cptT1 < 10)
-				{
-					sortie = "sortie0" + tabNav[2][i] + ".html";
-				}
-				else
-				{
-					sortie = "sortie" + tabNav[2][i] + ".html";
-				}
+				sortie = lien(cptT1);
 
 				if(tabNav[0][i].equals("T1:"))
 				{
@@ -370,26 +364,19 @@ public class patriceVersion
 		navMaker(pw, nav, logPage);
 		s = "\n\t\t<footer>\n";
 
-		s = s + "\t\t\t<a href=\"sortie00.html\"><div><p>D</p></div></a>\n";
+		s = s + "\t\t\t<a href=\""+ nomFichier +"00.html\"><div><p>D</p></div></a>\n";
 
-		if (cptDiapo == 1)		s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";
-		else
-		{
-			s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 2) + "\"><div><p>" +"⇠</p></div></a>\n";
-		}
+		if (cptDiapo == 1){		s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";}
+		else{s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 2) + "\"><div><p>" +"⇠</p></div></a>\n";}
 
-		if (cptDiapo == diapoMax)
-		{
-			s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";
-		}
-		else
-		{
-			s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "\"><div><p>" + "⇢</p></div></a>\n";
-		}
+		s = s + "\t\t\t<h1>Page " + cptDiapo + "/" + diapoMax + "</h1>\n";
 
-		s = s + "\t\t\t<a href=\"" + lien(diapoMax - 1) + "\"><div><p>" + "F</p></div></a>\n";
+		if (cptDiapo == diapoMax){s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";}
+		else{s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "\"><div><p>⇢</p></div></a>\n";}
 
-		s = s + "\t\t</footer>\n" + "\t</body>\n" + "</html>\n";
+		s = s + "\t\t\t<a href=\"" + lien(diapoMax - 1) + "\"><div><p>F</p></div></a>\n";
+
+		s = s + "\t\t</footer>\n\t</body>\n</html>\n";
 
 		pw.write(s);
 	}
@@ -404,14 +391,8 @@ public class patriceVersion
 	public static String lien(int cpt)
 	{
 		String retour;
-		if(cpt < 10)
-		{
-			retour = "sortie0" + (cpt)+".html";
-		}
-		else
-		{
-			retour = "sortie" + (cpt)+".html";
-		}
+		if(cpt < 10){retour = nomFichier +"0" + (cpt)+".html";}
+		else        {retour = nomFichier + (cpt)+".html";}
 
 		return retour;
 	}
