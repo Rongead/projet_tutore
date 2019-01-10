@@ -392,8 +392,8 @@ public class patriceVersion
 	public static String lien(int cpt)
 	{
 		String retour;
-		if(cpt < 10){retour = "sortie0" + (cpt)+".html";}
-		else        {retour = "sortie" + (cpt)+".html";}
+		if(cpt < 10){retour = nomFichier +"0" + (cpt)+".html";}
+		else        {retour = nomFichier + (cpt)+".html";}
 
 		return retour;
 	}
