@@ -38,10 +38,6 @@ public class patriceVersion
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
 
 		fichierDestination = racine + "/" + lien(cptDiapo);
-<<<<<<< HEAD
-
-=======
->>>>>>> 325a6c40deb675ba933c0c072d2a3f1e30e137c4
 		try
 		{
 			scIn = new Scanner ( new FileInputStream (source), "utf-8"  );
@@ -92,7 +88,6 @@ public class patriceVersion
 							}
 							header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + subLigne  + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
 							pw.write (header);
-							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
 						case "T1:":
@@ -100,20 +95,17 @@ public class patriceVersion
 							cptT1++;
 
 							pw.write ("\t\t\t<h1>" + cptT1 + " " + subLigne +"</h1>\n");
-							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
 						case "T2:":
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							cptT2++;
 							pw.write ("\t\t\t<h2 id=titre" + cptT2 + ">"+ cptT1 + "." + cptT2 + " " + subLigne +"</h2>\n");
-							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
 						case "t2:":
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							pw.write ("\t\t\t<h3>"+ subLigne +"</h3>\n");
-							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
 						case "DP:":
@@ -123,7 +115,6 @@ public class patriceVersion
 								fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 								fermetureHTML(pw, cptDiapo, nav, diapoMax, logPage);
 								pw.close();
-								cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 								cptT2 = 1;
 								fichierDestination = racine + "/" + lien(cptDiapo);
 								pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
@@ -182,7 +173,6 @@ public class patriceVersion
 							{
 								pw.write ("\n\t\t\t\t<br />" + subLigne );
 							}
-							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS++;
 							break;
 
@@ -203,8 +193,6 @@ public class patriceVersion
 							{
 								pw.write ("\n\t\t\t\t<br />" + subLigne );
 							}
-
-							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPC++;
 							break;
 
@@ -214,6 +202,11 @@ public class patriceVersion
 
 					}
 
+					if (!(ligne.substring(0,3).equals("L2:")) && !(ligne.substring(0,3).equals("L1:")))
+					{
+						cptL2 = 0;
+						cptL1 = 0;
+					}
 					if (!(ligne.substring(0,3).equals("PS:"))) cptPS = 0;
 					if (!(ligne.substring(0,3).equals("PC:"))) cptPC = 0;
 
