@@ -93,7 +93,7 @@ public class patriceVersion
 						case "T1:":   //pour la création d'un titre de niveau 1
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							cptT1++;
-
+							cptT2 = 0;
 							pw.write ("\t\t\t<h1>" + cptT1 + " " + subLigne +"</h1>\n");
 							break;
 
@@ -115,7 +115,6 @@ public class patriceVersion
 								fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 								fermetureHTML(pw, cptDiapo, nav, diapoMax, logPage);
 								pw.close();
-								cptT2 = 1;
 								fichierDestination = racine + "/" + lien(cptDiapo);
 								pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 								initalisationHTML(pw, header);
