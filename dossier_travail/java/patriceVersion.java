@@ -38,7 +38,10 @@ public class patriceVersion
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
 
 		fichierDestination = racine + "/" + lien(cptDiapo);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 325a6c40deb675ba933c0c072d2a3f1e30e137c4
 		try
 		{
 			scIn = new Scanner ( new FileInputStream (source), "utf-8"  );
