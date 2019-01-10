@@ -20,15 +20,14 @@ PC:Janvier 2019
 
 DP:
 
+PS:
+PS:
+PS:
+PS:
+
 T1:Présentation du logiciel
 
 IM:image-web.jpg:web
-
-PC:Le logiciel web nécessite donc un accès permanent à Internet et permet de
-PC:créer et d’éditer des documents à plusieurs en temps réel.
-
-PS:Chaque modification opérée par un utilisateur est immédiatement sauvegardée et
-PS:affichée chez les autres utilisateurs actifs sur le document.
 
 DP:
 
@@ -96,6 +95,11 @@ PS:Google Chrome, Mozilla Firefox, Internet Explorer, Microsoft Edge et Apple Sa
 
 DP:
 
+PS:
+PS:
+PS:
+PS:
+
 T1:Partage de documents
 
 IM:partage-fichiers.jpg:partage
@@ -150,7 +154,13 @@ IM:pptodp.png:fichiers
 t2:Google slides est compatible avec de nombreux formats de fichiers
 
 IM:jpgpngsvg.png:fichiersimg
+
 DP:
+
+PS:
+PS:
+PS:
+PS:
 
 T1:Comparaisons avec des logiciels similaires
 
