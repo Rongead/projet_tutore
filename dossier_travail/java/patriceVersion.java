@@ -36,17 +36,8 @@ public class patriceVersion
 		String subLigne;
 
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
-		System.out.print("posdjgposfdjp");
-
-
 
 		fichierDestination = racine + "/" + lien(cptDiapo);
-		System.out.println(fichierDestination);
-
-
-		System.out.println(fichierDestination);
-
-		System.out.println("gneeee" + fichierDestination);
 		try
 		{
 			scIn = new Scanner ( new FileInputStream (source), "utf-8"  );
