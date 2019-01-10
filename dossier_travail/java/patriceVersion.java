@@ -375,7 +375,7 @@ public class patriceVersion
 		s = s + "\t\t\t<a href=\""+ nomFichier +"00.html\"><div><p>D</p></div></a>\n";   //Créer le lien pour aller au début
 
 		if (cptDiapo == 1){		s = s + "\t\t\t<p class=\"croix\">X</p>\n";}
-		else{s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 2) + "\"><div><p>" +"<-</p></div></a>\n";}
+		else{s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 1) + "\"><div><p>" +"<-</p></div></a>\n";}
 
 		s = s + "\t\t\t<h1>Page " + cptDiapo + "/" + diapoMax + "</h1>\n";
 
