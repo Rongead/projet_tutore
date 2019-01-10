@@ -382,7 +382,7 @@ public class patriceVersion
 		if (cptDiapo == diapoMax){s = s + "\t\t\t<p class=\"croix\">X</p>\n";}
 		else{s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "\"><div><p>-></p></div></a>\n";}
 
-		s = s + "\t\t\t<a href=\"" + lien(diapoMax - 2) + "\"><div><p>F</p></div></a>\n";   //Créer le lien pour aller à la fin
+		s = s + "\t\t\t<a href=\"" + lien(diapoMax - 1) + "\"><div><p>F</p></div></a>\n";   //Créer le lien pour aller à la fin
 
 		s = s + "\t\t</footer>\n\t</body>\n</html>\n";
 

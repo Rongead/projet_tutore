@@ -149,7 +149,7 @@ DP:
 
 T2:Sauvegarde accessible partout
 
-IM:save.jpeg:Sauvegarde
+IM:save.jpg:Sauvegarde
 
 PS:Les documents créés avec Google slides sont accessibles
 PS:sur n’importe quel ordinateur avec accès à Internet.
@@ -160,13 +160,11 @@ DP:
 
 T2:Comment partager son Google slides ?
 
-IM:comment.jpg:Comment ?
+IM:comment.jpeg:Comment ?
 
-Un utilisateur de Google slides peut partager ses documents selon deux méthodes :
-Il peut les partager à un autre utilisateur de Google slides
-en ajoutant son compte aux documents qu’il souhaite partager à cet utilisateur.
-Ce nouvel utilisateur est alors ajouté aux contributeurs du document.
+PS:Deux méthodes :
 
+<<<<<<< HEAD
 Il peut partager où il le souhaite un lien permettant d’accéder au directement
 au document sur Google slides. Une personne cliquant sur le lien aura accès
 au document partagé selon les droits décidés par l’auteur.
@@ -181,3 +179,13 @@ IM:pptodp.png:fichiers
 t2:Google slides est compatible avec de nombreux formats de fichiers
 
 IM:jpgpngsvg.png:fichiersimg
+=======
+PC:En ajoutant son compte aux documents qu’il souhaite partager à cet utilisateur.
+PC:Ce nouvel utilisateur est alors ajouté aux contributeurs du document.
+
+PS:
+
+PC:En partageant un lien, une personne cliquant sur le lien aura accès
+PC:au document partagé selon les droits décidés par l’auteur.
+PC:Elle constitue ainsi un contributeur anonyme sur le document.
+>>>>>>> e6d282ae77722f7b3cf1ec8a4224b15b31273b22
