@@ -85,8 +85,7 @@ public class patriceVersion
 
 					switch (ligne.substring(0,3)){
 						case "TP:":
-							fermetureBalisesL( pw, cptL1, cptL2 );
-							fermetureBalisesP(pw, cptPC, cptPS );
+							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							if (ligne.substring(0,9).equals("TP:Google"))
 							{
 								header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p><span class=\"bleu\">G</span><span class=\"rouge\">o</span><span class=\"jaune\">o</span><span class=\"bleu\">g</span><span class=\"vert\">l</span><span class=\"rouge\">e</span>" + ligne.substring(9) + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
@@ -101,8 +100,7 @@ public class patriceVersion
 							break;
 
 						case "T1:":
-							fermetureBalisesL( pw, cptL1, cptL2 );
-							fermetureBalisesP(pw, cptPC, cptPS );
+							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							cptT1++;
 
 							pw.write ("\t\t\t<h1>" + cptT1 + " " + ligne.substring(3)+"</h1>\n");
@@ -111,8 +109,7 @@ public class patriceVersion
 							break;
 
 						case "T2:":
-							fermetureBalisesL( pw, cptL1, cptL2 );
-							fermetureBalisesP(pw, cptPC, cptPS );
+							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							cptT2++;
 							pw.write ("\t\t\t<h2 id=titre" + cptT2 + ">"+ cptT1 + "." + cptT2 + " " + ligne.substring(3)+"</h2>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
@@ -120,8 +117,7 @@ public class patriceVersion
 							break;
 
 						case "t2:":
-							fermetureBalisesL( pw, cptL1, cptL2 );
-							fermetureBalisesP(pw, cptPC, cptPS );
+							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							pw.write ("\t\t\t<h3>"+ ligne.substring(3)+"</h3>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							cptPS = cptPC = 0; //reinitialisation des compteurs de paragraphe
@@ -131,8 +127,7 @@ public class patriceVersion
 
 							if(cptDiapo > 0)
 							{
-								fermetureBalisesL( pw, cptL1, cptL2 );
-								fermetureBalisesP(pw, cptPC, cptPS );
+								fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 								fermetureHTML(pw, cptDiapo, nav, diapoMax, logPage);
 								pw.close();
 								cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
@@ -269,6 +264,12 @@ public class patriceVersion
 			if ( cptL2 != 0 ) pw.write("\t\t\t\t\t</ul>\n\t\t\t\t</li>\n");
 			pw.write("\t\t\t</ul>\n");
 		}
+	}
+
+	public static void fermetureBalises(PrintWriter pw, int cptPC, int cptPS, int cptL1, int cptL2)
+	{
+		if ( cptL1 != 0 || cptL2 != 0 ) fermetureBalisesL( pw, cptL1, cptL2 );
+		if ( cptPC != 0 || cptPS != 0 ) fermetureBalisesP(pw, cptPC, cptPS );
 	}
 
 	public static void initalisationHTML(PrintWriter pw, String header)
