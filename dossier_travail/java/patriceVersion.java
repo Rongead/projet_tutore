@@ -53,7 +53,7 @@ public class patriceVersion
 					if(ligne.substring(0,3).equals("T1:") || ligne.substring(0,3).equals("T2:"))   //nombre de T1 et de T2 pour le nav
 					{
 						nav += ligne + "#";
-						logPage += String.valueOf(diapoMax - 1);
+						logPage += String.valueOf(diapoMax - 1) + "#";
 					}
 				}
 			}
@@ -276,23 +276,42 @@ public class patriceVersion
 		for ( int j = 0; j < cptNav; j++)
 		{
 			String tempString = "";
-			int indexFin = nav.indexOf("#");
-			if ( indexFin - 1 > 0 )
+			String tempLog = "";
+			int indexFinNav = nav.indexOf("#");
+			int indexFinLog = logPage.indexOf("#");
+
+			if ( indexFinNav - 1 > 0 )
 			{
-				tempString = nav.substring( 0, ( indexFin  ) );
+				tempString = nav.substring( 0, ( indexFinNav  ) );
 			}
 			else
 			{
 				tempString = nav;
 			}
 
+			if ( indexFinLog > 0 )
+			{
+				tempLog = logPage.substring( 0, ( indexFinLog  ) );
+			}
+			else
+			{
+				tempLog = logPage;
+			}
+
 			if ( tempString.length() > 2)
 			{
 				tabNav[0][j] = tempString.substring(0,3);
 				tabNav[1][j] = tempString.substring(3);
-				tabNav[2][j] = String.valueOf(logPage.charAt(j));
 
-				if(nav.length() > 4) nav = nav.substring( indexFin + 1);
+
+				if(nav.length() > 4) nav = nav.substring( indexFinNav + 1);
+			}
+
+			if ( tempString.length() > 2)
+			{
+				tabNav[2][j] = tempLog;
+
+				if(logPage.length() > 2) logPage = logPage.substring( indexFinLog + 1);
 			}
 		}
 
@@ -348,6 +367,7 @@ public class patriceVersion
 	{
 		String s = "";
 		nav = nav.substring(0, (nav.length() - 1));
+		logPage = logPage.substring(0, (logPage.length() - 1));
 		pw.write("\t\t</article>\n");
 		navMaker(pw, nav, logPage);
 		s = "\n<--! Mise en place du pied de page -->\n\t\t<footer>\n";
