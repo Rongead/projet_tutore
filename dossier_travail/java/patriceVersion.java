@@ -390,7 +390,7 @@ public class patriceVersion
 		s = s + "\t\t</footer>\n\t</body>\n</html>\n";
 
 		pw.write(s);
-	}
+	} 
 
 	public static void afficherImage(PrintWriter pw, String ligne)
 	{
