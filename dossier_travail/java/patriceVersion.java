@@ -79,11 +79,7 @@ public class patriceVersion
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							if (ligne.substring(0,9).equals("TP:Google"))
 							{
-								header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p><span class=\"bleu\">G</span><span class=\"rouge\">o</span><span class=\"jaune\">o</span><span class=\"bleu\">g</span><span class=\"vert\">l</span><span class=\"rouge\">e</span>" + ligne.substring(9) + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
-							}
-							else
-							{
-								header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + ligne.substring(3) + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
+								ligne = ligne.replaceAll("Google","<span class=\"bleu\">G</span><span class=\"rouge\">o</span><span class=\"jaune\">o</span><span class=\"bleu\">g</span><span class=\"vert\">l</span><span class=\"rouge\">e</span>");
 							}
 							header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + ligne.substring(3) + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
 							pw.write (header);
@@ -375,7 +371,7 @@ public class patriceVersion
 		navMaker(pw, nav, logPage);
 		s = "\n\t\t<footer>\n";
 
-		s = s + "\t\t\t<a href= sortie00.html><div><p>D</p></div></a>\n";
+		s = s + "\t\t\t<a href=\"sortie00.html\"><div><p>D</p></div></a>\n";
 
 		if (cptDiapo == 1)		s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";
 		else
