@@ -39,7 +39,11 @@ public class patriceVersion
 
 		fichierDestination = racine + "/" + lien(cptDiapo);
 
+<<<<<<< HEAD
 		try   //On compte le nombre de DP, de T1 et de T2 dans un premier scanner
+=======
+		try
+>>>>>>> 96f68ba9e4825a119c5a9c6b72b94a4e805b3b56
 		{
 			scIn = new Scanner ( new FileInputStream (source), "utf-8"  );
 			while ( scIn.hasNextLine() )
@@ -327,7 +331,7 @@ public class patriceVersion
 					{
 						pw.write("\t\t\t\t</li>\n");
 					}
-					pw.write("\t\t\t\t<li>\n\t\t\t\t\t<a href=" + sortie + ">" + tabNav[1][i] + "</a>\n");
+					pw.write("\t\t\t\t<li>\n\t\t\t\t\t<a href=" + sortie + ">" + ( tabNav[1][i] + 1 ) + "</a>\n");
 					cptT1++;
 				}
 				else
