@@ -309,7 +309,7 @@ public class patriceVersion
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
 			{
-				sortie = lien(cptT1+1);
+				sortie = lien(Integer.parseInt(tabNav[2][i]));
 
 				if(tabNav[0][i].equals("T1:"))
 				{
