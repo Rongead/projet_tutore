@@ -164,11 +164,14 @@ IM:comment.jpeg:Comment ?
 
 PS:Deux méthodes :
 
-<<<<<<< HEAD
-Il peut partager où il le souhaite un lien permettant d’accéder au directement
-au document sur Google slides. Une personne cliquant sur le lien aura accès
-au document partagé selon les droits décidés par l’auteur.
-Elle constitue ainsi un contributeur anonyme sur le document.
+PC:En ajoutant son compte aux documents qu’il souhaite partager à cet utilisateur.
+PC:Ce nouvel utilisateur est alors ajouté aux contributeurs du document.
+
+PS:
+
+PC:En partageant un lien, une personne cliquant sur le lien aura accès
+PC:au document partagé selon les droits décidés par l’auteur.
+PC:Elle constitue ainsi un contributeur anonyme sur le document.
 
 DP:
 
@@ -179,13 +182,3 @@ IM:pptodp.png:fichiers
 t2:Google slides est compatible avec de nombreux formats de fichiers
 
 IM:jpgpngsvg.png:fichiersimg
-=======
-PC:En ajoutant son compte aux documents qu’il souhaite partager à cet utilisateur.
-PC:Ce nouvel utilisateur est alors ajouté aux contributeurs du document.
-
-PS:
-
-PC:En partageant un lien, une personne cliquant sur le lien aura accès
-PC:au document partagé selon les droits décidés par l’auteur.
-PC:Elle constitue ainsi un contributeur anonyme sur le document.
->>>>>>> e6d282ae77722f7b3cf1ec8a4224b15b31273b22
