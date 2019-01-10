@@ -309,7 +309,7 @@ public class patriceVersion
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
 			{
-				sortie = lien(cptT1);
+				sortie = lien(cptT1+1);
 
 				if(tabNav[0][i].equals("T1:"))
 				{
@@ -323,7 +323,7 @@ public class patriceVersion
 					{
 						pw.write("\t\t\t\t</li>\n");
 					}
-					pw.write("\t\t\t\t<li>\n\t\t\t\t\t<a href=" + sortie + ">" + ( tabNav[1][i] + 1 ) + "</a>\n");
+					pw.write("\t\t\t\t<li>\n\t\t\t\t\t<a href=" + sortie + ">" + tabNav[1][i] + "</a>\n");
 					cptT1++;
 				}
 				else
