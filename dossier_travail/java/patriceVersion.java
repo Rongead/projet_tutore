@@ -36,9 +36,13 @@ public class patriceVersion
 		String subLigne;
 
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
+		System.out.print("posdjgposfdjp");
 
-		fichierDestination = lien(cptDiapo);
+		fichierDestination = racine + lien(cptDiapo);
 
+		System.out.println(fichierDestination);
+
+		System.out.println("gneeee" + fichierDestination);
 		try
 		{
 			scIn = new Scanner ( new FileInputStream (source), "utf-8"  );
@@ -122,16 +126,7 @@ public class patriceVersion
 								pw.close();
 								cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 								cptT2 = 1;
-								fichierDestination = racine + "/" + nomFichier;
-
-								if(cptDiapo < 10)
-								{
-									fichierDestination += "0" + cptDiapo + ".html";
-								}
-								else
-								{
-									fichierDestination += cptDiapo + ".html";
-								}
+								fichierDestination = racine + "/" + lien(cptDiapo);
 								pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 								initalisationHTML(pw, header);
 							}
