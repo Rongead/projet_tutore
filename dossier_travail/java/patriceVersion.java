@@ -47,7 +47,7 @@ public class patriceVersion
 
 		try
 		{
-			scIn = new Scanner ( new FileInputStream ( "exemple.data"), "utf-8"  );
+			scIn = new Scanner ( new FileInputStream (source), "utf-8"  );
 			while ( scIn.hasNextLine() )
 			{
 				ligne = scIn.nextLine();
@@ -73,7 +73,7 @@ public class patriceVersion
 
 		try
 		{
-			scIn = new Scanner ( new FileInputStream ( "exemple.data"), "utf-8"  );
+			scIn = new Scanner ( new FileInputStream ( source), "utf-8"  );
 			pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
 
 			initalisationHTML(pw, "");
@@ -93,7 +93,7 @@ public class patriceVersion
 							}
 							else
 							{
-								header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + ligne.substring(3) + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
+								header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t" + ligne.substring(3) + "\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
 							}
 							pw.write (header);
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
@@ -387,10 +387,8 @@ public class patriceVersion
 		if (cptDiapo == 1)		s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";
 		else
 		{
-			s = s + lien(cptDiapo - 2) + "⇠</p></div></a>\n";
+			s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 2) + "><div><p>" +"⇠</p></div></a>\n";
 		}
-
-		s = s + "\t\t\t<h1>page " + cptDiapo + "/" + diapoMax + "</h1>\n";
 
 		if (cptDiapo == diapoMax)
 		{
@@ -398,7 +396,7 @@ public class patriceVersion
 		}
 		else
 		{
-			s = s + lien(cptDiapo) +"⇢</p></div></a>\n";
+			s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "><div><p>" + "⇢</p></div></a>\n";
 		}
 
 		s = s + lien(diapoMax - 1) + "F</p></div></a>\n";
@@ -420,11 +418,11 @@ public class patriceVersion
 		String retour;
 		if(cpt < 10)
 		{
-			retour = "\t\t\t<a href=\"sortie0" + (cpt)+".html\"><div><p>";
+			retour = "sortie0" + (cpt)+".html\"";
 		}
 		else
 		{
-			retour = "\t\t\t<a href=\"sortie" + (cpt)+".html\"><div><p>";
+			retour = "sortie" + (cpt)+".html\"";
 		}
 
 		return retour;
