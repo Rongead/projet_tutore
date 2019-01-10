@@ -19,7 +19,7 @@ public class patriceVersion
 	{
 		source = args[0];
 		racine = args[1];
-		nomFichier = source.substring(0, source.indexOf("."));
+		nomFichier = source.substring(1, source.indexOf("."));
 		initialiserDiapo();
 	}
 
@@ -36,17 +36,9 @@ public class patriceVersion
 		String subLigne;
 
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
-		System.out.print("posdjgposfdjp");
-
-
 
 		fichierDestination = racine + "/" + lien(cptDiapo);
-		System.out.println(fichierDestination);
 
-
-		System.out.println(fichierDestination);
-
-		System.out.println("gneeee" + fichierDestination);
 		try
 		{
 			scIn = new Scanner ( new FileInputStream (source), "utf-8"  );
