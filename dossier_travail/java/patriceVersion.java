@@ -34,7 +34,11 @@ public class patriceVersion
 
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
 
-		fichierDestination = racine + lien(cptDiapo);
+
+
+		fichierDestination = racine + "/" + lien(cptDiapo);
+		System.out.println(fichierDestination);
+
 
 		try
 		{
