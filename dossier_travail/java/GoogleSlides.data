@@ -17,3 +17,53 @@ PC:créer et d’éditer des documents à plusieurs en temps réel.
 
 PS:Chaque modification opérée par un utilisateur est immédiatement sauvegardée et
 PS:affichée chez les autres utilisateurs actifs sur le document.
+
+DP:
+
+T2:Accès hors connexion
+
+IM:index.png:wifi barré
+
+PS:Il est possible d’accéder au service Google slides hors connexion
+PS:via le module complémentaire “Éditeur Office pour Docs, Sheets et Slides”
+PS:sur le navigateur Google Chrome.
+
+DP:
+
+T2:Une application mobile
+
+IM:mobil.png:mobile
+
+PS:Une application mobile Google slides existe et permet aussi de créer
+PS:et éditer des présentations avec ou sans accès à Internet.
+PS:Cependant, l’application mobile dispose d’un peu moins d’options que les logiciels accessibles sur PC.
+
+DP:
+
+T2:Lancement de Google slides
+
+IM:lancement.png:lancement
+
+PS:Google slides a été publié pour la première fois en septembre 2007.
+PS:Il ne s’agissait alors que d’une option du logiciel Google docs.
+PS:En octobre 2012 Google slides devient un logiciel à part entière.
+PS:Le module complémentaire Google slides sur Google Chrome est lancé au même moment.
+PS:L’application mobile Google slides est quant à elle disponible depuis 2014.
+
+DP:
+
+T2:Code de Google slides
+
+IM:index.jpeg:javascript
+
+PS:Google slides est écrit en JavaScript.
+PS:Il s’intègre donc directement dans des pages web,
+PS:ce qui lui permet d’être utilisable en temps réel sur un navigateur
+PS:sans avoir de programme à télécharger.
+
+T2:Disponibilité de Google slides
+
+PS:Le logiciel est disponible partout où Internet l’est
+PS:et est traduit dans 83 langues différentes.
+PS:Google slides est compatible avec les navigateurs Internet les plus courants :
+PS:Google Chrome, Mozilla Firefox, Internet Explorer, Microsoft Edge et Apple Safari.
