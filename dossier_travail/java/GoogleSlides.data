@@ -96,6 +96,62 @@ PS:Google Chrome, Mozilla Firefox, Internet Explorer, Microsoft Edge et Apple Sa
 
 DP:
 
+T1:Partage de documents
+
+IM:partage-fichiers.jpg:partage
+
+DP:
+
+T2:Google Drive
+
+
+IM:gsuite.png:G suite
+
+PS:Les documents produits par un utilisateur via Google slides
+PS:sont automatiquement sauvegardés dans l’espace
+PS:Google Drive associé à son compte Google.
+
+DP:
+
+T2:Sauvegarde accessible partout
+
+IM:save.jpg:Sauvegarde
+
+PS:Les documents créés avec Google slides sont accessibles
+PS:sur n’importe quel ordinateur avec accès à Internet.
+PS:Il suffit alors de se connecter avec le compte du créateur du document
+PS:sur Google slides pour retrouver tous les documents liés à ce compte Google.
+
+IM:drive.png:drive
+
+DP:
+
+T2:Comment partager son Google slides ?
+
+IM:comment.jpeg:Comment ?
+
+PS:Deux méthodes :
+
+PC:En ajoutant son compte aux documents qu’il souhaite partager à cet utilisateur.
+PC:Ce nouvel utilisateur est alors ajouté aux contributeurs du document.
+
+PS:
+
+PC:En partageant un lien, une personne cliquant sur le lien aura accès
+PC:au document partagé selon les droits décidés par l’auteur.
+PC:Elle constitue ainsi un contributeur anonyme sur le document.
+
+DP:
+
+T2:La gestion des fichiers par Google slides
+
+IM:pptodp.png:fichiers
+
+t2:Google slides est compatible avec de nombreux formats de fichiers
+
+IM:jpgpngsvg.png:fichiersimg
+DP:
+
 T1:Comparaisons avec des logiciels similaires
 
 IM:presentation.png:presentation
@@ -127,58 +183,3 @@ T2:Prezi
 
 IM:prezi.png:logo prezi
 IM:prezi_interface.png:interface_prezi
-
-DP:
-
-T1:Partage de documents
-
-IM:partage-fichiers.jpg:partage
-
-DP:
-
-T2:Google Drive
-
-
-IM:gsuite.png:G suite
-
-PS:Les documents produits par un utilisateur via Google slides
-PS:sont automatiquement sauvegardés dans l’espace
-PS:Google Drive associé à son compte Google.
-
-DP:
-
-T2:Sauvegarde accessible partout
-
-IM:save.jpg:Sauvegarde
-
-PS:Les documents créés avec Google slides sont accessibles
-PS:sur n’importe quel ordinateur avec accès à Internet.
-PS:Il suffit alors de se connecter avec le compte du créateur du document
-PS:sur Google slides pour retrouver tous les documents liés à ce compte Google.
-
-DP:
-
-T2:Comment partager son Google slides ?
-
-IM:comment.jpeg:Comment ?
-
-PS:Deux méthodes :
-
-PC:En ajoutant son compte aux documents qu’il souhaite partager à cet utilisateur.
-PC:Ce nouvel utilisateur est alors ajouté aux contributeurs du document.
-
-PS:
-
-PC:En partageant un lien, une personne cliquant sur le lien aura accès
-PC:au document partagé selon les droits décidés par l’auteur.
-PC:Elle constitue ainsi un contributeur anonyme sur le document.
-
-DP:
-
-T2:La gestion des fichiers par Google slides
-
-IM:pptodp.png:fichiers
-
-t2:Google slides est compatible avec de nombreux formats de fichiers
-
-IM:jpgpngsvg.png:fichiersimg
