@@ -86,7 +86,7 @@ public class patriceVersion
 							{
 								subLigne = subLigne.replaceAll("Google","<span class=\"bleu\">G</span><span class=\"rouge\">o</span><span class=\"jaune\">o</span><span class=\"bleu\">g</span><span class=\"vert\">l</span><span class=\"rouge\">e</span>");
 							}
-							header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + subLigne  + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
+							header = "\n<--! Mise en place de l'entête -->\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + subLigne  + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n<--! Ouverture de la diapositive -->\n\t\t<article>\n";
 							pw.write (header);
 							break;
 
@@ -304,7 +304,7 @@ public class patriceVersion
 		String[][] tabNav = tabNavMaker(nav, logPage);
 		String sortie, sortieTitre;
 		int cptT1 = 0, cptT2 = 0;
-		pw.write("\n\t\t<nav>\n\t\t\t<ul>\n");
+		pw.write("\n<--! Création du fil d'Ariane -->\n\t\t<nav>\n\t\t\t<ul>\n");
 		if(tabNav[0][0] != null)
 		{
 			for(int i = 0; i < tabNav[0].length; i++)
@@ -350,7 +350,7 @@ public class patriceVersion
 		nav = nav.substring(0, (nav.length() - 1));
 		pw.write("\t\t</article>\n");
 		navMaker(pw, nav, logPage);
-		s = "\n\t\t<footer>\n";
+		s = "\n<--! Mise en place du pied de page -->\n\t\t<footer>\n";
 
 		s = s + "\t\t\t<a href=\""+ nomFichier +"00.html\"><div><p>D</p></div></a>\n";   //Créer le lien pour aller au début
 
