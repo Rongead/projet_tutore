@@ -34,7 +34,7 @@ public class patriceVersion
 
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
 
-		fichierDestination = racine + lien(cptDiapo);
+		fichierDestination = lien(cptDiapo);
 
 		try
 		{
@@ -385,12 +385,12 @@ public class patriceVersion
 		}
 		else
 		{
-			s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "\"><div><p>" + "⇢</p></div></a>\n";
+			s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "\"><div><p>⇢</p></div></a>\n";
 		}
 
-		s = s + "\t\t\t<a href=\"" + lien(diapoMax - 1) + "\"><div><p>" + "F</p></div></a>\n";
+		s = s + "\t\t\t<a href=\"" + lien(diapoMax - 1) + "\"><div><p>F</p></div></a>\n";
 
-		s = s + "\t\t</footer>\n" + "\t</body>\n" + "</html>\n";
+		s = s + "\t\t</footer>\n\t</body>\n</html>\n";
 
 		pw.write(s);
 	}
