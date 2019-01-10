@@ -34,16 +34,7 @@ public class patriceVersion
 
 		cptPS = cptPC = cptT1 = cptL1 = cptL2 = cptT2 = 0;
 
-		fichierDestination = racine + "/sortie";
-
-		if(cptDiapo < 10)
-		{
-			fichierDestination += "0" + cptDiapo + ".html";
-		}
-		else
-		{
-			fichierDestination += cptDiapo + ".html";
-		}
+		fichierDestination = racine + lien(cptDiapo);
 
 		try
 		{
@@ -92,7 +83,7 @@ public class patriceVersion
 							}
 							else
 							{
-								header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t" + ligne.substring(3) + "\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
+								header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + ligne.substring(3) + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
 							}
 							header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + ligne.substring(3) + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
 							pw.write (header);
@@ -389,7 +380,7 @@ public class patriceVersion
 		if (cptDiapo == 1)		s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";
 		else
 		{
-			s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 2) + "><div><p>" +"⇠</p></div></a>\n";
+			s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 2) + "\"><div><p>" +"⇠</p></div></a>\n";
 		}
 
 		if (cptDiapo == diapoMax)
@@ -398,10 +389,10 @@ public class patriceVersion
 		}
 		else
 		{
-			s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "><div><p>" + "⇢</p></div></a>\n";
+			s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "\"><div><p>" + "⇢</p></div></a>\n";
 		}
 
-		s = s + lien(diapoMax - 1) + "F</p></div></a>\n";
+		s = s + "\t\t\t<a href=\"" + lien(diapoMax - 1) + "\"><div><p>" + "F</p></div></a>\n";
 
 		s = s + "\t\t</footer>\n" + "\t</body>\n" + "</html>\n";
 
@@ -420,11 +411,11 @@ public class patriceVersion
 		String retour;
 		if(cpt < 10)
 		{
-			retour = "sortie0" + (cpt)+".html\"";
+			retour = "sortie0" + (cpt)+".html";
 		}
 		else
 		{
-			retour = "sortie" + (cpt)+".html\"";
+			retour = "sortie" + (cpt)+".html";
 		}
 
 		return retour;
