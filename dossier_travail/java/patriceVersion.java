@@ -386,7 +386,7 @@ public class patriceVersion
 	{
 		int posPoint;
 		posPoint = ligne.indexOf ( ':', 3 );
-		pw.write("<img src=images/"+ligne.substring(3,posPoint)+" alt="+ligne.substring(posPoint+1)+">");
+		pw.write("\t\t\t<img src=images/"+ligne.substring(3,posPoint)+" alt="+ligne.substring(posPoint+1)+">\n");
 	}
 
 	public static String lien(int cpt)
