@@ -39,7 +39,11 @@ public class patriceVersion
 
 		fichierDestination = racine + "/" + lien(cptDiapo);
 
+<<<<<<< HEAD
+		try   //On compte le nombre de DP, de T1 et de T2 dans un premier scanner
+=======
 		try
+>>>>>>> 96f68ba9e4825a119c5a9c6b72b94a4e805b3b56
 		{
 			scIn = new Scanner ( new FileInputStream (source), "utf-8"  );
 			while ( scIn.hasNextLine() )
@@ -47,11 +51,11 @@ public class patriceVersion
 				ligne = scIn.nextLine();
 				if (!(ligne.substring(0).equals("")))
 				{
-					if (ligne.substring(0,3).equals("DP:") && diapoMax < 99)
+					if (ligne.substring(0,3).equals("DP:") && diapoMax < 99)   //nombre de DP maximum de 99
 					{
 						diapoMax++;
 					}
-					if(ligne.substring(0,3).equals("T1:") || ligne.substring(0,3).equals("T2:"))
+					if(ligne.substring(0,3).equals("T1:") || ligne.substring(0,3).equals("T2:"))   //nombre de T1 et de T2 pour le nav
 					{
 						nav += ligne + "#";
 						logPage += String.valueOf(diapoMax - 1);
@@ -65,7 +69,7 @@ public class patriceVersion
 			e.printStackTrace();
 		}
 
-		try
+		try   //Deuxième scanner pour cette fois écrire les pages HTML
 		{
 			scIn = new Scanner ( new FileInputStream ( source), "utf-8"  );
 			pw = new PrintWriter ( new OutputStreamWriter ( new FileOutputStream(fichierDestination), "utf-8" ) );
@@ -80,19 +84,19 @@ public class patriceVersion
 
 					subLigne = ligne.substring(3);
 
-					switch (ligne.substring(0,3)){
-						case "TP:":
+					switch (ligne.substring(0,3)){   //switch pour les différentes balises
+						case "TP:":   //pour la création du header
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
-							if (subLigne.contains("Google"))
+							if (subLigne.contains("Google"))   //Si dans le header il y a le mot Google, il est afficher d'une certaine façon
 							{
 								subLigne = subLigne.replaceAll("Google","<span class=\"bleu\">G</span><span class=\"rouge\">o</span><span class=\"jaune\">o</span><span class=\"bleu\">g</span><span class=\"vert\">l</span><span class=\"rouge\">e</span>");
 							}
 							header = "\n\t\t<header>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t\t<p>" + subLigne  + "</p>\n\t\t\t<img class=\"logo\" src=\"images/maxi_logo.png\" alt=\"logo\">\n\t\t</header>\n\n\t\t<article>\n";
-							pw.write (header);
+							pw.write (header);   //création du header avec les logo et le titre
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
-						case "T1:":
+						case "T1:":   //pour la création d'un titre de niveau 1
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							cptT1++;
 
@@ -100,20 +104,20 @@ public class patriceVersion
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
-						case "T2:":
+						case "T2:":   //pour la création d'un titre de niveau 2
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							cptT2++;
 							pw.write ("\t\t\t<h2 id=titre" + cptT2 + ">"+ cptT1 + "." + cptT2 + " " + subLigne +"</h2>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
-						case "t2:":
+						case "t2:":   //pour la création d'un titre de niveau 3
 							fermetureBalises( pw, cptPC, cptPS, cptL1, cptL2);
 							pw.write ("\t\t\t<h3>"+ subLigne +"</h3>\n");
 							cptL1 = cptL2 = 0; //reinitialisation des compteurs de liste
 							break;
 
-						case "DP:":
+						case "DP:":   //pour la création d'une autre page
 
 							if(cptDiapo > 0)
 							{
@@ -130,7 +134,7 @@ public class patriceVersion
 							cptDiapo++;
 							break;
 
-						case "L1:":
+						case "L1:":   //pour la création d'une liste de niveau 1
 							fermetureBalisesP(pw, cptPC, cptPS );
 
 							if (cptL1 == 0)
@@ -145,7 +149,7 @@ public class patriceVersion
 							cptL1++;
 							break;
 
-						case "L2:":
+						case "L2:":   //pour la création d'une liste de niveau 2
 							fermetureBalisesP(pw, cptPC, cptPS );
 
 							if (cptL1 != 0 && cptL2 == 0)
@@ -163,7 +167,7 @@ public class patriceVersion
 							cptL2++;
 							break;
 
-						case "PS:":
+						case "PS:":   //pour la création d'un paragraphe simple
 							fermetureBalisesL( pw, cptL1, cptL2 );
 
 							if (cptPC != 0)
@@ -183,7 +187,7 @@ public class patriceVersion
 							cptPS++;
 							break;
 
-						case "PC:":
+						case "PC:":   //pour la création d'un paragraphe encadré
 							fermetureBalisesL( pw, cptL1, cptL2 );
 
 							if (cptPS != 0)
@@ -205,9 +209,9 @@ public class patriceVersion
 							cptPC++;
 							break;
 
-						case "IM:":
-							fermetureBalisesP(pw, cptPC, cptPS );
-							afficherImage(pw, ligne);break;
+						case "IM:":   //pour la création d'une image
+							fermetureBalisesP(pw, cptPC, cptPS );   //ferme les balises
+							afficherImage(pw, ligne);break;   //Affiche l'image
 
 					}
 
@@ -217,8 +221,8 @@ public class patriceVersion
 				}
 			}
 
-			fermetureBalisesP(pw, cptPC, cptPS);
-			fermetureHTML(pw, cptDiapo, nav, diapoMax, logPage);
+			fermetureBalisesP(pw, cptPC, cptPS);   //ferme les balises
+			fermetureHTML(pw, cptDiapo, nav, diapoMax, logPage);   //ferme la page HTML
 			pw.close();
 
 		}
@@ -229,7 +233,7 @@ public class patriceVersion
 
 	}
 
-	public static void fermetureBalisesP(PrintWriter pw, int cptPC, int cptPS)
+	public static void fermetureBalisesP(PrintWriter pw, int cptPC, int cptPS)   //Pour fermer les balises P
 	{
 		if (cptPC != 0 || cptPS != 0)
 		{
@@ -237,7 +241,7 @@ public class patriceVersion
 		}
 	}
 
-	public static void fermetureBalisesL(PrintWriter pw, int cptL1, int cptL2 )
+	public static void fermetureBalisesL(PrintWriter pw, int cptL1, int cptL2 )   //Pour fermer les balises L
 	{
 		if ( cptL1 != 0 )
 		{
@@ -246,13 +250,13 @@ public class patriceVersion
 		}
 	}
 
-	public static void fermetureBalises(PrintWriter pw, int cptPC, int cptPS, int cptL1, int cptL2)
+	public static void fermetureBalises(PrintWriter pw, int cptPC, int cptPS, int cptL1, int cptL2)   //Pour fermer les balises
 	{
 		if ( cptL1 != 0 || cptL2 != 0 ) fermetureBalisesL( pw, cptL1, cptL2 );
 		if ( cptPC != 0 || cptPS != 0 ) fermetureBalisesP(pw, cptPC, cptPS );
 	}
 
-	public static void initalisationHTML(PrintWriter pw, String header)
+	public static void initalisationHTML(PrintWriter pw, String header)   //Initialise la page HTML
 	{
 		pw.write("<!DOCTYPE html>\n"                                                        +
 		"<html>\n"                                                                          +
@@ -266,7 +270,7 @@ public class patriceVersion
 		+ header                                                                            );
 	}
 
-	public static String[][] tabNavMaker( String nav, String logPage )
+	public static String[][] tabNavMaker( String nav, String logPage )   //Enregistre toute les pages avec les T1 et les T2 dans un tableau
 	{
 		int cptNav = 1;
 
@@ -303,7 +307,7 @@ public class patriceVersion
 		return tabNav;
 	}
 
-	public static void navMaker(PrintWriter pw, String nav, String logPage)
+	public static void navMaker(PrintWriter pw, String nav, String logPage)   //Créer le nav grâce aux position enregistré
 	{
 		String[][] tabNav = tabNavMaker(nav, logPage);
 		String sortie, sortieTitre;
@@ -348,7 +352,7 @@ public class patriceVersion
 		pw.write("\t\t\t</ul>\n\t\t</nav>\n");
 	}
 
-	public static void fermetureHTML(PrintWriter pw, int cptDiapo, String nav, int diapoMax, String logPage)
+	public static void fermetureHTML(PrintWriter pw, int cptDiapo, String nav, int diapoMax, String logPage)   //Ferme la page HTML tout en créant le footer
 	{
 		String s = "";
 		nav = nav.substring(0, (nav.length() - 1));
@@ -356,7 +360,7 @@ public class patriceVersion
 		navMaker(pw, nav, logPage);
 		s = "\n\t\t<footer>\n";
 
-		s = s + "\t\t\t<a href=\""+ nomFichier +"00.html\"><div><p>D</p></div></a>\n";
+		s = s + "\t\t\t<a href=\""+ nomFichier +"00.html\"><div><p>D</p></div></a>\n";   //Créer le lien pour aller au début
 
 		if (cptDiapo == 1){		s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";}
 		else{s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 2) + "\"><div><p>" +"⇠</p></div></a>\n";}
@@ -366,21 +370,21 @@ public class patriceVersion
 		if (cptDiapo == diapoMax){s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";}
 		else{s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "\"><div><p>⇢</p></div></a>\n";}
 
-		s = s + "\t\t\t<a href=\"" + lien(diapoMax - 1) + "\"><div><p>F</p></div></a>\n";
+		s = s + "\t\t\t<a href=\"" + lien(diapoMax - 1) + "\"><div><p>F</p></div></a>\n";   //Créer le lien pour aller à la fin
 
 		s = s + "\t\t</footer>\n\t</body>\n</html>\n";
 
 		pw.write(s);
 	}
 
-	public static void afficherImage(PrintWriter pw, String ligne)
+	public static void afficherImage(PrintWriter pw, String ligne)   //Affiche une image
 	{
 		int posPoint;
 		posPoint = ligne.indexOf ( ':', 3 );
 		pw.write("\t\t\t<img src=images/"+ligne.substring(3,posPoint)+" alt="+ligne.substring(posPoint+1)+">\n");
 	}
 
-	public static String lien(int cpt)
+	public static String lien(int cpt)   //Retourne le lien
 	{
 		String retour;
 		if(cpt < 10){retour = nomFichier +"0" + (cpt)+".html";}
