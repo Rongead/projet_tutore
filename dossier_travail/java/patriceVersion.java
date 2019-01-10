@@ -264,7 +264,7 @@ public class patriceVersion
 		"          <meta charset=\"UTF-8\">\n"                                              +
 		"          <link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n"    +
 		"          <link rel=\"icon\" type=\"image/png\" href=\"images/maxi_logo.png\">\n"  +
-		"     </head>\n\n"                                                                    +
+		"     </head>\n\n"                                                                  +
 		"     <body>\n"
 		+ header                                                                            );
 	}
@@ -368,29 +368,20 @@ public class patriceVersion
 
 		s = s + "\t\t\t<a href=\"sortie00.html\"><div><p>D</p></div></a>\n";
 
-		if (cptDiapo == 1)		s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";
-		else
-		{
-			s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 2) + "\"><div><p>" +"⇠</p></div></a>\n";
-		}
+		if (cptDiapo == 1){		s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";}
+		else{s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 2) + "\"><div><p>" +"⇠</p></div></a>\n";}
 
 		s = s + "\t\t\t<h1>Page " + cptDiapo + "/" + diapoMax + "</h1>\n";
 
-		if (cptDiapo == diapoMax)
-		{
-			s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";
-		}
-		else
-		{
-			s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "\"><div><p>⇢</p></div></a>\n";
-		}
+		if (cptDiapo == diapoMax){s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";}
+		else{s = s + "\t\t\t<a href=\"" + lien(cptDiapo) + "\"><div><p>⇢</p></div></a>\n";}
 
 		s = s + "\t\t\t<a href=\"" + lien(diapoMax - 1) + "\"><div><p>F</p></div></a>\n";
 
 		s = s + "\t\t</footer>\n\t</body>\n</html>\n";
 
 		pw.write(s);
-	} 
+	}
 
 	public static void afficherImage(PrintWriter pw, String ligne)
 	{
@@ -402,14 +393,8 @@ public class patriceVersion
 	public static String lien(int cpt)
 	{
 		String retour;
-		if(cpt < 10)
-		{
-			retour = "sortie0" + (cpt)+".html";
-		}
-		else
-		{
-			retour = "sortie" + (cpt)+".html";
-		}
+		if(cpt < 10){retour = "sortie0" + (cpt)+".html";}
+		else        {retour = "sortie" + (cpt)+".html";}
 
 		return retour;
 	}
