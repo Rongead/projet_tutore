@@ -330,7 +330,7 @@ public class patriceVersion
 					{
 						pw.write("\t\t\t\t</li>\n");
 					}
-					pw.write("\t\t\t\t<li>\n\t\t\t\t\t<a href=" + sortie + ">" + tabNav[1][i] + "</a>\n");
+					pw.write("\t\t\t\t<li>\n\t\t\t\t\t<a href=" + sortie + ">" + ( tabNav[1][i] + 1 ) + "</a>\n");
 					cptT1++;
 				}
 				else
