@@ -4,18 +4,126 @@ DP:
 
 IM:slides.png:slides
 
-t2:Logiciel de présentation conçu par Google
+t2:Google Slides : Logiciel de présentation conçu par Google
+
+PS:
+
+PC:DUT Informatique première année
+PC:Université du Havre
+PC:
+PC:Projet tutoré - Semestre 1
+PC:
+PC:Groupe 29
+PC:CONTE Lucas, MAISONNEUVE Patrice, NEVEU Aubin, PONTY Arthur, PRUNIER Sébastien
+PC:
+PC:Janvier 2019
 
 DP:
 
 T1:Présentation du logiciel
 
-PS:Google slides est un logiciel collaboratif de conception de présentations
-PS:(diaporamas) accessible directement sur le web depuis n’importe quel
-PS:navigateur internet sans installation requise.
+IM:image-web.jpg:web
 
 PC:Le logiciel web nécessite donc un accès permanent à Internet et permet de
 PC:créer et d’éditer des documents à plusieurs en temps réel.
 
 PS:Chaque modification opérée par un utilisateur est immédiatement sauvegardée et
 PS:affichée chez les autres utilisateurs actifs sur le document.
+
+DP:
+
+T2:Accès hors connexion
+
+IM:index.png:wifi_barré
+
+PS:Il est possible d’accéder au service Google slides hors connexion
+PS:via le module complémentaire “Éditeur Office pour Docs, Sheets et Slides”
+PS:sur le navigateur Google Chrome.
+
+DP:
+
+T2:Une application mobile
+
+IM:androidios.png:android_ios
+IM:slidesandroid.jpg:slides_pour_android
+
+PS:Une application mobile Google slides existe et permet aussi de créer
+PS:et éditer des présentations avec ou sans accès à Internet.
+PS:Cependant, l’application mobile dispose d’un peu moins d’options que les logiciels accessibles sur PC.
+
+DP:
+
+T2:Lancement de Google slides
+
+IM:lancement.png:lancement
+
+PS:Google slides a été publié pour la première fois en septembre 2007.
+PS:Il ne s’agissait alors que d’une option du logiciel Google docs.
+PS:En octobre 2012 Google slides devient un logiciel à part entière.
+PS:Le module complémentaire Google slides sur Google Chrome est lancé au même moment.
+PS:L’application mobile Google slides est quant à elle disponible depuis 2014.
+
+DP:
+
+T2:Code de Google slides
+
+IM:javascript.jpg:javascript
+
+PS:
+
+IM:htmlcss.png:htmlcss
+
+PS:Google slides est écrit en JavaScript. Il s’intègre donc directement dans des pages web,
+PS:ce qui lui permet d’être utilisable en temps réel sur un navigateur sans avoir de programme à télécharger.
+
+DP:
+
+PS:
+
+T2:Disponibilité de Google slides
+
+PS:
+PS:
+
+IM:navigateurs.jpg:navigateurs
+
+t2:La plupart des navigteurs permettent d'accéder à Google slides
+
+PS:Le logiciel est disponible partout où Internet l’est
+PS:et est traduit dans 83 langues différentes.
+PS:Google slides est compatible avec les navigateurs Internet les plus courants :
+PS:Google Chrome, Mozilla Firefox, Internet Explorer, Microsoft Edge et Apple Safari.
+
+DP:
+
+T1:Comparaisons avec des logiciels similaires
+
+IM:presentation.png:presentation
+
+DP:
+
+T2:Microsoft Power Point
+
+IM:powerpoint.png:logo power point
+IM:powerpoint_interface.jpg:interface_power_point
+
+DP:
+
+T2:Apache OpenOffice Impress
+
+IM:openoffice.png:logo open office impress
+IM:openoffice_interface.jpg:interface_open_office_impress
+
+DP:
+
+T2:Libre Office Impress
+
+IM:libreoffice.png:logo libre office impress
+IM:libreoffice_interface.png:interface_libre_office_impress
+
+DP:
+
+T2:Prezi
+
+IM:prezi.png:logo prezi
+IM:prezi_interface.png:interface_prezi
