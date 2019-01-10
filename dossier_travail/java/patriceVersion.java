@@ -374,6 +374,8 @@ public class patriceVersion
 			s = s + "\t\t\t<a href=\"" + lien(cptDiapo - 2) + "\"><div><p>" +"⇠</p></div></a>\n";
 		}
 
+		s = s + "\t\t\t<h1>Page " + cptDiapo + "/" + diapoMax + "</h1>\n";
+
 		if (cptDiapo == diapoMax)
 		{
 			s = s + "\t\t\t<p class=\"croix\">⨯</p>\n";
