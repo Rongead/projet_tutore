@@ -9,7 +9,7 @@ import java.util.*;
 import java.io.*;
 
 
-public class patriceVersion
+public class generateurDiapo
 {
 	static String source;
 	static String racine;
